@@ -70,25 +70,70 @@
             <section class="panel" aria-labelledby="products-title" id="products">
                 <div class="grid grid--split">
                     <div>
-                        <h2 id="products-title">Here's what in our arsenal. We do not come in second.</h2>
-                        <p>
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum. Nemo enim ipsam voluptatem quia voluptas
-                            sit aspernatur aut odit aut fugit.
-                        </p>
-                        <p>
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                            adipisci velit, sed quia non numquam eius modi tempora incidunt.
-                        </p>
+                        <div class="product-search" role="search" aria-label="Search our products">
+                            <label for="product-search-input">Look up your perfect tool</label>
+                            <div class="product-search__row">
+                                <input class="product-search__input" id="product-search-input" type="search" name="q"
+                                    placeholder="z.B. replacing employees with LLMs, checking stocks while driving"
+                                    autocomplete="off">
+                                <button class="product-search__button" type="button">Search</button>
+                            </div>
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col" rowspan="2">Suite</th>
+                                    <th scope="col" colspan="2">Tooling</th>
+                                    <th scope="col" rowspan="2">Deployment</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Module</th>
+                                    <th scope="col">Replaces</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" rowspan="3">Overhauling Suite</th>
+                                    <td>Virtual Cockpit&trade;</td>
+                                    <td>Every spreadsheet you own</td>
+                                    <td rowspan="3">Web, on-premise, Android Auto(beta)</td>
+                                </tr>
+                                <tr>
+                                    <td>LLM Analytics&trade;</td>
+                                    <td>Your overworked data scientist(s)</td>
+                                </tr>
+                                <tr>
+                                    <td>4.5:1 Badge</td>
+                                    <td>Accessibility audits</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" rowspan="2">Profitmaxxing Suite</th>
+                                    <td>Anti-TERF Sorting Hat</td>
+                                    <td>Admissions officer(s)</td>
+                                    <td rowspan="2">Web only</td>
+                                </tr>
+                                <tr>
+                                    <td>In-Shareholders-Boots Putter&trade;</td>
+                                    <td>Your conscience</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <figure class="photo">
-                        <img class="media" src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
-                            alt="Person working with laptop" />
-                        <figcaption>Working with our tools are extremely simple. Just look at this stock photo!
-                        </figcaption>
-                    </figure>
+                    <!-- Heading + stock photo occupy the right column -->
+                    <div>
+                        <h1 id="products-title" style="text-align: right;">Here's what in our arsenal: we do not come in
+                            second.</h1>
+                        <figure class="photo">
+                            <img class="media" src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
+                                alt="Person working with laptop" />
+                            <figcaption>Working with our tools is extremely simple. Just look at this stock photo!
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
+
             </section>
 
         </main>
