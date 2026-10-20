@@ -65,7 +65,7 @@ a:hover {
 }
 
 
-/* Layout shell — the "content div" sits inside the page margins */
+/* Layout shell */
 .site {
     max-width: 72rem;
     margin-inline: auto;
@@ -156,7 +156,6 @@ header {
     font-family: "Truculenta", Georgia, serif;
     font-weight: 700;
     font-stretch: 112%;
-    /* logo goes wide — the opposite of the headings */
     font-size: 1.05rem;
     line-height: 1.1;
 }
