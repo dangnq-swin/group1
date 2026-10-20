@@ -1,5 +1,5 @@
 /* Scroll snap
-Entire screen is the web page, so we want the page to be fullscreen and static
+Entire screen is the web page, so we want the page to be fullscreen and static.
 */
 body {
     height: 100vh;
@@ -7,43 +7,55 @@ body {
     overflow: hidden;
 }
 
-/* FIXME: this add a scrollbar so we can scroll through the snap full size
-column flex below, but we should find a better way*/
+/* This so that header and footer can be properly sized + let the scrollport
+be scrollable */
 .site {
     height: 100%;
 }
 
+/* The snap container is also the flex column of panels.
+Each panel sizes to this box. */
 .snap {
     flex: 1 1 auto;
     min-height: 0;
     /* lets the flex child actually shrink */
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    overscroll-behavior: contain;
-}
-
-/* Flex to entire width, and each child element is a single element on a 1-column
-row*/
-.snap main {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
+/* I love legacy Safari */
+.snap::-webkit-scrollbar {
+    display: none;
+}
+
+/* One section per screen, centred in the scrollport */
 .snap .panel {
-    flex: 1 0 100%;
-    /* grow to fill, never shrink below 1 screen */
-    min-height: 100vh;
-    /* fallback for older browsers */
-    min-height: 100svh;
-    /* one full screen of vertical space */
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    /* mandatory + one screen = no skipping */
+    flex: 0 0 auto;
+    min-height: 100%;
+    /* Centre the panel's own content inside the panel */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* Snap the panel's middle to the middle of the scrollport, so the whole
+    section sits in the centre of the snap viewport. */
+    scroll-snap-align: center;
+    /* Mandatory + stop always = one panel per gesture, no skipping */
+    scroll-snap-stop: always;
+    padding: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.snap .panel:nth-child(odd) {
+    background-color: var(--pink-sand);
+}
+
+.snap .panel:nth-child(even) {
+    background: var(--sand);
 }
 
 /* Children of a flex column shrink by default; block this so a long
@@ -59,12 +71,17 @@ panel can never squash its own content. */
     min-height: 12rem;
 }
 
-/* Quiet "there is more below" marker on the first panel */
-/* Centred under the pitch, since the whole panel is centred */
+/* Quiet "there is more below" marker beneath the panels */
 .panel-hint {
     margin: 1.5rem 0 0;
     font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
+}
+
+.panel-hint a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
 }
