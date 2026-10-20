@@ -111,3 +111,22 @@ panel can never squash its own content. */
     font: inherit;
     cursor: pointer;
 }
+
+/* Center blockquote */
+blockquote {
+    display: table;
+    width: auto;
+    margin: 0 auto;
+}
+
+blockquote p::before {
+    content: "\201C";
+}
+
+blockquote p::after {
+    content: "\201D";
+}
+
+blockquote+p {
+    text-align: right;
+}
