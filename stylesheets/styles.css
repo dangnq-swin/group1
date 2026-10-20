@@ -104,8 +104,10 @@ h3 {
 }
 
 p {
-    /* 1.5 spaced */
+    /* 2 spaced */
     margin: 0 0 1em;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 
 p:last-child {
