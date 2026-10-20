@@ -64,13 +64,6 @@ panel can never squash its own content. */
     flex: 0 0 auto;
 }
 
-/* Image stretch to aspect ratio instead of changing the size */
-.snap .panel .media {
-    aspect-ratio: auto;
-    height: 100%;
-    min-height: 12rem;
-}
-
 /* Quiet "there is more below" marker beneath the panels */
 .panel-hint {
     margin: 1.5rem 0 0;
@@ -86,7 +79,7 @@ panel can never squash its own content. */
     cursor: pointer;
 }
 
-/* Products search box (decorative): the table itself uses the global table styles */
+/* Products search box (decorative) */
 .product-search {
     margin-bottom: 1.5rem;
 }
