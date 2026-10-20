@@ -8,6 +8,15 @@
 
     <link rel="stylesheet" href="./stylesheets/styles.css">
     <link rel="stylesheet" href="./stylesheets/index.css">
+
+    <style>
+        /* Required inline */
+        h2 strong {
+            display: inline-block;
+            background-color: var(--blue-soft);
+            padding: 0 0.15em;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,11 +45,14 @@
             <section class="panel" aria-labelledby="pitch-title" id="pitch">
                 <h1 id="pitch-title">
                     We help your educational institution make money.
+
+                </h1>
+                <h2>
                     Our promise:
-                    <u><strong>more</strong></u> money for <u><strong>less</strong></u> work.
+                    <strong>more</strong> money for <strong>less</strong> work.
                     That&apos;s it.
                     Free money. Win-win.
-                </h1>
+                </h2>
                 <p>
                     You, or your institution, might ask rhetorically: How do we make more money while being more
                     <del>woke</del> accessible? That where we might barge in,
@@ -74,7 +86,7 @@
                             <label for="product-search-input">Look up your perfect tool</label>
                             <div class="product-search__row">
                                 <input class="product-search__input" id="product-search-input" type="search" name="q"
-                                    placeholder="z.B. replacing employees with LLMs, checking stocks while driving"
+                                    placeholder="e.g. replacing employees with LLMs, checking stocks while driving"
                                     autocomplete="off">
                                 <button class="product-search__button" type="button">Search</button>
                             </div>
@@ -123,8 +135,8 @@
 
                     <!-- Heading + stock photo occupy the right column -->
                     <div>
-                        <h1 id="products-title" style="text-align: right;">Here's what's in the Arsenal: we don't come
-                            second.</h1>
+                        <h2 id="products-title" style="text-align: right;">Here's what's in the Arsenal: we don't come
+                            second.</h2>
                         <figure class="photo">
                             <img class="media" src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
                                 alt="Person working with laptop" />

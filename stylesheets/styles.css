@@ -22,8 +22,9 @@
     --sand: #F0E6D3;
     /* deeper blue for highlighting */
     --blue-deep: #2E5F8F;
-    /* hairline rules inside tables */
-    --hair: #D9D2C4;
+
+    /* hard offset shadow for static blocks. only for objects, not buttons */
+    --shadow-block: 6px 6px 0 var(--ink);
 }
 
 /* Base / reset */
@@ -231,8 +232,15 @@ figure.photo {
     margin: 0;
 }
 
+/* Photo sits in the page as a block: ink border + hard shadow */
+figure.photo img {
+    border: 2px solid var(--ink);
+    box-shadow: var(--shadow-block);
+}
+
 figure.photo figcaption {
-    padding-top: 0.6rem;
+    /* clear the 6px photo shadow */
+    padding-top: 1rem;
     font-size: 0.82rem;
     color: var(--muted);
     text-align: center;
@@ -240,7 +248,7 @@ figure.photo figcaption {
 
 /* Footer + page bottom */
 .site-footer {
-    padding-top: 1rem;
+    padding: 1rem clamp(1rem, 3vw, 1.5rem);
     border-top: 2px solid var(--ink);
     display: flex;
     flex-wrap: wrap;
@@ -265,7 +273,6 @@ figure.photo figcaption {
 
 .footer-note {
     margin: 0;
-    color: var(--muted);
 }
 
 /* Vertical rhythm helper: direct children get even spacing */
@@ -273,10 +280,29 @@ figure.photo figcaption {
     margin-top: 2rem;
 }
 
+/* Card: bordered block with a hard offset shadow */
+.card {
+    padding: clamp(1rem, 3vw, 1.5rem);
+    border: 2px solid var(--ink);
+    background: var(--bg);
+    box-shadow: var(--shadow-block);
+}
+
+/* Flat colour variants: same block, different fill */
+.card--blue {
+    background: var(--blue);
+}
+
+.card--sand {
+    background: var(--sand);
+}
+
 /* Table */
 table {
     border-collapse: collapse;
     width: 100%;
+    background: var(--bg);
+    box-shadow: var(--shadow-block);
 }
 
 th,
@@ -287,13 +313,15 @@ td {
     vertical-align: top;
 }
 
+/* Header row: flat blue strip */
 thead th {
     padding-bottom: 0.5rem;
+    background: var(--blue);
     font-family: "Truculenta", Georgia, serif;
     font-size: 0.76rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--ink);
 }
 
 tbody th {
@@ -306,7 +334,6 @@ button {
     display: inline-block;
     padding: 0.7rem 1.3rem;
     border: 2px solid var(--ink);
-    border-radius: 4px;
     background: var(--blue);
     color: var(--ink);
     font: inherit;
@@ -328,4 +355,10 @@ button:hover {
 button:active {
     transform: translate(4px, 4px);
     box-shadow: 0 0 0 var(--blue-deep);
+}
+
+
+input {
+    /* No rounded border for input columns */
+    border-radius: 0 !important;
 }
