@@ -1,0 +1,70 @@
+/* Scroll snap
+Entire screen is the web page, so we want the page to be fullscreen and static
+*/
+body {
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+}
+
+/* FIXME: this add a scrollbar so we can scroll through the snap full size
+column flex below, but we should find a better way*/
+.site {
+    height: 100%;
+}
+
+.snap {
+    flex: 1 1 auto;
+    min-height: 0;
+    /* lets the flex child actually shrink */
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+}
+
+/* Flex to entire width, and each child element is a single element on a 1-column
+row*/
+.snap main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.snap .panel {
+    flex: 1 0 100%;
+    /* grow to fill, never shrink below 1 screen */
+    min-height: 100vh;
+    /* fallback for older browsers */
+    min-height: 100svh;
+    /* one full screen of vertical space */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    /* mandatory + one screen = no skipping */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Children of a flex column shrink by default; block this so a long
+panel can never squash its own content. */
+.snap .panel>* {
+    flex: 0 0 auto;
+}
+
+/* Image stretch to aspect ratio instead of changing the size */
+.snap .panel .media {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 12rem;
+}
+
+/* Quiet "there is more below" marker on the first panel */
+/* Centred under the pitch, since the whole panel is centred */
+.panel-hint {
+    margin: 1.5rem 0 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+}

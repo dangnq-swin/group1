@@ -1,0 +1,270 @@
+/* Global styles for all pages */
+
+/* Super niche typography */
+/* Alegreya Sans body + Truculenta heading */
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Truculenta:opsz,wght@12..72,100..900&display=swap');
+
+/* Color */
+:root {
+    /* cream bg */
+    --bg: #FAF6EE;
+    /* black text */
+    --ink: #1A1815;
+    /* secondary text*/
+    --muted: #5C5750;
+    /* cute pastel blue for main button fills */
+    --blue: #BFD8F0;
+    /* softer blue for hover effects */
+    --blue-soft: #E6EFF9;
+    /* deeper blue for highlighting */
+    --blue-deep: #2E5F8F;
+    /* hairline rules inside tables */
+    --hair: #D9D2C4;
+}
+
+/* Base / reset */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    /* space between screen edge and site */
+    padding: clamp(0.6rem, 3.5vw, 1.5rem);
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Alegreya Sans", system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: var(--blue-deep);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--ink);
+}
+
+/* Visible keyboard focus everywhere (accessibility) */
+:where(a, button, input, select, textarea):focus-visible {
+    outline: 3px solid var(--blue-deep);
+    outline-offset: 3px;
+}
+
+
+/* Layout shell — the "content div" sits inside the page margins */
+.site {
+    max-width: 72rem;
+    margin-inline: auto;
+    /* inner breathing room */
+    padding: clamp(0.8rem, 3vw, 1.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Truculenta", Georgia, serif;
+    font-weight: 700;
+    /* Heading = bold font */
+    line-height: 1.05;
+    /* Slightly taller */
+    font-stretch: 88%;
+    /* Truculenta's width axis: slightly narrow */
+    margin: 0 0 0.5em;
+    color: var(--ink);
+}
+
+/* Big headings only get the tight tracking — Truculenta is already narrow */
+h1 {
+    font-size: clamp(2.1rem, 9vw, 3.8rem);
+    letter-spacing: -0.03em;
+}
+
+h2 {
+    font-size: clamp(1.6rem, 5.5vw, 2.4rem);
+    letter-spacing: -0.03em;
+}
+
+h3 {
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+}
+
+p {
+    /* 1.5 spaced */
+    margin: 0 0 1em;
+}
+
+p:last-child {
+    /* Except for last line of text*/
+    margin-bottom: 0;
+}
+
+/* Navigation and Headers */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 2px solid var(--ink);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.brand:hover {
+    color: var(--ink);
+}
+
+/* Logo placeholder: a plain pastel-blue square (the logo itself, no frame) */
+.brand-mark {
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    background: var(--blue);
+}
+
+.brand-name {
+    display: block;
+    font-family: "Truculenta", Georgia, serif;
+    font-weight: 700;
+    font-stretch: 112%;
+    /* logo goes wide — the opposite of the headings */
+    font-size: 1.05rem;
+    line-height: 1.1;
+}
+
+.brand-slogan {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* Nav links are plain text; the current page is underlined in blue */
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.9rem;
+}
+
+.nav a {
+    display: block;
+    padding: 0.15rem 0;
+    border-bottom: 2px solid transparent;
+    color: var(--ink);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    border-bottom-color: var(--blue-deep);
+    color: var(--blue-deep);
+}
+
+.nav a[aria-current="page"] {
+    border-bottom-color: var(--blue-deep);
+    color: var(--blue-deep);
+}
+
+/* Placeholder for images in the mockup */
+.media {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    color: var(--muted);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Two-column grids (single column on phones) */
+.grid {
+    display: grid;
+    gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+@media (min-width: 45rem) {
+    .grid--split {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: start;
+    }
+
+    .grid--2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Photo figure */
+figure.photo {
+    margin: 0;
+    padding: 0.7rem 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--hair);
+}
+
+figure.photo figcaption {
+    padding-top: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* Footer + page bottom */
+.site-footer {
+    padding-top: 1rem;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    font-weight: 600;
+}
+
+.footer-note {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* Vertical rhythm helper: direct children get even spacing */
+.stack>*+* {
+    margin-top: 2rem;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Core Technology: Home</title>
+
+    <link rel="stylesheet" href="./stylesheets/styles.css">
+    <link rel="stylesheet" href="./stylesheets/index.css">
+</head>
+
+<body>
+
+    <div class="site">
+
+        <header>
+            <a class="brand" href="index.html">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>
+                    <span class="brand-name">Core Technology</span>
+                    <span class="brand-slogan">You have the core. We build the rest</span>
+                </span>
+            </a>
+
+            <nav class="nav" aria-label="Main navigation">
+                <a href="index.html" aria-current="page">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="apply.html">Apply</a>
+                <a href="about.html">About</a>
+            </nav>
+        </header>
+
+        <!-- Scroll-snap container. tabindex lets keyboard users scroll it. -->
+        <main id="main" class="snap" tabindex="0" role="region" aria-label="Homepage sections">
+
+            <!-- How to sell things pitch-->
+            <section class="panel" aria-labelledby="pitch-title">
+                <h1 id="pitch-title">
+                    We help your educational institution make money.
+                    Our promise:
+                    <strong>more</strong> money for <strong>less</strong> work.
+                    That&apos;s it.
+                    Free money. Win-win.
+                </h1>
+                <p>
+                    Nowadays, education is all about profit-first, quality-later so that we can all
+                    maximize shareholder values. We understand that shareholders only focus on the
+                    macro level, on the bigger picture. That&rsquo;s why we are here to help you to reach
+                    your goals faster, easier, and more importantly, we help the little
+                    guys &mdash; that&rsquo;s you and us &mdash; enjoy their work more, by
+                    utilizing our vague-sounding tools<sup>&trade;</sup> that replace your legacy tooling
+                    with a flashy and complex UI that wows your investors and dolls up your
+                    administration work.
+                </p>
+                <p class="panel-hint" aria-hidden="true">More below &darr;</p>
+            </section>
+
+            <!-- List our products -->
+            <section class="panel" aria-labelledby="products-title">
+                <div class="grid grid--split">
+                    <div>
+                        <h2 id="products-title">Here's what in our arsenal. We do not come in second.</h2>
+                        <p>
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                            deserunt mollit anim id est laborum. Nemo enim ipsam voluptatem quia voluptas
+                            sit aspernatur aut odit aut fugit.
+                        </p>
+                        <p>
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+                            adipisci velit, sed quia non numquam eius modi tempora incidunt.
+                        </p>
+                    </div>
+
+                    <figure class="photo">
+                        <p class="media">Image placeholder &middot; 16:9</p>
+                        <figcaption>Caption placeholder for the product image.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+        </main>
+        <!-- Footer section-->
+        <footer class="site-footer">
+            <p class="footer-note">&copy; 2026 Core Technology.</p>
+            <ul class="footer-links">
+                <li><a href="#">Jira project</a></li>
+                <li><a href="#">GitHub repository</a></li>
+                <li><a href="mailto:info@example.com">info@example.com</a></li>
+            </ul>
+        </footer>
+    </div>
+
+</body>
+
+</html>
