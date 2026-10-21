@@ -30,7 +30,7 @@ Quang Dang Nguyen
 
 ## jobs.html
 
-Minh Phan Cong
+Le Man Doanh
 
 
 ## apply.html
@@ -39,4 +39,4 @@ Quang Pham Trong
 
 ## about.html
 
-Le Man Doanh
+Minh Phan Cong
