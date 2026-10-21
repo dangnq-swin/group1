@@ -27,6 +27,18 @@
     --shadow-block: 6px 6px 0 var(--ink);
 }
 
+/* Breakpoints (px)
+Desktop-first reference values; the one media query in this file is
+mobile-first and uses --bp-md. Conditions cannot read custom properties, so the
+media query itself spells out the px number.
+*/
+:root {
+    --bp-sm: 576px;
+    --bp-md: 768px;
+    --bp-lg: 992px;
+    --bp-xl: 1200px;
+}
+
 /* Base / reset */
 * {
     box-sizing: border-box;
@@ -113,6 +125,14 @@ p {
     margin: 0 0 1em;
     -webkit-hyphens: auto;
     hyphens: auto;
+    /* long unbreakable strings wrap instead of widening the page */
+    overflow-wrap: break-word;
+}
+
+/* Wide content (tables) gets its own scroll box, so long unbreakable strings
+must wrap here rather than widen the page */
+:where(th, td, li, dd, blockquote) {
+    overflow-wrap: break-word;
 }
 
 p:last-child {
@@ -215,7 +235,7 @@ header {
     gap: clamp(1rem, 3vw, 1.75rem);
 }
 
-@media (min-width: 45rem) {
+@media (min-width: 768px) {
     .grid--split {
         grid-template-columns: 1.15fr 0.85fr;
         align-items: start;
@@ -321,6 +341,7 @@ thead th {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--ink);
+    overflow-wrap: break-word;
 }
 
 tbody th {
