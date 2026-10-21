@@ -69,8 +69,8 @@ panel can never squash its own content. */
     min-width: 0;
 }
 
-/* Products panel on phones: one column, ordered heading -> lookup -> table ->
-figure -> scroll hint.*/
+/* Products panel on phones: one column, ordered heading -> lookup -> table hint -> 
+table -> figure -> scroll hint.*/
 @media (max-width: 767px) {
     .grid--split {
         grid-template-columns: 1fr;
@@ -84,6 +84,7 @@ figure -> scroll hint.*/
 
     #products .product-search,
     #products .table-wrap,
+    #products .table-hint,
     #products .photo,
     #products .products-hint {
         grid-row: auto;
@@ -100,16 +101,21 @@ figure -> scroll hint.*/
         margin-bottom: 0;
     }
 
-    #products .table-wrap {
+    #products .table-hint {
         order: 3;
+        text-align: left;
     }
 
-    #products .photo {
+    #products .table-wrap {
         order: 4;
     }
 
-    #products .products-hint {
+    #products .photo {
         order: 5;
+    }
+
+    #products .products-hint {
+        order: 6;
         text-align: left;
     }
 }
@@ -216,4 +222,10 @@ blockquote+p {
     overscroll-behavior: contain;
     background: var(--bg);
     box-shadow: var(--shadow-block);
+}
+
+/* Drop the at-the-bottom behavior for this table hint */
+.table-hint {
+    margin-bottom: 0.6rem;
+    padding-top: 0;
 }
