@@ -47,6 +47,8 @@ Each panel sizes to this box. */
     scroll-snap-align: start;
     /* Mandatory + stop always = one panel per gesture, no skipping */
     scroll-snap-stop: always;
+    /* When overscroll, stops at bottom */
+    overscroll-behavior: contain;
     padding: clamp(0.5rem, 1.5vw, 1rem);
 }
 
@@ -70,6 +72,59 @@ panel can never squash its own content. */
     /* flex items default to min-width: auto (never narrower than content);
     that would let the table widen the page instead of the scroll box */
     min-width: 0;
+}
+
+/* Products panel on phones: one column, ordered heading -> lookup -> table ->
+figure -> scroll hint.*/
+@media (max-width: 767px) {
+    .grid--split {
+        grid-template-columns: 1fr;
+        gap: clamp(1rem, 4vw, 1.5rem);
+    }
+
+    /* Let children order themselves, so the grid--split remove its layout box */
+    .grid--split>[data-mobile-pane] {
+        display: contents;
+    }
+
+    #products .product-search,
+    #products .table-wrap,
+    #products .photo,
+    #products .products-hint {
+        grid-row: auto;
+        grid-column: 1;
+    }
+
+    #products .products-heading {
+        order: 1;
+        text-align: left;
+    }
+
+    #products .product-search {
+        order: 2;
+        margin-bottom: 0;
+    }
+
+    #products .table-wrap {
+        order: 3;
+    }
+
+    #products .photo {
+        order: 4;
+    }
+
+    #products .products-hint {
+        order: 5;
+        text-align: left;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .products-heading,
+    .products-hint {
+        text-align: right;
+    }
 }
 
 /* Quiet "there is more below" marker beneath the panels */
@@ -104,6 +159,8 @@ panel can never squash its own content. */
     min-width: 0;
     padding: 0.4rem 0.6rem;
     font: inherit;
+    font-size: 1rem;
+    text-overflow: ellipsis;
 }
 
 .product-search__button {

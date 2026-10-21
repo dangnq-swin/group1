@@ -81,7 +81,7 @@
             <!-- List our products -->
             <section class="panel" aria-labelledby="products-title" id="products">
                 <div class="grid grid--split">
-                    <div>
+                    <div data-mobile-pane>
                         <div class="product-search" role="search" aria-label="Search our products">
                             <label for="product-search-input">Look up your perfect tool</label>
                             <div class="product-search__row">
@@ -135,10 +135,9 @@
                             </table>
                         </div>
                     </div>
-
                     <!-- Heading + stock photo occupy the right column -->
-                    <div>
-                        <h2 id="products-title" style="text-align: right;">Here's what's in the Arsenal: we don't come
+                    <div data-mobile-pane>
+                        <h2 id="products-title" class="products-heading">Here's what's in the Arsenal: we don't come
                             second.</h2>
                         <figure class="photo">
                             <img class="media" src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
@@ -146,11 +145,12 @@
                             <figcaption>Working with our tools is extremely simple. Just look at this stock photo!
                             </figcaption>
                         </figure>
-                        <p class="panel-hint" aria-hidden="true" style="text-align: right;"><a href="#testimonials">Our
+                        <p class="panel-hint products-hint" aria-hidden="true"><a href="#testimonials">Our
                                 testimonials below
                                 &darr;</a></p>
 
                     </div>
+
                 </div>
             </section>
 
