@@ -25,13 +25,6 @@ Each panel sizes to this box. */
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
     overscroll-behavior-y: contain;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-/* I love legacy Safari */
-.snap::-webkit-scrollbar {
-    display: none;
 }
 
 /* One section per screen, centred in the scrollport */
@@ -54,7 +47,9 @@ Each panel sizes to this box. */
 
 .snap .panel:first-child {
     min-height: 100%;
-    justify-content: center;
+    /* No vertical centring here: the panel hint is pushed to the panel's end
+    by its auto top margin, which would consume the free space anyway. */
+    justify-content: flex-start;
 }
 
 .snap .panel:nth-child(odd) {
@@ -119,7 +114,18 @@ figure -> scroll hint.*/
     }
 }
 
+/* For larger screen sizes */
 @media (min-width: 768px) {
+
+    /* Grow grid split out when it's too short*/
+    #products .grid--split {
+        flex: 1 0 auto;
+    }
+
+    #products .grid--split>[data-mobile-pane] {
+        display: flex;
+        flex-direction: column;
+    }
 
     .products-heading,
     .products-hint {
@@ -129,11 +135,18 @@ figure -> scroll hint.*/
 
 /* Quiet "there is more below" marker beneath the panels */
 .panel-hint {
-    margin: 1.5rem 0 0;
+    margin-top: auto;
+    margin-bottom: 0;
+    padding-top: 1.5rem;
     font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
+}
+
+/* right side*/
+.panel-hint--verso {
+    text-align: right;
 }
 
 .panel-hint a {
