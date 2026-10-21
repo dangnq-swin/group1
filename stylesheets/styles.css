@@ -27,20 +27,13 @@
     --shadow-block: 6px 6px 0 var(--ink);
 }
 
-/* Shared ceiling for tall media inside a one-screen panel (index.html).
-A panel there is exactly one screen, and the table box / photo already start
-below the header, the heading and the search row. 45svh leaves room for all of
-that chrome: it still shows a few rows of the table, but small enough that the
-panel stops overshooting the scrollport, which is what pushed the bottom of the
-table box below the fold. */
+
 :root {
     --panel-media-max: 45svh;
 }
 
-/* Breakpoints (px)
-Desktop-first reference values; the one media query in this file is
-mobile-first and uses --bp-md. Conditions cannot read custom properties, so the
-media query itself spells out the px number.
+/* Breakpoints as reference because media queries can't use variables, out of
+DOM
 */
 :root {
     --bp-sm: 576px;
@@ -113,9 +106,6 @@ h4 {
     font-weight: 700;
     /* Heading = bold font */
     line-height: 1.05;
-    /* Slightly taller */
-    font-stretch: 88%;
-    /* Truculenta's width axis: slightly narrow */
     margin: 0 0 0.5em;
     color: var(--ink);
 }
@@ -191,7 +181,6 @@ header {
     display: block;
     font-family: "Truculenta", Georgia, serif;
     font-weight: 700;
-    font-stretch: 112%;
     font-size: 1.05rem;
     line-height: 1.1;
 }
