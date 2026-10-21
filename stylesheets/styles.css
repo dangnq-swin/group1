@@ -23,6 +23,12 @@
     /* deeper blue for highlighting */
     --blue-deep: #2E5F8F;
 
+    /* fender-esque seafoam green */
+    --seafoam: #8FE3C0;
+    /* cute seafoam's drop shadow color */
+    --seafoam-deep: #00785C;
+
+
     /* hard offset shadow for static blocks. only for objects, not buttons */
     --shadow-block: 6px 6px 0 var(--ink);
 }
@@ -131,7 +137,7 @@ p {
     margin: 0 0 1em;
     -webkit-hyphens: auto;
     hyphens: auto;
-    /* long unbreakable strings wrap instead of widening the page */
+    text-wrap: pretty;
     overflow-wrap: break-word;
 }
 
@@ -393,7 +399,7 @@ button:hover {
 
 button:active {
     transform: translate(4px, 4px);
-    box-shadow: 0 0 0;
+    box-shadow: none;
 }
 
 

@@ -41,40 +41,93 @@
         <!-- Scroll-snap container. tabindex lets keyboard users scroll it. -->
         <main id="main" class="snap" tabindex="0" aria-label="Homepage sections">
 
-            <!-- How to sell things pitch-->
-            <section class="panel" aria-labelledby="pitch-title" id="pitch">
-                <h1 id="pitch-title">
-                    We help your educational institution make money.
+            <!--pitch hook -->
+            <section class="panel pitch-hero" aria-labelledby="pitch-title" id="pitch">
+                <!-- Marquee, -50% loop so two identical loops so that it can be seamless,
+                 avoid blank conveyor -->
+                <div class="marquee">
+                    <div class="marquee__track">
+                        <div class="marquee__group">
+                            <span class="marquee__item">More money!</span>
+                            <span class="marquee__item">Less work!</span>
+                            <span class="marquee__item">It&apos;s basically free if you don't think too hard about
+                                it!</span>
+                            <span class="marquee__item">Hire us now!</span>
+                            <span class="marquee__item">Terms and conditions may apply.</span>
 
-                </h1>
-                <h2>
-                    Our promise:
-                    <strong>more</strong> money for <strong>less</strong> work.
-                    That&apos;s it.
-                    Free money. Win-win.
-                </h2>
-                <p>
-                    You, or your institution, might ask rhetorically: How do we make more money while being more
-                    <del>woke</del> accessible? That is where we might barge in,
-                    respectfully as business partners of course! We specialize in making sure that your institution has
-                    an
-                    accessible
-                    platform: that your current students can navigate your digital
-                    ecosystem with ease, that you hit your projected enrollment rate.
-                    That's basically magic. It's not just magical, it's supernatural. It's uncanny how well
-                    our tools will integrate with your workflows.
+                        </div>
+                        <div class="marquee__group" aria-hidden="true">
+                            <span class="marquee__item">More money!</span>
+                            <span class="marquee__item">Less work!</span>
+                            <span class="marquee__item">It&apos;s basically free if you don't think too hard about
+                                it!</span>
+                            <span class="marquee__item">Hire us now!</span>
+                            <span class="marquee__item">Terms and conditions may apply.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pitch-hero__type">
+                    <h1 id="pitch-title" class="pitch-title">
+                        We help your educational institution make <span class="money">money</span>.
+                    </h1>
+                    <h2 class="pitch-subtitle">
+                        Our promise:
+                        <strong>more</strong> money for <strong>less</strong> work.
+                        That&apos;s it.
+                        Free money. Win-win.
+                    </h2>
+                </div>
+
+                <p class="panel-hint" aria-hidden="true"><a href="#pitch-more">&iquest;It sounds too good to be true?
+                        &darr;</a>
                 </p>
-                <p>
-                    Nowadays, education is all about profit-first, quality-later so that we can all
-                    maximize shareholder values. We understand that shareholders only focus on the
-                    macro level, on the bigger picture. That&rsquo;s why we are here to help you to reach
-                    your goals faster, easier, and more importantly, we help the little
-                    guys &mdash; that&rsquo;s you and us &mdash; enjoy their work more, by
-                    utilizing our vague-sounding tools&trade; that replace your legacy tooling
-                    with a flashy and complex UI that wows your investors, dolls up your
-                    administration work, and makes your students realize that indeed, you care deeply about
-                    foreground color to background color and other such ratios.
-                </p>
+            </section>
+
+            <!-- Pitch copy 1st -->
+            <section class="panel pitch-copy-container" id="pitch-more" aria-label="Our pitch, part one">
+                <div class="pitch-copy">
+                    <p class="pitch-standfirst">You, or your institution, might ask rhetorically:</p>
+                    <p class="pitch-quote">
+                        How do we make <span class="money">more money</span> while being more
+                        <del>woke</del> accessible?
+                    </p>
+                    <p>
+                        That is where we might barge in,
+                        respectfully as business partners of course! We specialize in making sure that your institution
+                        has an
+                        accessible
+                        platform: that your current students can navigate your digital
+                        ecosystem with ease, that you hit your projected enrollment rate.
+                        That's basically magic. It's not just magical, it's supernatural. It's uncanny how well
+                        our tools will integrate with your workflows.
+                    </p>
+                </div>
+                <p class="panel-hint" aria-hidden="true"><a href="#pitch-profit">Read on &darr;</a></p>
+            </section>
+
+            <!-- Pitch copy 2nd -->
+            <section class="panel pitch-copy-container" id="pitch-profit" aria-label="Our pitch, part two">
+                <div class="pitch-copy">
+                    <p class="pitch-standfirst">Nowadays, education is all about</p>
+                    <p class="pitch-quote pitch-quote--stack">
+                        <span>profit-first,</span>
+                        <span>quality-later</span>
+                    </p>
+                    <p>
+                        so that we can all
+                        <span class="money" style="box-shadow: none;">maximize shareholder values</span>. We understand
+                        that investors only
+                        focus on the
+                        macro level, on the bigger picture. That&rsquo;s why we are here to help you to reach
+                        your goals faster, easier, and more importantly, we help the little
+                        guys &mdash; that&rsquo;s you and us &mdash; enjoy their work more, by
+                        utilizing our vague-sounding tools&trade; that replace your legacy tooling
+                        with a flashy and complex UI that wows your investors, dolls up your
+                        administration work, and flusters your students into a realization that indeed, you care deeply
+                        about
+                        <span class="pitch-ratio">foreground color to background color</span> and other such ratios.
+                    </p>
+                </div>
                 <p class="panel-hint" aria-hidden="true"><a href="#products">Our tools below &darr;</a></p>
             </section>
 
@@ -155,7 +208,7 @@
                 </div>
             </section>
 
-            <!-- Testimonial -->
+            <!-- Testimonials -->
             <section class="panel" aria-labelledby="testimonials-title" id="testimonials">
                 <h2 id="testimonials-title">Don't take our word for it. Read some raving reviews that we cherry picked:
                 </h2>
