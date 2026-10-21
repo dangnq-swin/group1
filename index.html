@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./stylesheets/index.css">
 
     <style>
-        /* Required inline */
+        /* Required embedded */
         h2 strong {
             display: inline-block;
             background-color: var(--blue-soft);
@@ -39,7 +39,7 @@
         </header>
 
         <!-- Scroll-snap container. tabindex lets keyboard users scroll it. -->
-        <main id="main" class="snap" tabindex="0" role="region" aria-label="Homepage sections">
+        <main id="main" class="snap" tabindex="0" aria-label="Homepage sections">
 
             <!-- How to sell things pitch-->
             <section class="panel" aria-labelledby="pitch-title" id="pitch">
@@ -70,9 +70,9 @@
                     macro level, on the bigger picture. That&rsquo;s why we are here to help you to reach
                     your goals faster, easier, and more importantly, we help the little
                     guys &mdash; that&rsquo;s you and us &mdash; enjoy their work more, by
-                    utilizing our vague-sounding tools<sup>&trade;</sup> that replace your legacy tooling
+                    utilizing our vague-sounding tools&trade; that replace your legacy tooling
                     with a flashy and complex UI that wows your investors, dolls up your
-                    administration work, and make your students realize that indeed, you care deeply about
+                    administration work, and makes your students realize that indeed, you care deeply about
                     foreground color to background color and other such ratios.
                 </p>
                 <p class="panel-hint" aria-hidden="true"><a href="#products">Our tools below &darr;</a></p>
@@ -92,45 +92,48 @@
                             </div>
                         </div>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th scope="col" rowspan="2">Suite</th>
-                                    <th scope="col" colspan="2">Tooling</th>
-                                    <th scope="col" rowspan="2">Deployment</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">Module</th>
-                                    <th scope="col">Replaces</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row" rowspan="3">Overhauling Suite</th>
-                                    <td>Virtual Cockpit&trade;</td>
-                                    <td>Every spreadsheet you own</td>
-                                    <td rowspan="3">Web, on-premise, Android Auto(beta)</td>
-                                </tr>
-                                <tr>
-                                    <td>LLM Analytics&trade;</td>
-                                    <td>Overworked data scientist(s)</td>
-                                </tr>
-                                <tr>
-                                    <td>4.5:1 Badge</td>
-                                    <td>Accessibility audits</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" rowspan="2">Profitmaxxing Suite</th>
-                                    <td>Donor-Likelihood Index&trade;</td>
-                                    <td>Admissions officer(s)</td>
-                                    <td rowspan="2">Web only</td>
-                                </tr>
-                                <tr>
-                                    <td>In-Shareholders-Boots Putter&trade;</td>
-                                    <td>Your conscience</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <!-- Scroll box keeps the table from clipping the page on narrow screens. -->
+                        <div class="table-wrap" role="region" aria-label="Product suites table" tabindex="0">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" rowspan="2">Suite</th>
+                                        <th scope="col" colspan="2">Tooling</th>
+                                        <th scope="col" rowspan="2">Deployment</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Module</th>
+                                        <th scope="col">Replaces</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" rowspan="3">Overhauling Suite</th>
+                                        <td>Virtual Cockpit&trade;</td>
+                                        <td>Every spreadsheet you own</td>
+                                        <td rowspan="3">Web, on-premise, Android Auto (beta)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LLM Analytics&trade;</td>
+                                        <td>Overworked data scientist(s)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.5:1 Badge</td>
+                                        <td>Accessibility audits</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" rowspan="2">Profitmaxxing Suite</th>
+                                        <td>Donor-Likelihood Index&trade;</td>
+                                        <td>Admissions officer(s)</td>
+                                        <td rowspan="2">Web only</td>
+                                    </tr>
+                                    <tr>
+                                        <td>In-Shareholders-Boots Putter&trade;</td>
+                                        <td>Your conscience</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <!-- Heading + stock photo occupy the right column -->

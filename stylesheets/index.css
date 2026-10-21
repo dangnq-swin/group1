@@ -41,13 +41,18 @@ Each panel sizes to this box. */
     /* Centre the panel's own content inside the panel */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     /* Snap the panel's middle to the middle of the scrollport, so the whole
     section sits in the centre of the snap viewport. */
     scroll-snap-align: start;
     /* Mandatory + stop always = one panel per gesture, no skipping */
     scroll-snap-stop: always;
     padding: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.snap .panel:first-child {
+    min-height: 100%;
+    justify-content: center;
 }
 
 .snap .panel:nth-child(odd) {
@@ -122,4 +127,21 @@ blockquote p::after {
 
 blockquote+p {
     text-align: right;
+}
+
+/* Table fix */
+
+/* Let a div containing a big table overflow so that we can scroll the div*/
+.table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    /* keep the sideways scroll from reaching the page */
+    overscroll-behavior-x: contain;
+    background: var(--bg);
+    box-shadow: var(--shadow-block);
+}
+
+/* shadow from wrapper and not from table */
+.table-wrap>table {
+    box-shadow: none;
 }
