@@ -72,14 +72,6 @@ panel can never squash its own content. */
     min-width: 0;
 }
 
-/* ...but a self-scrolling child (the table wrapper) must be able to shrink
-below its content width, or it widens the page instead of scrolling.
-Needs to beat the flex: 0 0 auto above, hence the extra specificity. */
-.snap .panel>.table-wrap {
-    flex: 0 1 auto;
-    min-width: 0;
-}
-
 /* Quiet "there is more below" marker beneath the panels */
 .panel-hint {
     margin: 1.5rem 0 0;
@@ -144,12 +136,14 @@ blockquote+p {
 
 /* Let a div containing a big table overflow so that we can scroll the div*/
 .table-wrap {
+    /* refuse to shrink below
+    the table and widen the page instead of scrolling themselves */
     min-width: 0;
     max-width: 100%;
-    /* keep the sideways scroll from reaching the page */
-    overflow-x: auto;
-    /* keep the hard shadow off the page edge/corners while scrolling */
-    overscroll-behavior-x: contain;
+    max-height: var(--panel-media-max);
+    overflow: auto;
+    /* when scrolling quickly, contain it so that the section doesn't skip */
+    overscroll-behavior: contain;
     background: var(--bg);
     box-shadow: var(--shadow-block);
 }

@@ -27,6 +27,16 @@
     --shadow-block: 6px 6px 0 var(--ink);
 }
 
+/* Shared ceiling for tall media inside a one-screen panel (index.html).
+A panel there is exactly one screen, and the table box / photo already start
+below the header, the heading and the search row. 45svh leaves room for all of
+that chrome: it still shows a few rows of the table, but small enough that the
+panel stops overshooting the scrollport, which is what pushed the bottom of the
+table box below the fold. */
+:root {
+    --panel-media-max: 45svh;
+}
+
 /* Breakpoints (px)
 Desktop-first reference values; the one media query in this file is
 mobile-first and uses --bp-md. Conditions cannot read custom properties, so the
@@ -235,6 +245,10 @@ header {
     gap: clamp(1rem, 3vw, 1.75rem);
 }
 
+.grid>* {
+    min-width: 0;
+}
+
 @media (min-width: 768px) {
     .grid--split {
         grid-template-columns: 1.15fr 0.85fr;
@@ -249,10 +263,17 @@ header {
 /* Photo figure */
 figure.photo {
     margin: 0;
+    min-width: 0;
+    max-width: 100%;
 }
 
 /* Photo sits in the page as a block: ink border + hard shadow */
 figure.photo img {
+    width: 100%;
+    max-width: 100%;
+    max-height: var(--panel-media-max);
+    object-fit: cover;
+    aspect-ratio: auto;
     border: 2px solid var(--ink);
     box-shadow: var(--shadow-block);
 }
