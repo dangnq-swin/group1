@@ -103,7 +103,6 @@ table -> figure -> scroll hint.*/
 
     #products .table-hint {
         order: 3;
-        text-align: left;
     }
 
     #products .table-wrap {
@@ -116,7 +115,6 @@ table -> figure -> scroll hint.*/
 
     #products .products-hint {
         order: 6;
-        text-align: left;
     }
 }
 
@@ -150,15 +148,19 @@ table -> figure -> scroll hint.*/
     color: var(--muted);
 }
 
-/* right side*/
-.panel-hint--verso {
-    text-align: right;
-}
-
 .panel-hint a {
     color: inherit;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Alternating panel-hint */
+.snap .panel:nth-child(odd) .panel-hint {
+    text-align: left;
+}
+
+.snap .panel:nth-child(even) .panel-hint {
+    text-align: right;
 }
 
 /* Products search box (decorative) */
@@ -228,4 +230,6 @@ blockquote+p {
 .table-hint {
     margin-bottom: 0.6rem;
     padding-top: 0;
+    /* Override recto-verso alignment since this is UI notice for table*/
+    text-align: left !important;
 }
