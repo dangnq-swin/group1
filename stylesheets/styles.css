@@ -60,11 +60,8 @@ body {
     font-size: 1.25rem;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-
-    /* Formerly the .site wrapper's layout */
     max-width: 72rem;
     margin-inline: auto;
-    /* breathing room around the site (sum of the old body + .site padding) */
     padding: calc(var(--body-pad-y) + clamp(0.8rem, 3vw, 1.75rem));
     display: flex;
     flex-direction: column;

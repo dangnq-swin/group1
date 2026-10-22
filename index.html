@@ -79,12 +79,14 @@
                         <div class="transport">
                             <!-- dummy keys: decoration only -->
                             <span class="transport__skip" aria-hidden="true"><svg viewBox="0 0 48 56" focusable="false">
-                                    <path d="M40 8 8 28l32 20Z" />
+                                    <path d="M21 8 3 28l18 20Z" />
+                                    <path d="M38 8 20 28l18 20Z" />
                                 </svg></span>
                             <input type="checkbox" id="play" name="play" class="transport__play" autocomplete="on"
                                 aria-label="Press play to start the pitch">
                             <span class="transport__skip" aria-hidden="true"><svg viewBox="0 0 48 56" focusable="false">
-                                    <path d="M8 8l32 20L8 48Z" />
+                                    <path d="M10 8l18 20L10 48Z" />
+                                    <path d="M27 8l18 20L27 48Z" />
                                 </svg></span>
                         </div>
                     </div>
@@ -129,8 +131,8 @@
             </div>
         </section>
         <!-- Pitch copy 1st -->
-        <section class="panel pitch-copy-container" id="pitch-more" aria-label="Our pitch, part one">
-            <div class="pitch-copy anim anim--wipe">
+        <section class="panel" id="pitch-more" aria-label="Our pitch, part one">
+            <div class="pitch-copy anim--wipe">
                 <p class="pitch-standfirst">You, or your institution, might ask rhetorically:</p>
                 <p class="pitch-quote">
                     How do we make <span class="money">more money</span> while being more
@@ -150,7 +152,7 @@
             <p class="panel-hint" aria-hidden="true"><a href="#pitch-profit">Read on &darr;</a></p>
         </section>
         <!-- Pitch copy 2nd -->
-        <section class="panel pitch-copy-container" id="pitch-profit" aria-label="Our pitch, part two">
+        <section class="panel" id="pitch-profit" aria-label="Our pitch, part two">
             <div class="pitch-copy">
                 <p class="pitch-standfirst">Nowadays, education is all</p>
                 <p class="pitch-quote pitch-quote--stack">
@@ -189,8 +191,7 @@
                     </div>
                     <p class="panel-hint table-hint">Scroll the table &larr; &rarr;</p>
                     <!-- Scroll box keeps the table from clipping the page on narrow screens. -->
-                    <div class="table-wrap anim anim--slide" role="region" aria-label="Product suites table"
-                        tabindex="0">
+                    <div class="table-wrap anim--slide" role="region" aria-label="Product suites table" tabindex="0">
                         <table>
                             <thead>
                                 <tr>
@@ -236,8 +237,8 @@
                 <div data-mobile-pane>
                     <h2 id="products-title" class="products-heading">Here's what's in the Arsenal: we don't come
                         second.</h2>
-                    <figure class="photo anim anim--zoom">
-                        <img class="media" src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
+                    <figure class="photo anim--zoom">
+                        <img src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
                             alt="Person working with laptop" />
                         <figcaption>Working with our tools is extremely simple. Just look at this stock photo!
                         </figcaption>

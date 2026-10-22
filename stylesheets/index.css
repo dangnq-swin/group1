@@ -177,6 +177,10 @@ table -> figure -> scroll hint.*/
 
 /* Type block fills the free space between the header and the marquee.
 Without this marquee won't run because there's no free space */
+.panel.pitch-hero {
+    padding-top: 0;
+}
+
 .panel.pitch-hero>.pitch-hero__type {
     flex: 1 1 auto;
     display: flex;
@@ -218,8 +222,6 @@ h2.pitch-subtitle {
 .marquee {
     flex: 0 0 auto;
     align-self: stretch;
-    /* Bleed the blue strip to the panel's edges by cancelling its padding. */
-    margin-block-start: calc(-1 * clamp(1.5rem, 4svh, 3rem));
     margin-inline: calc(-1 * clamp(1rem, 2.5svh + 1vw, 2rem));
     border-bottom: 2px solid var(--ink);
     background: var(--blue);
@@ -326,16 +328,22 @@ ticked */
 
 body:has(#play:not(:checked)) {
     height: calc(100svh - 2 * var(--body-pad-y) - 2 * clamp(0.8rem, 3vw, 1.75rem));
+    /* Reduce site gap if on small screen */
+    gap: min(var(--site-gap), max(0.75rem, 4svh));
 }
 
 body:has(#play:not(:checked)) main {
     /* Hide other slides */
     overflow: hidden;
+    /* Let main shrink to how much room header + footer leave */
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 body:has(#play:not(:checked)) .panel.pitch-hero {
     min-height: 0;
     height: 100%;
+    padding-block: clamp(0.25rem, 1.5svh, 3rem);
 }
 
 /* Show only the background of the first slide */
@@ -346,6 +354,20 @@ body:has(#play:not(:checked)) .pitch-hero>:not(.play-screen) {
 /* Hide playscreen after button is pressed */
 body:has(#play:checked) .play-screen {
     display: none;
+}
+
+/* For really short viewports */
+@media (max-height: 640px) {
+
+    /* Show all overflow */
+    body:has(#play:not(:checked)) main {
+        overflow: show;
+    }
+
+    /* Hide all slides except pitch-hero */
+    body:has(#play:not(:checked)) main>.panel:not(.pitch-hero) {
+        display: none;
+    }
 }
 
 .play-screen {
@@ -377,7 +399,8 @@ body:has(#play:checked) .play-screen {
 
 .player__title {
     font-weight: 900;
-    font-size: 1.25rem;
+    /* Shrink with short windows so the card keeps fitting */
+    font-size: min(1.25rem, 3.5svh);
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
@@ -391,8 +414,8 @@ body:has(#play:checked) .play-screen {
 .player__winbtns span {
     display: grid;
     place-items: center;
-    width: 2.1rem;
-    height: 2.1rem;
+    width: min(2.1rem, 6svh);
+    height: min(2.1rem, 6svh);
     border: 2px solid var(--ink);
     border-radius: 0.4rem;
     background: var(--bg);
@@ -409,7 +432,8 @@ body:has(#play:checked) .play-screen {
 }
 
 .player__body {
-    padding: clamp(1.8rem, 6vw, 3rem) clamp(1rem, 4vw, 2rem);
+    /* Height-aware so the card can shrink instead of overflow on short windows */
+    padding: min(3rem, 6vw, 3.5svh) clamp(1rem, 4vw, 2rem);
 }
 
 .transport {
@@ -422,7 +446,7 @@ body:has(#play:checked) .play-screen {
 /* Dummy skip keys */
 .transport__skip {
     display: block;
-    width: clamp(3.4rem, 12vw, 5rem);
+    width: min(5rem, 12vw, 13svh);
     opacity: 0.75;
     cursor: not-allowed;
 }
@@ -441,7 +465,7 @@ body:has(#play:checked) .play-screen {
     appearance: none;
     -webkit-appearance: none;
     flex: none;
-    width: clamp(7rem, 26vw, 9.5rem);
+    width: min(9.5rem, 26vw, 16svh);
     aspect-ratio: 1;
     margin: 0;
     border: 3px solid var(--ink);
