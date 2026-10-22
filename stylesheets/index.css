@@ -229,11 +229,6 @@ h2.pitch-subtitle {
 .marquee__track {
     display: flex;
     width: max-content;
-    animation: marquee-scroll 18s linear infinite;
-}
-
-.marquee:hover .marquee__track {
-    animation-play-state: paused;
 }
 
 .marquee__group {
@@ -259,26 +254,6 @@ h2.pitch-subtitle {
     padding-left: clamp(0.75rem, 2vw, 1.35rem);
     border-left: 2px solid var(--ink);
     font-weight: 400;
-}
-
-@keyframes marquee-scroll {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .marquee__track {
-        animation: none;
-    }
-
-    .marquee {
-        overflow-x: auto;
-    }
 }
 
 .pitch-copy {

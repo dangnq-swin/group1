@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "Truculenta";
+    src: url("../fonts/truculenta-latin.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Alegreya Sans";
+    font-weight: 400;
+    src: url("../fonts/alegreyasans-400.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Alegreya Sans";
+    font-weight: 500;
+    src: url("../fonts/alegreyasans-500.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Alegreya Sans";
+    font-weight: 700;
+    src: url("../fonts/alegreyasans-700.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Alegreya Sans";
+    font-weight: 800;
+    src: url("../fonts/alegreyasans-800.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Alegreya Sans";
+    font-weight: 900;
+    src: url("../fonts/alegreyasans-900.woff2") format("woff2");
+}

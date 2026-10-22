@@ -1,0 +1,245 @@
+/* NOTICE: LLM generated */
+
+/* ==================================================================
+   ANIMATION — all motion for the home page, in one place.
+   Load order: styles.css -> index.css -> animation.css (last, so
+   its rules win any tie).
+   - Ambient loops are plain time-based keyframes: run everywhere.
+   - Entrance pastiches (the "PowerPoint slides") are pure CSS:
+     scroll-scrubbed with animation-timeline: view() + entry ranges,
+     gated behind @supports so older browsers get a static, fully
+     visible page (nothing hidden, nothing moves).
+   - Reduced motion: the entrance block also sits behind
+     prefers-reduced-motion: no-preference, so content is fully
+     static for those readers.
+   - No scroll-timeline support: the @supports gate fails closed —
+     no pre-states apply, content is simply there.
+   ================================================================== */
+
+/* --- Marquee belt (moved from index.css) ------------------------- */
+
+.marquee__track {
+    animation: marquee-scroll 18s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* --- Ambient loops (time-based, every browser) ------------------- */
+
+@keyframes float-y {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-0.6rem);
+    }
+}
+
+@keyframes sway {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes quote-border {
+
+    0%,
+    100% {
+        border-left-color: var(--blue);
+    }
+
+    50% {
+        border-left-color: var(--seafoam);
+    }
+}
+
+@keyframes fade-rise {
+    from {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+    /* Slide 2 (#pitch-more): quote bar hue drifts blue to seafoam
+       while the "more money" badge floats over it */
+    #pitch-more .pitch-quote {
+        animation: quote-border 9s ease-in-out infinite;
+    }
+
+    #pitch-more .money {
+        animation: float-y 6s ease-in-out infinite;
+    }
+
+    /* Slide 5 (#testimonials): cards float, desynced
+       (negative delays = start mid-cycle, no frozen intro) */
+    #testimonials blockquote:nth-of-type(1) {
+        animation: float-y 3s ease-in-out infinite;
+    }
+
+    #testimonials blockquote:nth-of-type(2) {
+        animation: float-y 4s ease-in-out infinite -0.5s;
+    }
+
+    #testimonials blockquote:nth-of-type(3) {
+        animation: float-y 5s ease-in-out infinite -1.2s;
+    }
+
+    /* Slide 6 (#offers): the quote swings like a hanging sign */
+    #offers blockquote {
+        animation: sway 8s ease-in-out infinite;
+        transform-origin: top center;
+    }
+
+    /* Slide 1 (#pitch): already on screen at load — a plain
+       Fade, once */
+    .pitch-hero__type {
+        animation: fade-rise 0.9s ease-out 0.15s both;
+    }
+}
+
+/* --- Entrance pastiches (pure CSS: scroll-driven) --------------- */
+
+@keyframes wipe-left {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes zoom-in {
+    from {
+        opacity: 0;
+        transform: scale(1.25);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Slide 4: the table card slides in from UNDER the panel's left edge.
+   Start pose: -200% = two of the card's own widths left of its seat,
+   so the card starts fully outside the panel; the panel clips what
+   sticks out, so the reader sees the card emerge from under the
+   panel's left border, not flying across the page.
+   overflow: clip rather than hidden: hidden would make the panel a
+   scroll container, which can trap touch scrolling on phones; clip
+   just paints a hard edge. The panel stays the SUBJECT of the named
+   --panel view timeline either way — that timeline measures the panel
+   against the page scrollport, not against the panel's own overflow. */
+#products {
+    overflow: clip;
+}
+
+@keyframes fly-in-left {
+    from {
+        transform: translateX(-200%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* --- Scroll-driven entrances: no JS, no classes, no .in-view --------
+   The entrance pastiches are pure CSS: each .anim--* runs on its
+   PANEL'S named view timeline (view-timeline-name), so the keyframe
+   progress tracks how far the PANEL has entered the viewport — the
+   reader sees the motion scrub while they read the slide, not before
+   they get there (element-relative entry ranges finished while the
+   content was still near the bottom edge). Gated behind @supports on
+   BOTH the anonymous and named timeline syntax, so older browsers fall
+   back to a static, fully-visible page. */
+
+@supports (animation-timeline: view()) and (view-timeline-name: --panel) {
+    @media (prefers-reduced-motion: no-preference) {
+
+        /* Firefox requires a non-zero animation-duration to even
+           apply a scroll-driven animation (MDN: scroll-driven
+           animation timelines); the duration is ignored on the
+           scroll timeline (progress is scroll-driven), so 1s is
+           a harmless flag everywhere. */
+
+        /* Each slide names its own view timeline; entrances run
+           against the PANEL's progress. Done at entry 60% = the
+           panel is ~60% scrolled into view. */
+        .panel {
+            view-timeline-name: --panel;
+        }
+
+        /* Slide 2: Wipe, From Left */
+        .anim--wipe {
+            animation: wipe-left 1s ease-out both;
+            animation-timeline: --panel;
+            animation-range: entry 50% entry 100%;
+        }
+
+        /* Slide 4: Zoom on the photo */
+        .anim--zoom {
+            /* Quadratic curve */
+            animation: zoom-in 1s ease-in both;
+            animation-timeline: --panel;
+            animation-range: entry 0% entry 80%;
+        }
+
+        /* Slide 4: the table card slides in from under the
+           panel's left edge (clipped by the panel —
+           see fly-in-left above). */
+        .anim--slide {
+            animation: fly-in-left 1.2s ease-out both;
+            animation-timeline: --panel;
+            animation-range: entry 0% entry 80%;
+        }
+    }
+}
+
+/* --- Reduced motion: stop the belt, let it scroll by hand --------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+        animation: none;
+    }
+
+    .marquee {
+        overflow-x: auto;
+    }
+}
+
+/* Not an animation, but it belongs with the motion audit: keyboard
+   focus stays visible with every motion above switched off. */
+#products .product-search__button:focus-visible {
+    outline: 3px solid var(--coral);
+    outline-offset: 2px;
+}

@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Core Technology: Home</title>
 
+    <link rel="stylesheet" href="./stylesheets/fonts.css">
     <link rel="stylesheet" href="./stylesheets/styles.css">
     <link rel="stylesheet" href="./stylesheets/index.css">
+    <link rel="stylesheet" href="./stylesheets/animation.css">
 
     <style>
         /* Required embedded */
@@ -102,7 +104,7 @@
 
             <!-- Pitch copy 1st -->
             <section class="panel pitch-copy-container" id="pitch-more" aria-label="Our pitch, part one">
-                <div class="pitch-copy">
+                <div class="pitch-copy anim anim--wipe">
                     <p class="pitch-standfirst">You, or your institution, might ask rhetorically:</p>
                     <p class="pitch-quote">
                         How do we make <span class="money">more money</span> while being more
@@ -164,7 +166,8 @@
 
                         <p class="panel-hint table-hint">Scroll the table &larr; &rarr;</p>
                         <!-- Scroll box keeps the table from clipping the page on narrow screens. -->
-                        <div class="table-wrap" role="region" aria-label="Product suites table" tabindex="0">
+                        <div class="table-wrap anim anim--slide" role="region" aria-label="Product suites table"
+                            tabindex="0">
                             <table>
                                 <thead>
                                     <tr>
@@ -210,7 +213,7 @@
                     <div data-mobile-pane>
                         <h2 id="products-title" class="products-heading">Here's what's in the Arsenal: we don't come
                             second.</h2>
-                        <figure class="photo">
+                        <figure class="photo anim anim--zoom">
                             <img class="media" src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
                                 alt="Person working with laptop" />
                             <figcaption>Working with our tools is extremely simple. Just look at this stock photo!
@@ -234,11 +237,11 @@
                     <p>
                         Before I tried the Core Technology's In-Shareholders-Boots Putter&trade;.
                         I had the impression that investors were only there to leech off our profits and to
-                        push us to further commercialize our operations, but afterwards I now understand that they're
+                        push us to further commercialize our operations, but afterward I now understand that they're
                         too are
                         human,
-                        they need to feed their family and pay for their yachts' fuel too. They are all very
-                        sympathetic.
+                        they need to feed their family and pay for their yachts' fuel too. I am now a more empathetic
+                        person.
                     </p>
                     <footer>&mdash;Professor A (she/her)</footer>
                 </blockquote>
@@ -294,7 +297,6 @@
             </ul>
         </footer>
     </div>
-
 </body>
 
 </html>
