@@ -69,12 +69,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--site-gap);
-
-    /* Paper-style checkboards */
-    background-image:
-        linear-gradient(to right, #e0e0e0 1px, transparent 1px),
-        linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
-    background-size: 40px 40px;
 }
 
 
@@ -345,7 +339,7 @@ input {
     border-radius: 0;
 }
 
-/* Colored cards and shadows */
+/* Colored cards and shadows for blockquotes */
 blockquote {
     padding: clamp(0.9rem, 2vw, 1.25rem);
     font-size: 1.08rem;
@@ -365,6 +359,8 @@ blockquote footer {
     text-transform: uppercase;
     color: var(--blue-deep);
     text-align: right;
+    /* Revert display flex so that footer within blockquote behave properly */
+    display: block;
 }
 
 blockquote p::before {
