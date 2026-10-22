@@ -41,262 +41,276 @@
 </head>
 
 <body>
-    <div class="site">
-        <header>
-            <a class="brand" href="index.html">
-                <span class="brand-mark" aria-hidden="true"></span>
-                <span>
-                    <span class="brand-name">Core Technology</span>
-                    <span class="brand-slogan">You have the core. We build the rest</span>
-                </span>
-            </a>
-
-            <nav class="nav" aria-label="Main navigation">
-                <a href="index.html" aria-current="page">Home</a>
-                <a href="jobs.html">Jobs</a>
-                <a href="apply.html">Apply</a>
-                <a href="about.html">About</a>
-            </nav>
-        </header>
-
-        <main id="main">
-            <!--pitch hook -->
-            <section class="panel pitch-hero" aria-labelledby="pitch-title" id="pitch">
-                <!-- Marquee, -50% loop so two identical loops so that it can be seamless,
+    <header>
+        <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>
+                <span class="brand-name">Core Technology</span>
+                <span class="brand-slogan">You have the core. We build the rest</span>
+            </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="apply.html">Apply</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+    <main id="main">
+        <!--pitch hook -->
+        <section class="panel pitch-hero" aria-labelledby="pitch-title" id="pitch">
+            <div class="play-screen">
+                <div class="player">
+                    <div class="player__titlebar" aria-hidden="true">
+                        <span class="player__title">Press play for pitch</span>
+                        <span class="player__winbtns">
+                            <span><svg viewBox="0 0 16 16" focusable="false">
+                                    <path d="M3 12h10" />
+                                </svg></span>
+                            <span><svg viewBox="0 0 16 16" focusable="false">
+                                    <rect x="3" y="3" width="10" height="10" rx="1.5" />
+                                </svg></span>
+                            <span><svg viewBox="0 0 16 16" focusable="false">
+                                    <path d="M3.5 3.5l9 9m0-9-9 9" />
+                                </svg></span>
+                        </span>
+                    </div>
+                    <div class="player__body">
+                        <div class="transport">
+                            <!-- dummy keys: decoration only -->
+                            <span class="transport__skip" aria-hidden="true"><svg viewBox="0 0 48 56" focusable="false">
+                                    <path d="M40 8 8 28l32 20Z" />
+                                </svg></span>
+                            <input type="checkbox" id="play" name="play" class="transport__play" autocomplete="on"
+                                aria-label="Press play to start the pitch">
+                            <span class="transport__skip" aria-hidden="true"><svg viewBox="0 0 48 56" focusable="false">
+                                    <path d="M8 8l32 20L8 48Z" />
+                                </svg></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Marquee, -50% loop so two identical loops so that it can be seamless,
                  avoid blank conveyor -->
-                <div class="marquee">
-                    <div class="marquee__track">
-                        <div class="marquee__group">
-                            <span class="marquee__item">More money!</span>
-                            <span class="marquee__item">Less work!</span>
-                            <span class="marquee__item">It&apos;s basically free if you don't think too hard about
-                                it!</span>
-                            <span class="marquee__item">Hire us now!</span>
-                            <span class="marquee__item">Terms and conditions may apply.</span>
-
-                        </div>
-                        <div class="marquee__group" aria-hidden="true">
-                            <span class="marquee__item">More money!</span>
-                            <span class="marquee__item">Less work!</span>
-                            <span class="marquee__item">It&apos;s basically free if you don't think too hard about
-                                it!</span>
-                            <span class="marquee__item">Hire us now!</span>
-                            <span class="marquee__item">Terms and conditions may apply.</span>
-                        </div>
+            <div class="marquee">
+                <div class="marquee__track">
+                    <div class="marquee__group">
+                        <span class="marquee__item">More money!</span>
+                        <span class="marquee__item">Less work!</span>
+                        <span class="marquee__item">It&apos;s basically free if you don't think too hard about
+                            it!</span>
+                        <span class="marquee__item">Hire us now!</span>
+                        <span class="marquee__item">Terms and conditions may apply.</span>
+                    </div>
+                    <div class="marquee__group" aria-hidden="true">
+                        <span class="marquee__item">More money!</span>
+                        <span class="marquee__item">Less work!</span>
+                        <span class="marquee__item">It&apos;s basically free if you don't think too hard about
+                            it!</span>
+                        <span class="marquee__item">Hire us now!</span>
+                        <span class="marquee__item">Terms and conditions may apply.</span>
                     </div>
                 </div>
-                <div class="pitch-hero__type">
-                    <h1 id="pitch-title" class="pitch-title">
-                        We help your educational institution make <span class="money">money</span>.
-                    </h1>
-                    <h2 class="pitch-subtitle">
-                        Our promise:
-                        <strong>more</strong> money for <strong>less</strong> work.
-                        That&apos;s it.
-                        Free money. Win-win.
-                    </h2>
-                    <p class="panel-hint" aria-hidden="true"><a href="#pitch-more">&iquest;It sounds too good to be
-                            true?
-                            &darr;</a>
-                    </p>
-                </div>
-            </section>
-
-            <!-- Pitch copy 1st -->
-            <section class="panel pitch-copy-container" id="pitch-more" aria-label="Our pitch, part one">
-                <div class="pitch-copy anim anim--wipe">
-                    <p class="pitch-standfirst">You, or your institution, might ask rhetorically:</p>
-                    <p class="pitch-quote">
-                        How do we make <span class="money">more money</span> while being more
-                        <del>woke</del> accessible?
-                    </p>
-                    <p>
-                        That is where we might barge in,
-                        respectfully as business partners of course! We specialize in making sure that your institution
-                        has an
-                        accessible
-                        platform: that your current students can navigate your digital
-                        ecosystem with ease, that you hit your projected enrollment rate.
-                        That's basically magic. It's not just magical, it's supernatural. It's uncanny how well
-                        our tools will integrate with your workflows.
-                    </p>
-                </div>
-                <p class="panel-hint" aria-hidden="true"><a href="#pitch-profit">Read on &darr;</a></p>
-            </section>
-
-            <!-- Pitch copy 2nd -->
-            <section class="panel pitch-copy-container" id="pitch-profit" aria-label="Our pitch, part two">
-                <div class="pitch-copy">
-                    <p class="pitch-standfirst">Nowadays, education is all</p>
-                    <p class="pitch-quote pitch-quote--stack">
-                        <span>profit-first,</span>
-                        <span>quality-later</span>
-                    </p>
-                    <p>
-                        so that we can all
-                        <span class="money" style="box-shadow: none;">maximize shareholder value</span>. We understand
-                        that investors only
-                        focus on the
-                        macro level, on the bigger picture. That&rsquo;s why we are here to help you to reach
-                        your goals faster, easier, and more importantly, we help the little
-                        guys &mdash; that&rsquo;s you and us &mdash; enjoy their work more, by
-                        utilizing our vague-sounding tools&trade; that replace your legacy tooling
-                        with a flashy and complex UI that wows your investors, dolls up your
-                        administration work, and flusters your students into a realization that indeed, you care deeply
-                        about
-                        <span class="pitch-ratio">foreground color to background color</span> and other such ratios.
-                    </p>
-                </div>
-                <p class="panel-hint" aria-hidden="true"><a href="#products">Our tools below &darr;</a></p>
-            </section>
-
-            <!-- List our products -->
-            <section class="panel" aria-labelledby="products-title" id="products">
-                <div class="grid grid--split">
-                    <div data-mobile-pane>
-                        <div class="product-search" role="search" aria-label="Search our products">
-                            <label for="product-search-input">Look up your perfect tool</label>
-                            <div class="product-search__row">
-                                <input class="product-search__input" id="product-search-input" type="search" name="q"
-                                    placeholder="e.g. replacing employees with LLMs, checking stocks while driving"
-                                    autocomplete="off">
-                                <button class="product-search__button" type="button">Search</button>
-                            </div>
-                        </div>
-
-                        <p class="panel-hint table-hint">Scroll the table &larr; &rarr;</p>
-                        <!-- Scroll box keeps the table from clipping the page on narrow screens. -->
-                        <div class="table-wrap anim anim--slide" role="region" aria-label="Product suites table"
-                            tabindex="0">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th scope="col" rowspan="2">Suite</th>
-                                        <th scope="col" colspan="2">Tooling</th>
-                                        <th scope="col" rowspan="2">Deployment</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope="col">Module</th>
-                                        <th scope="col">Replaces</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row" rowspan="3">Overhauling Suite</th>
-                                        <td>Virtual Cockpit&trade;</td>
-                                        <td>Every spreadsheet you own</td>
-                                        <td rowspan="3">Web, on-premise, Android Auto (beta)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>LLM Analytics&trade;</td>
-                                        <td>Overworked data scientist(s)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.5:1 Badge</td>
-                                        <td>Accessibility audits</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" rowspan="2">Profitmaxxing Suite</th>
-                                        <td>Donor-Likelihood Index&trade;</td>
-                                        <td>Admissions officer(s)</td>
-                                        <td rowspan="2">Web only</td>
-                                    </tr>
-                                    <tr>
-                                        <td>In-Shareholders-Boots Putter&trade;</td>
-                                        <td>Your conscience</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Heading + stock photo occupy the right column -->
-                    <div data-mobile-pane>
-                        <h2 id="products-title" class="products-heading">Here's what's in the Arsenal: we don't come
-                            second.</h2>
-                        <figure class="photo anim anim--zoom">
-                            <img class="media" src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
-                                alt="Person working with laptop" />
-                            <figcaption>Working with our tools is extremely simple. Just look at this stock photo!
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-
-                <p class="panel-hint products-hint" aria-hidden="true"><a href="#testimonials">Our
-                        testimonials below
-                        &darr;</a></p>
-            </section>
-
-            <!-- Testimonials -->
-            <section class="panel" aria-labelledby="testimonials-title" id="testimonials">
-                <h2 id="testimonials-title">Don't take our word for it. Read some raving reviews that we cherry
-                    picked:
+            </div>
+            <div class="pitch-hero__type">
+                <h1 id="pitch-title" class="pitch-title">
+                    We help your educational institution make <span class="money">money</span>.
+                </h1>
+                <h2 class="pitch-subtitle">
+                    Our promise:
+                    <strong>more</strong> money for <strong>less</strong> work.
+                    That&apos;s it.
+                    Free money. Win-win.
                 </h2>
+                <p class="panel-hint" aria-hidden="true"><a href="#pitch-more">&iquest;It sounds too good to be
+                        true?
+                        &darr;</a>
+                </p>
+            </div>
+        </section>
+        <!-- Pitch copy 1st -->
+        <section class="panel pitch-copy-container" id="pitch-more" aria-label="Our pitch, part one">
+            <div class="pitch-copy anim anim--wipe">
+                <p class="pitch-standfirst">You, or your institution, might ask rhetorically:</p>
+                <p class="pitch-quote">
+                    How do we make <span class="money">more money</span> while being more
+                    <del>woke</del> accessible?
+                </p>
+                <p>
+                    That is where we might barge in,
+                    respectfully as business partners of course! We specialize in making sure that your institution
+                    has an
+                    accessible
+                    platform: that your current students can navigate your digital
+                    ecosystem with ease, that you hit your projected enrollment rate.
+                    That's basically magic. It's not just magical, it's supernatural. It's uncanny how well
+                    our tools will integrate with your workflows.
+                </p>
+            </div>
+            <p class="panel-hint" aria-hidden="true"><a href="#pitch-profit">Read on &darr;</a></p>
+        </section>
+        <!-- Pitch copy 2nd -->
+        <section class="panel pitch-copy-container" id="pitch-profit" aria-label="Our pitch, part two">
+            <div class="pitch-copy">
+                <p class="pitch-standfirst">Nowadays, education is all</p>
+                <p class="pitch-quote pitch-quote--stack">
+                    <span>profit-first,</span>
+                    <span>quality-later</span>
+                </p>
+                <p>
+                    so that we can all
+                    <span class="money" style="box-shadow: none;">maximize shareholder value</span>. We understand
+                    that investors only
+                    focus on the
+                    macro level, on the bigger picture. That&rsquo;s why we are here to help you to reach
+                    your goals faster, easier, and more importantly, we help the little
+                    guys &mdash; that&rsquo;s you and us &mdash; enjoy their work more, by
+                    utilizing our vague-sounding tools&trade; that replace your legacy tooling
+                    with a flashy and complex UI that wows your investors, dolls up your
+                    administration work, and flusters your students into a realization that indeed, you care deeply
+                    about
+                    <span class="pitch-ratio">foreground color to background color</span> and other such ratios.
+                </p>
+            </div>
+            <p class="panel-hint" aria-hidden="true"><a href="#products">Our tools below &darr;</a></p>
+        </section>
+        <!-- List our products -->
+        <section class="panel" aria-labelledby="products-title" id="products">
+            <div class="grid grid--split">
+                <div data-mobile-pane>
+                    <div class="product-search" role="search" aria-label="Search our products">
+                        <label for="product-search-input">Look up your perfect tool</label>
+                        <div class="product-search__row">
+                            <input class="product-search__input" id="product-search-input" type="search" name="q"
+                                placeholder="e.g. replacing employees with LLMs, checking stocks while driving"
+                                autocomplete="off">
+                            <button class="product-search__button" type="button">Search</button>
+                        </div>
+                    </div>
+                    <p class="panel-hint table-hint">Scroll the table &larr; &rarr;</p>
+                    <!-- Scroll box keeps the table from clipping the page on narrow screens. -->
+                    <div class="table-wrap anim anim--slide" role="region" aria-label="Product suites table"
+                        tabindex="0">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col" rowspan="2">Suite</th>
+                                    <th scope="col" colspan="2">Tooling</th>
+                                    <th scope="col" rowspan="2">Deployment</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Module</th>
+                                    <th scope="col">Replaces</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" rowspan="3">Overhauling Suite</th>
+                                    <td>Virtual Cockpit&trade;</td>
+                                    <td>Every spreadsheet you own</td>
+                                    <td rowspan="3">Web, on-premise, Android Auto (beta)</td>
+                                </tr>
+                                <tr>
+                                    <td>LLM Analytics&trade;</td>
+                                    <td>Overworked data scientist(s)</td>
+                                </tr>
+                                <tr>
+                                    <td>4.5:1 Badge</td>
+                                    <td>Accessibility audits</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" rowspan="2">Profitmaxxing Suite</th>
+                                    <td>Donor-Likelihood Index&trade;</td>
+                                    <td>Admissions officer(s)</td>
+                                    <td rowspan="2">Web only</td>
+                                </tr>
+                                <tr>
+                                    <td>In-Shareholders-Boots Putter&trade;</td>
+                                    <td>Your conscience</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Heading + stock photo occupy the right column -->
+                <div data-mobile-pane>
+                    <h2 id="products-title" class="products-heading">Here's what's in the Arsenal: we don't come
+                        second.</h2>
+                    <figure class="photo anim anim--zoom">
+                        <img class="media" src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
+                            alt="Person working with laptop" />
+                        <figcaption>Working with our tools is extremely simple. Just look at this stock photo!
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <p class="panel-hint products-hint" aria-hidden="true"><a href="#testimonials">Our
+                    testimonials below
+                    &darr;</a></p>
+        </section>
+        <!-- Testimonials -->
+        <section class="panel" aria-labelledby="testimonials-title" id="testimonials">
+            <h2 id="testimonials-title">Don't take our word for it. Read some raving reviews that we cherry
+                picked:
+            </h2>
+            <blockquote>
+                <p>
+                    Before I tried the Core Technology's In-Shareholders-Boots Putter&trade;.
+                    I had the impression that investors were only there to leech off our profits and to
+                    push us to further commercialize our operations, but afterward I now understand that they're
+                    too are
+                    human,
+                    they need to feed their family and pay for their yachts' fuel too. I am now a more empathetic
+                    person.
+                </p>
+                <footer>&mdash;Professor A (she/her)</footer>
+            </blockquote>
+            <blockquote>
+                <p>
+                    I am quite fond of the new web page redesigns, which had
+                    an increased contrast and the color palette was red-green
+                    colorblind friendly too. And they also let me choose my pronouns,
+                    which I suppose is a really nice gesture. I genuinely don't have
+                    anything sarcastic to say about this.
+                </p>
+                <footer>&mdash;Lilith (she/they)</footer>
+            </blockquote>
+            <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <footer>&mdash;Apparently Cicero himself (long/dead)</footer>
+            </blockquote>
+            <p class="panel-hint" aria-hidden="true"><a href="#offers">Our
+                    offers below
+                    &darr;</a></p>
+        </section>
+        <section class="panel" aria-labelledby="offers-title" id="offers">
+            <h2 id="offers-title">Wanna work with us? Actually, we're not looking for any further clients,
+                sorry about that. However, wanna work for us? We're hiring!
+            </h2>
+            <p>Please check the jobs section of this web page for further details.
+                And if you're looking to work against us&hellip; Well, let's just say:</p>
+            <blockquote>
+                <p style="text-align: center;">I got a Glock in my 'Rari, ay <br />
+                    17 shots, no 38</p>
+                <footer>Fetty Wap, <cite>679</cite></footer>
+            </blockquote>
+            <p class="panel-hint" aria-hidden="true"><a href="#pitch">Read
+                    our pitch again
+                    &uarr;</a></p>
+        </section>
+    </main>
+    <!-- Footer section-->
+    <footer aria-label="Site">
+        <p class="footer-note">&copy; 2026 Core Technology.</p>
+        <ul class="footer-links">
+            <li><a href="#">Jira project</a></li>
+            <li><a href="#">GitHub repository</a></li>
+            <li><a href="mailto:info@example.com">info@example.com</a></li>
+        </ul>
+    </footer>
 
-                <blockquote>
-                    <p>
-                        Before I tried the Core Technology's In-Shareholders-Boots Putter&trade;.
-                        I had the impression that investors were only there to leech off our profits and to
-                        push us to further commercialize our operations, but afterward I now understand that they're
-                        too are
-                        human,
-                        they need to feed their family and pay for their yachts' fuel too. I am now a more empathetic
-                        person.
-                    </p>
-                    <footer>&mdash;Professor A (she/her)</footer>
-                </blockquote>
-
-                <blockquote>
-                    <p>
-                        I am quite fond of the new web page redesigns, which had
-                        an increased contrast and the color palette was red-green
-                        colorblind friendly too. And they also let me choose my pronouns,
-                        which I suppose is a really nice gesture. I genuinely don't have
-                        anything sarcastic to say about this.
-                    </p>
-                    <footer>&mdash;Lilith (she/they)</footer>
-                </blockquote>
-
-                <blockquote>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                    <footer>&mdash;Apparently Cicero himself (long/dead)</footer>
-                </blockquote>
-                <p class="panel-hint" aria-hidden="true"><a href="#offers">Our
-                        offers below
-                        &darr;</a></p>
-            </section>
-
-            <section class="panel" aria-labelledby="offers-title" id="offers">
-                <h2 id="offers-title">Wanna work with us? Actually, we're not looking for any further clients,
-                    sorry about that. However, wanna work for us? We're hiring!
-                </h2>
-                <p>Please check the jobs section of this web page for further details.
-                    And if you're looking to work against us&hellip; Well, let's just say:</p>
-                <blockquote>
-                    <p style="text-align: center;">I got a Glock in my 'Rari, ay <br />
-                        17 shots, no 38</p>
-                    <footer>Fetty Wap, <cite>679</cite></footer>
-                </blockquote>
-                <p class="panel-hint" aria-hidden="true"><a href="#pitch">Read
-                        our pitch again
-                        &uarr;</a></p>
-            </section>
-
-        </main>
-
-        <!-- Footer section-->
-        <footer class="site-footer">
-            <p class="footer-note">&copy; 2026 Core Technology.</p>
-            <ul class="footer-links">
-                <li><a href="#">Jira project</a></li>
-                <li><a href="#">GitHub repository</a></li>
-                <li><a href="mailto:info@example.com">info@example.com</a></li>
-            </ul>
-        </footer>
-    </div>
 </body>
 
 </html>

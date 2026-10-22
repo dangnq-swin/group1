@@ -320,3 +320,157 @@ h2.pitch-subtitle {
     letter-spacing: 0.01em;
     border-bottom: 2px dotted var(--blue-deep);
 }
+
+/* Dynamically showing content depending on whether or not the play checkbox is 
+ticked */
+
+body:has(#play:not(:checked)) {
+    height: calc(100svh - 2 * var(--body-pad-y) - 2 * clamp(0.8rem, 3vw, 1.75rem));
+}
+
+body:has(#play:not(:checked)) main {
+    /* Hide other slides */
+    overflow: hidden;
+}
+
+body:has(#play:not(:checked)) .panel.pitch-hero {
+    min-height: 0;
+    height: 100%;
+}
+
+/* Show only the background of the first slide */
+body:has(#play:not(:checked)) .pitch-hero>:not(.play-screen) {
+    display: none;
+}
+
+/* Hide playscreen after button is pressed */
+body:has(#play:checked) .play-screen {
+    display: none;
+}
+
+.play-screen {
+    display: grid;
+    place-items: center;
+}
+
+/* Music player-esque startup window section */
+
+/* The window: ink-outlined card with a hard shadow */
+.player {
+    width: min(36rem, 100%);
+    overflow: hidden;
+    border: 3px solid var(--ink);
+    border-radius: 1rem;
+    background: var(--seafoam-soft);
+    box-shadow: var(--shadow-block);
+}
+
+.player__titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.8rem;
+    border-bottom: 3px solid var(--ink);
+    background: var(--blue-deep);
+    color: var(--bg);
+}
+
+.player__title {
+    font-weight: 900;
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Fake window buttons: purely decorative inline SVG */
+.player__winbtns {
+    display: flex;
+    gap: 0.45rem;
+}
+
+.player__winbtns span {
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border: 2px solid var(--ink);
+    border-radius: 0.4rem;
+    background: var(--bg);
+}
+
+.player__winbtns svg {
+    width: 70%;
+    height: 70%;
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.player__body {
+    padding: clamp(1.8rem, 6vw, 3rem) clamp(1rem, 4vw, 2rem);
+}
+
+.transport {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 5vw, 2.4rem);
+}
+
+/* Dummy skip keys */
+.transport__skip {
+    display: block;
+    width: clamp(3.4rem, 12vw, 5rem);
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.transport__skip svg {
+    display: block;
+    width: 100%;
+    fill: var(--sand);
+    stroke: var(--muted);
+    stroke-width: 3;
+    stroke-linejoin: round;
+}
+
+/* Real playing key */
+.transport__play {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: none;
+    width: clamp(7rem, 26vw, 9.5rem);
+    aspect-ratio: 1;
+    margin: 0;
+    border: 3px solid var(--ink);
+    /* Override global anti rounded corner input */
+    border-radius: 50% !important;
+    background: var(--ink) url("../icons/play.svg") 54% 50% / 56% no-repeat;
+    box-shadow: 4px 4px 0 var(--blue-deep);
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.transport__play:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--blue-deep);
+}
+
+.transport__play:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+.transport__play:focus-visible {
+    outline: 3px solid var(--coral);
+    outline-offset: 4px;
+}
+
+/* Playing: pause symbol at once; mouse clicks no longer land */
+.transport__play:checked {
+    background-image: url("../icons/pause.svg");
+    background-position: center;
+    pointer-events: none;
+}

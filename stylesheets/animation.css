@@ -123,6 +123,33 @@
     .pitch-hero__type {
         animation: fade-rise 0.9s ease-out 0.15s both;
     }
+
+    /* "Press play" gate: on click the key flips to pause and the player
+       fades away at once, over slide 1's own background, while slide 1's
+       Fade plays in. */
+    .play-screen:has(#play:checked) {
+        animation: player-leave 0.7s ease-out forwards;
+    }
+}
+
+@keyframes player-leave {
+    /* display flips discretely between the keyframes that carry it, so
+       keep it only in the last step: opacity finishes the fade first,
+       then the play screen leaves layout entirely and the marquee sits
+       flush at the top of the panel. */
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    60% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        display: none;
+    }
 }
 
 /* --- Entrance pastiches (pure CSS: scroll-driven) --------------- */
@@ -228,6 +255,12 @@
 /* --- Reduced motion: stop the belt, let it scroll by hand --------- */
 
 @media (prefers-reduced-motion: reduce) {
+
+    /* no wait, no fade: the player just goes away on click */
+    .play-screen:has(#play:checked) {
+        display: none;
+    }
+
     .marquee__track {
         animation: none;
     }
