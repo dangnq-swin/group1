@@ -2,7 +2,7 @@
 
 /* Super niche typography */
 /* Alegreya Sans body + Truculenta heading */
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Truculenta:opsz,wght@12..72,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Truculenta:opsz,wght@12..72,100..900&display=swap');
 
 /* Color */
 :root {
@@ -27,25 +27,13 @@
     --seafoam: #8FE3C0;
     /* cute seafoam's drop shadow color */
     --seafoam-deep: #00785C;
-
+    /* pastel seafoam for panel fills */
+    --seafoam-soft: #DFF5E9;
+    /* hot coral accent*/
+    --coral: #FF6B4A;
 
     /* hard offset shadow for static blocks. only for objects, not buttons */
-    --shadow-block: 6px 6px 0 var(--ink);
-}
-
-
-:root {
-    --panel-media-max: 45svh;
-}
-
-/* Breakpoints as reference because media queries can't use variables, out of
-DOM
-*/
-:root {
-    --bp-sm: 576px;
-    --bp-md: 768px;
-    --bp-lg: 992px;
-    --bp-xl: 1200px;
+    --shadow-block: 8px 8px 0 var(--ink);
 }
 
 /* Base / reset */
@@ -61,7 +49,7 @@ body {
     color: var(--ink);
     font-family: "Alegreya Sans", system-ui, sans-serif;
     font-size: 1.25rem;
-    line-height: 1.6;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 
     /* Paper-style checkboards */
@@ -91,7 +79,6 @@ a:hover {
     outline-offset: 3px;
 }
 
-
 /* Layout shell */
 .site {
     max-width: 72rem;
@@ -112,6 +99,7 @@ h4 {
     font-weight: 700;
     /* Heading = bold font */
     line-height: 1.05;
+    letter-spacing: -0.03em;
     margin: 0 0 0.5em;
     color: var(--ink);
 }
@@ -119,12 +107,10 @@ h4 {
 /* Headings needs to be bigger and the letter needs to be closer */
 h1 {
     font-size: clamp(2.1rem, 9vw, 3.8rem);
-    letter-spacing: -0.03em;
 }
 
 h2 {
     font-size: clamp(1.6rem, 5.5vw, 2.4rem);
-    letter-spacing: -0.03em;
 }
 
 h3 {
@@ -137,7 +123,6 @@ p {
     margin: 0 0 1em;
     -webkit-hyphens: auto;
     hyphens: auto;
-    text-wrap: pretty;
     overflow-wrap: break-word;
 }
 
@@ -169,10 +154,6 @@ header {
     gap: 0.65rem;
     color: var(--ink);
     text-decoration: none;
-}
-
-.brand:hover {
-    color: var(--ink);
 }
 
 /* Logo placeholder: a plain pastel-blue square (the logo itself, no frame) */
@@ -219,26 +200,10 @@ header {
     text-decoration: none;
 }
 
-.nav a:hover {
-    border-bottom-color: var(--blue-deep);
-    color: var(--blue-deep);
-}
-
+.nav a:hover,
 .nav a[aria-current="page"] {
     border-bottom-color: var(--blue-deep);
     color: var(--blue-deep);
-}
-
-/* Placeholder for images in the mockup */
-.media {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    margin: 0;
-    color: var(--muted);
-    text-align: center;
-    text-transform: uppercase;
 }
 
 /* Two-column grids (single column on phones) */
@@ -251,33 +216,16 @@ header {
     min-width: 0;
 }
 
-@media (min-width: 768px) {
-    .grid--split {
-        grid-template-columns: 1.15fr 0.85fr;
-        /* Stretch both columns to the grid's full height, so a column can put
-        its panel hint at the grid's end (see .products-hint in index.css). */
-        align-items: stretch;
-    }
-
-    .grid--2 {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
 /* Photo figure */
 figure.photo {
     margin: 0;
     min-width: 0;
-    max-width: 100%;
 }
 
 /* Photo sits in the page as a block: ink border + hard shadow */
 figure.photo img {
     width: 100%;
-    max-width: 100%;
-    max-height: var(--panel-media-max);
     object-fit: cover;
-    aspect-ratio: auto;
     border: 2px solid var(--ink);
     box-shadow: var(--shadow-block);
 }
@@ -324,23 +272,6 @@ figure.photo figcaption {
     margin-top: 2rem;
 }
 
-/* Card: bordered block with a hard offset shadow */
-.card {
-    padding: clamp(1rem, 3vw, 1.5rem);
-    border: 2px solid var(--ink);
-    background: var(--bg);
-    box-shadow: var(--shadow-block);
-}
-
-/* Flat colour variants: same block, different fill */
-.card--blue {
-    background: var(--blue);
-}
-
-.card--sand {
-    background: var(--sand);
-}
-
 /* Table */
 table {
     border-collapse: collapse;
@@ -357,16 +288,14 @@ td {
     vertical-align: top;
 }
 
-/* Header row: flat blue strip */
+/* Header row: flat coral strip */
 thead th {
     padding-bottom: 0.5rem;
-    background: var(--blue);
+    background: var(--coral);
     font-family: "Truculenta", Georgia, serif;
     font-size: 0.76rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ink);
-    overflow-wrap: break-word;
 }
 
 tbody th {
@@ -376,7 +305,6 @@ tbody th {
 
 /* Buttons */
 button {
-    display: inline-block;
     padding: 0.7rem 1.3rem;
     border: 2px solid var(--ink);
     background: var(--blue);
@@ -384,17 +312,15 @@ button {
     font: inherit;
     font-weight: 600;
     font-size: 0.95rem;
-    text-decoration: none;
-    box-shadow: 4px 4px 0 var(--blue-deep);
+    box-shadow: 4px 4px 0 var(--coral);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
     cursor: pointer;
 }
 
 button:hover {
     transform: translate(-1px, -1px);
-    box-shadow: 6px 6px 0 var(--blue-deep);
+    box-shadow: 6px 6px 0 var(--coral);
     background: var(--blue-soft);
-    color: var(--ink);
 }
 
 button:active {
@@ -402,8 +328,38 @@ button:active {
     box-shadow: none;
 }
 
-
 input {
     /* No rounded border for input columns */
-    border-radius: 0 !important;
+    border-radius: 0;
+}
+
+/* Colored cards and shadows */
+blockquote {
+    padding: clamp(0.9rem, 2vw, 1.25rem);
+    font-size: 1.08rem;
+    line-height: 1.45;
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    box-shadow: var(--shadow-block);
+    display: table;
+    margin-block: clamp(0.6rem, 1.8svh, 1.4rem);
+}
+
+blockquote footer {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+    text-align: right;
+}
+
+blockquote p::before {
+    content: "\201C";
+}
+
+/* Card gap lives in index.css: its margin rule loads later and wins. */
+blockquote p::after {
+    content: "\201D";
 }

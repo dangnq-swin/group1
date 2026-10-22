@@ -13,8 +13,27 @@
         /* Required embedded */
         h2 strong {
             display: inline-block;
-            background-color: var(--blue-soft);
-            padding: 0 0.15em;
+            background-color: var(--coral);
+            color: var(--bg);
+            padding: 0 0.2em 0.05em;
+        }
+
+        del {
+            text-decoration: none;
+            /* remove default horizontal line */
+            position: relative;
+            display: inline-block;
+        }
+
+        del::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -10%;
+            width: 120%;
+            height: 2px;
+            background-color: currentColor;
+            transform: translateY(-50%) rotate(-15deg);
         }
     </style>
 </head>
@@ -38,9 +57,7 @@
             </nav>
         </header>
 
-        <!-- Scroll-snap container. tabindex lets keyboard users scroll it. -->
-        <main id="main" class="snap" tabindex="0" aria-label="Homepage sections">
-
+        <main id="main">
             <!--pitch hook -->
             <section class="panel pitch-hero" aria-labelledby="pitch-title" id="pitch">
                 <!-- Marquee, -50% loop so two identical loops so that it can be seamless,
@@ -76,11 +93,11 @@
                         That&apos;s it.
                         Free money. Win-win.
                     </h2>
+                    <p class="panel-hint" aria-hidden="true"><a href="#pitch-more">&iquest;It sounds too good to be
+                            true?
+                            &darr;</a>
+                    </p>
                 </div>
-
-                <p class="panel-hint" aria-hidden="true"><a href="#pitch-more">&iquest;It sounds too good to be true?
-                        &darr;</a>
-                </p>
             </section>
 
             <!-- Pitch copy 1st -->
@@ -108,7 +125,7 @@
             <!-- Pitch copy 2nd -->
             <section class="panel pitch-copy-container" id="pitch-profit" aria-label="Our pitch, part two">
                 <div class="pitch-copy">
-                    <p class="pitch-standfirst">Nowadays, education is all about</p>
+                    <p class="pitch-standfirst">Nowadays, education is all</p>
                     <p class="pitch-quote pitch-quote--stack">
                         <span>profit-first,</span>
                         <span>quality-later</span>
@@ -145,7 +162,7 @@
                             </div>
                         </div>
 
-                        <p class="panel-hint table-hint">Scroll the table &darr; &rarr;</p>
+                        <p class="panel-hint table-hint">Scroll the table &larr; &rarr;</p>
                         <!-- Scroll box keeps the table from clipping the page on narrow screens. -->
                         <div class="table-wrap" role="region" aria-label="Product suites table" tabindex="0">
                             <table>
@@ -199,30 +216,32 @@
                             <figcaption>Working with our tools is extremely simple. Just look at this stock photo!
                             </figcaption>
                         </figure>
-                        <p class="panel-hint products-hint" aria-hidden="true"><a href="#testimonials">Our
-                                testimonials below
-                                &darr;</a></p>
-
                     </div>
-
                 </div>
+
+                <p class="panel-hint products-hint" aria-hidden="true"><a href="#testimonials">Our
+                        testimonials below
+                        &darr;</a></p>
             </section>
 
             <!-- Testimonials -->
             <section class="panel" aria-labelledby="testimonials-title" id="testimonials">
-                <h2 id="testimonials-title">Don't take our word for it. Read some raving reviews that we cherry picked:
+                <h2 id="testimonials-title">Don't take our word for it. Read some raving reviews that we cherry
+                    picked:
                 </h2>
 
                 <blockquote>
                     <p>
-                        I was really impressed after I tried on Core Technology's In-Shareholders-Boots Putter&trade;.
+                        Before I tried the Core Technology's In-Shareholders-Boots Putter&trade;.
                         I had the impression that investors were only there to leech off our profits and to
-                        push us to further commercialize our operations, but now I understand the truth, which is that
-                        these poor fellas need to feed their family and pay for their yachts' fuel too. It helped me
-                        to become a more empathetic person.
+                        push us to further commercialize our operations, but afterwards I now understand that they're
+                        too are
+                        human,
+                        they need to feed their family and pay for their yachts' fuel too. They are all very
+                        sympathetic.
                     </p>
+                    <footer>&mdash;Professor A (she/her)</footer>
                 </blockquote>
-                <p>&mdash;Professor A (he/him)</p>
 
                 <blockquote>
                     <p>
@@ -232,15 +251,16 @@
                         which I suppose is a really nice gesture. I genuinely don't have
                         anything sarcastic to say about this.
                     </p>
+                    <footer>&mdash;Lilith (she/they)</footer>
                 </blockquote>
-                <p>&mdash;Lilith (she/they)</p>
 
                 <blockquote>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                         laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    <footer>&mdash;Apparently Cicero himself (long/dead)</footer>
                 </blockquote>
-                <p>&mdash;Apparently Cicero himself (long/dead)</p>
                 <p class="panel-hint" aria-hidden="true"><a href="#offers">Our
                         offers below
                         &darr;</a></p>
@@ -250,13 +270,13 @@
                 <h2 id="offers-title">Wanna work with us? Actually, we're not looking for any further clients,
                     sorry about that. However, wanna work for us? We're hiring!
                 </h2>
-                <p>Please check the jobs section of this web page for further details.</p>
-                <p>And if you're looking to work against us&hellip; Well, let's just say:</p>
+                <p>Please check the jobs section of this web page for further details.
+                    And if you're looking to work against us&hellip; Well, let's just say:</p>
                 <blockquote>
-                    <p>I got a Glock in my 'Rari, ay <br />
+                    <p style="text-align: center;">I got a Glock in my 'Rari, ay <br />
                         17 shots, no 38</p>
+                    <footer>Fetty Wap, <cite>679</cite></footer>
                 </blockquote>
-                <p>&mdash;Fetty Wap, <cite>679</cite></p>
                 <p class="panel-hint" aria-hidden="true"><a href="#pitch">Read
                         our pitch again
                         &uarr;</a></p>

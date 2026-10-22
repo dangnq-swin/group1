@@ -1,72 +1,59 @@
-/* Scroll snap
-Entire screen is the web page, so we want the page to be fullscreen and static.
-*/
-body {
-    height: 100vh;
-    height: 100svh;
-    overflow: hidden;
-}
-
-/* This so that header and footer can be properly sized + let the scrollport
-be scrollable */
-.site {
-    height: 100%;
-}
-
-/* The snap container is also the flex column of panels.
-Each panel sizes to this box. */
-.snap {
-    flex: 1 1 auto;
-    min-height: 0;
-    /* lets the flex child actually shrink */
+/* Centered content in a big panel */
+.panel {
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-    overscroll-behavior-y: contain;
+    padding: clamp(1.5rem, 4svh, 3rem) clamp(1rem, 2.5svh + 1vw, 2rem);
+    justify-content: center;
 }
 
-/* One section per screen, centred in the scrollport */
-.snap .panel {
-    flex: 0 0 auto;
-    min-height: 100%;
-    /* Centre the panel's own content inside the panel */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    /* Snap the panel's middle to the middle of the scrollport, so the whole
-    section sits in the centre of the snap viewport. */
-    scroll-snap-align: start;
-    /* Mandatory + stop always = one panel per gesture, no skipping */
-    scroll-snap-stop: always;
-    /* When overscroll, stops at bottom */
-    overscroll-behavior: contain;
-    padding: clamp(0.5rem, 1.5vw, 1rem);
+/* Separate color for panels */
+.panel:nth-child(1) {
+    background-color: var(--blue-soft);
 }
 
-.snap .panel:first-child {
-    min-height: 100%;
-    /* No vertical centring here: the panel hint is pushed to the panel's end
-    by its auto top margin, which would consume the free space anyway. */
-    justify-content: flex-start;
-}
-
-.snap .panel:nth-child(odd) {
+.panel:nth-child(2) {
     background-color: var(--pink-sand);
 }
 
-.snap .panel:nth-child(even) {
-    background: var(--sand);
+.panel:nth-child(3) {
+    background-color: var(--sand);
 }
 
-/* Children of a flex column shrink by default; block this so a long
+.panel:nth-child(4) {
+    background-color: var(--seafoam-soft);
+    /* dot-grid pattern */
+    background-image: radial-gradient(#1A18151f 1.6px, transparent 1.6px);
+    background-size: 24px 24px;
+}
+
+.panel:nth-child(5) {
+    /* checkerboard pattern on cream */
+    background-color: var(--blue-soft);
+    background-image:
+        linear-gradient(45deg, #2E5F8F12 25%, transparent 25% 75%, #2E5F8F12 75%),
+        linear-gradient(45deg, #2E5F8F12 25%, transparent 25% 75%, #2E5F8F12 75%);
+    background-position: 0 0, 12px 12px;
+    background-size: 24px 24px;
+}
+
+.panel:nth-child(6) {
+    background-color: var(--pink-sand);
+    background-image:
+        linear-gradient(to right, #e0e0e0 1px, transparent 1px),
+        linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Children of a flex column shrink by default, we block this so a long
 panel can never squash its own content. */
-.snap .panel>* {
+.panel>* {
     flex: 0 0 auto;
-    /* flex items default to min-width: auto (never narrower than content);
-    that would let the table widen the page instead of the scroll box */
     min-width: 0;
+}
+
+.panel h2 {
+    font-size: clamp(1.3rem, 3.5svh + 1vw, 2.2rem);
 }
 
 /* Products panel on phones: one column, ordered heading -> lookup -> table hint -> 
@@ -80,15 +67,6 @@ table -> figure -> scroll hint.*/
     /* Let children order themselves, so the grid--split remove its layout box */
     .grid--split>[data-mobile-pane] {
         display: contents;
-    }
-
-    #products .product-search,
-    #products .table-wrap,
-    #products .table-hint,
-    #products .photo,
-    #products .products-hint {
-        grid-row: auto;
-        grid-column: 1;
     }
 
     #products .products-heading {
@@ -121,9 +99,9 @@ table -> figure -> scroll hint.*/
 /* For larger screen sizes */
 @media (min-width: 768px) {
 
-    /* Grow grid split out when it's too short*/
+    /* Split grid fills the panel width: tools column wider than heading/photo */
     #products .grid--split {
-        flex: 1 0 auto;
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
     }
 
     #products .grid--split>[data-mobile-pane] {
@@ -139,9 +117,8 @@ table -> figure -> scroll hint.*/
 
 /* Quiet "there is more below" marker beneath the panels */
 .panel-hint {
-    margin-top: auto;
-    margin-bottom: 0;
-    padding-top: 1.5rem;
+    text-align: center;
+    margin: 1.5rem;
     font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -151,16 +128,6 @@ table -> figure -> scroll hint.*/
 .panel-hint a {
     color: inherit;
     text-decoration: none;
-    cursor: pointer;
-}
-
-/* Alternating panel-hint */
-.snap .panel:nth-child(odd) .panel-hint {
-    text-align: left;
-}
-
-.snap .panel:nth-child(even) .panel-hint {
-    text-align: right;
 }
 
 /* Products search box (decorative) */
@@ -179,35 +146,13 @@ table -> figure -> scroll hint.*/
     flex: 1 1 14rem;
     min-width: 0;
     padding: 0.4rem 0.6rem;
-    font: inherit;
-    font-size: 1rem;
+    font-family: inherit;
     text-overflow: ellipsis;
 }
 
 .product-search__button {
     flex: 0 0 auto;
     padding: 0.4rem 1rem;
-    font: inherit;
-    cursor: pointer;
-}
-
-/* Center blockquote */
-blockquote {
-    display: table;
-    width: auto;
-    margin: 0 auto;
-}
-
-blockquote p::before {
-    content: "\201C";
-}
-
-blockquote p::after {
-    content: "\201D";
-}
-
-blockquote+p {
-    text-align: right;
 }
 
 /* Table fix */
@@ -218,7 +163,6 @@ blockquote+p {
     the table and widen the page instead of scrolling themselves */
     min-width: 0;
     max-width: 100%;
-    max-height: var(--panel-media-max);
     overflow: auto;
     /* when scrolling quickly, contain it so that the section doesn't skip */
     overscroll-behavior: contain;
@@ -229,20 +173,18 @@ blockquote+p {
 /* Drop the at-the-bottom behavior for this table hint */
 .table-hint {
     margin-bottom: 0.6rem;
-    padding-top: 0;
-    /* Override recto-verso alignment since this is UI notice for table*/
-    text-align: left !important;
 }
 
 /* Type block fills the free space between the header and the marquee.
 Without this marquee won't run because there's no free space */
-.snap .panel.pitch-hero>.pitch-hero__type {
+.panel.pitch-hero>.pitch-hero__type {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: clamp(0.4rem, 1.8vw, 1.1rem);
     padding-block: clamp(0.5rem, 2vw, 1.5rem);
+    padding-inline: clamp(1rem, 2.5svh + 1vw, 2rem);
 }
 
 h1.pitch-title {
@@ -252,7 +194,7 @@ h1.pitch-title {
     line-height: 0.92;
     letter-spacing: -0.0425em;
     text-transform: uppercase;
-    text-wrap: balance;
+    text-wrap-style: balance;
 }
 
 h2.pitch-subtitle {
@@ -275,8 +217,10 @@ h2.pitch-subtitle {
 /* -50% seemless loop marquee using CSS animation */
 .marquee {
     flex: 0 0 auto;
-    margin-inline: calc(-1 * clamp(0.5rem, 1.5vw, 1rem));
-    margin-block-start: calc(-1 * clamp(0.5rem, 1.5vw, 1rem));
+    align-self: stretch;
+    /* Bleed the blue strip to the panel's edges by cancelling its padding. */
+    margin-block-start: calc(-1 * clamp(1.5rem, 4svh, 3rem));
+    margin-inline: calc(-1 * clamp(1rem, 2.5svh + 1vw, 2rem));
     border-bottom: 2px solid var(--ink);
     background: var(--blue);
     overflow: hidden;
@@ -337,20 +281,15 @@ h2.pitch-subtitle {
     }
 }
 
-/* Pitch copy panels: standfirst -> pull quote -> body flow. */
-.snap .panel.pitch-copy-container {
-    justify-content: center;
-}
-
 .pitch-copy {
-    max-width: 58ch;
+    max-width: 65ch;
     margin-inline: auto;
-    padding-block: clamp(0.5rem, 2vw, 1.5rem);
+    padding-block: clamp(0.4rem, 1.5svh, 1rem);
 }
 
 /* Standfirst opener */
 .pitch-standfirst {
-    margin: 0 0 0.75rem;
+    margin: 0 0 0.5rem;
     font-size: clamp(0.7rem, 1.4vw, 0.82rem);
     font-weight: 800;
     letter-spacing: 0.16em;
@@ -360,7 +299,7 @@ h2.pitch-subtitle {
 
 /* Pull quote */
 .pitch-quote {
-    margin: 0 0 clamp(0.9rem, 2.5vw, 1.5rem);
+    margin: 0 0 clamp(0.7rem, 2svh, 1.2rem);
     padding-left: clamp(0.7rem, 2vw, 1.1rem);
     border-left: 6px solid var(--blue);
     font-family: "Truculenta", Georgia, serif;
@@ -369,7 +308,7 @@ h2.pitch-subtitle {
     font-size: clamp(1.5rem, 5.2vw, 2.9rem);
     line-height: 1.02;
     letter-spacing: -0.025em;
-    text-wrap: balance;
+    text-wrap-style: balance;
 }
 
 /* Two-line vertical stacked quote */
