@@ -96,7 +96,62 @@
     }
 }
 
+@keyframes hint-bob {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 0.35rem;
+    }
+}
+
+@keyframes hint-nudge-left {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: -0.3rem 0;
+    }
+}
+
+@keyframes hint-nudge-right {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0.3rem 0;
+    }
+}
+
 @media (prefers-reduced-motion: no-preference) {
+
+    /* Scroll clues: hand-drawn arrows bob toward the next slide */
+    .panel-hint:not(.panel-hint--hero) a::before,
+    .panel-hint:not(.panel-hint--hero) a::after,
+    .hint-arrow {
+        animation: hint-bob 1.6s ease-in-out infinite;
+    }
+
+    .hint-arrow:nth-child(2) {
+        animation-delay: -0.25s;
+    }
+
+    .table-hint::before {
+        animation: hint-nudge-left 1.8s ease-in-out infinite;
+    }
+
+    .table-hint::after {
+        animation: hint-nudge-right 1.8s ease-in-out infinite;
+    }
 
     /* Slide 2 (#pitch-more): quote bar hue drifts blue to seafoam
        while the "more money" badge floats over it */

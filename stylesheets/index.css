@@ -157,19 +157,82 @@ table -> figure -> scroll hint.*/
     }
 }
 
-/* Quiet "there is more below" marker beneath the panels */
+/* Scroll-down markers beneath the panels, reusing icons/hand-arrow.svg */
 .panel-hint {
     text-align: center;
     margin: 1.5rem;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
 }
 
 .panel-hint a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     color: inherit;
     text-decoration: none;
+}
+
+.panel-hint a:hover {
+    color: var(--ink);
+}
+
+/* Most arrows will point downwards in panel-hint */
+.panel-hint:not(.panel-hint--hero) a::before,
+.panel-hint:not(.panel-hint--hero) a::after {
+    content: "";
+    flex: 0 0 auto;
+    width: 1.5rem;
+    height: 0.85rem;
+    background: url("../icons/hand-arrow.svg") center / contain no-repeat;
+    opacity: 0.72;
+    rotate: -90deg;
+}
+
+.panel-hint:not(.panel-hint--hero) a::after {
+    scale: 1 -1;
+}
+
+/* Final slide points back up to #pitch */
+.panel-hint a[href="#pitch"]::before,
+.panel-hint a[href="#pitch"]::after {
+    rotate: 90deg;
+}
+
+/* Slide 1 we need to add (a lot of) subliminal clues by adding three arrows */
+.panel-hint--hero a {
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.hint-arrows {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding-top: 0.15rem;
+}
+
+.hint-arrow {
+    width: 2.1rem;
+    height: 1.15rem;
+    background: url("../icons/hand-arrow.svg") center / contain no-repeat;
+    opacity: 0.75;
+}
+
+.hint-arrow:nth-child(1) {
+    rotate: -108deg;
+}
+
+.hint-arrow:nth-child(2) {
+    rotate: -90deg;
+}
+
+.hint-arrow:nth-child(3) {
+    rotate: -72deg;
+    scale: 1 -1;
 }
 
 /* Products search box (decorative) */
@@ -212,9 +275,27 @@ table -> figure -> scroll hint.*/
     box-shadow: var(--shadow-block);
 }
 
-/* Drop the at-the-bottom behavior for this table hint */
+/* Drop the at-the-bottom behavior for this table hint and have left right arrows */
 .table-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
     margin-bottom: 0.6rem;
+}
+
+.table-hint::before,
+.table-hint::after {
+    content: "";
+    flex: 0 0 auto;
+    width: 1.5rem;
+    height: 0.85rem;
+    background: url("../icons/hand-arrow.svg") center / contain no-repeat;
+    opacity: 0.72;
+}
+
+.table-hint::after {
+    rotate: 180deg;
 }
 
 /* Type block fills the free space between the header and the marquee.
