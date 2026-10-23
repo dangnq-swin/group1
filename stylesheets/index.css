@@ -109,12 +109,16 @@ table -> figure -> scroll hint.*/
     margin-inline: auto;
 }
 
-#pitch-more .photo img {
+#pitch-more .photo img,
+#pitch-more .photo object {
+    display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 4 / 3;
     object-fit: contain;
     background: var(--blue-soft);
+    border: 2px solid var(--ink);
+    box-shadow: var(--shadow-block);
 }
 
 /* For larger screen sizes */

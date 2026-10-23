@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="100%" height="100%" aria-labelledby="svg-title svg-desc" role="img">
+<!-- LLM animations -->
+<svg class="lms-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="100%" height="100%" aria-labelledby="svg-title svg-desc" role="img">
   <title id="svg-title">Core Technology LMS</title>
   <desc id="svg-desc">Abstract wireframe illustration of Core Technology LMS interface styled with a 4:3 window shell</desc>
   <defs>
@@ -7,12 +8,318 @@
         font-family: 'Truculenta';
         src: url('../fonts/truculenta-latin.woff2') format('woff2');
       }
-      .title-text {
+
+      :root {
+        --bg: #FAF6EE;
+        --ink: #1A1815;
+        --muted: #5C5750;
+        --blue: #BFD8F0;
+        --blue-soft: #E6EFF9;
+        --pink-sand: #F7EEED;
+        --blue-deep: #2E5F8F;
+        --seafoam: #8FE3C0;
+        --seafoam-deep: #00785C;
+        --seafoam-soft: #DFF5E9;
+        --coral: #FF6B4A;
+      }
+
+      .title-text,
+      .lms-title-text {
         font-family: 'Truculenta', 'Alegreya Sans', system-ui, -apple-system, sans-serif;
         font-weight: 900;
         font-size: 13px;
         letter-spacing: 0.05em;
         fill: #FFFFFF;
+        user-select: none;
+      }
+
+      /* Window control buttons (minimize, maximize, close) */
+      .lms-win-btn {
+        cursor: pointer;
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform 0.14s ease;
+      }
+
+      .lms-win-btn rect,
+      .lms-win-btn line,
+      .lms-win-btn path {
+        transition: fill 0.14s ease, stroke 0.14s ease;
+      }
+
+      .lms-win-btn:hover {
+        transform: translate(-1px, -1px);
+      }
+
+      .lms-win-btn:active {
+        transform: translate(1px, 1px);
+      }
+
+      .lms-win-btn--min:hover > rect,
+      .lms-win-btn--max:hover > rect:first-child {
+        fill: var(--seafoam);
+      }
+
+      .lms-win-btn--close:hover > rect {
+        fill: var(--coral);
+      }
+
+      .lms-win-btn--close:hover > path {
+        stroke: #FFFFFF;
+      }
+
+      /* Sidebar navigation items and status block */
+      .lms-nav-pill,
+      .lms-nav-line,
+      .lms-status-badge {
+        cursor: pointer;
+        transform-box: fill-box;
+        transform-origin: left center;
+        transition: transform 0.15s ease, fill 0.15s ease, opacity 0.15s ease;
+      }
+
+      .lms-nav-pill:hover {
+        transform: translateX(3px);
+      }
+
+      .lms-nav-pill:active {
+        transform: translateX(1px) scaleX(0.96);
+      }
+
+      .lms-nav-pill--primary:hover {
+        fill: var(--coral);
+      }
+
+      .lms-nav-pill--active rect {
+        transition: fill 0.15s ease;
+      }
+
+      .lms-nav-pill--active:hover > rect:first-child {
+        fill: var(--seafoam);
+      }
+
+      .lms-nav-line:hover {
+        transform: translateX(4px) scaleX(1.08);
+        fill: var(--blue-deep);
+        opacity: 1;
+      }
+
+      .lms-nav-line:active {
+        transform: translateX(2px);
+        fill: var(--coral);
+      }
+
+      .lms-status-badge {
+        transform-origin: center;
+      }
+
+      .lms-status-badge__bg,
+      .lms-status-badge__dot {
+        transition: fill 0.15s ease;
+      }
+
+      .lms-status-badge:hover {
+        transform: translate(-1.5px, -1.5px);
+      }
+
+      .lms-status-badge:hover .lms-status-badge__bg {
+        fill: var(--seafoam);
+      }
+
+      .lms-status-badge:hover .lms-status-badge__dot {
+        fill: var(--ink);
+      }
+
+      .lms-status-badge:active {
+        transform: translate(1px, 1px);
+      }
+
+      /* Right area cards (Analytics and Adaptive Tools) */
+      .lms-card {
+        transition: transform 0.18s ease;
+      }
+
+      .lms-card__surface,
+      .lms-card__heading,
+      .lms-text-line {
+        transition: fill 0.18s ease, transform 0.18s ease, opacity 0.18s ease;
+        transform-box: fill-box;
+        transform-origin: left center;
+      }
+
+      .lms-card:hover {
+        transform: translate(-2px, -2px);
+      }
+
+      .lms-card:hover .lms-card__surface {
+        fill: #F2F7FD;
+      }
+
+      .lms-card:hover .lms-card__heading {
+        fill: var(--blue-deep);
+      }
+
+      .lms-text-line:hover {
+        transform: translateX(3px);
+        fill: var(--blue-deep);
+        opacity: 1;
+      }
+
+      /* Top card: Analytics bar chart */
+      .lms-bar {
+        cursor: pointer;
+        transform-box: fill-box;
+        transform-origin: bottom center;
+        transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), fill 0.15s ease;
+      }
+
+      .lms-bar:hover {
+        transform: scaleY(1.18);
+      }
+
+      .lms-bar:active {
+        transform: scaleY(0.9);
+      }
+
+      .lms-bar--1:hover {
+        fill: var(--coral);
+      }
+
+      .lms-bar--2:hover {
+        fill: var(--seafoam-deep);
+      }
+
+      .lms-bar--3:hover {
+        fill: var(--blue-deep);
+      }
+
+      .lms-bar--4:hover {
+        fill: var(--seafoam);
+      }
+
+      /* Top card: Cool mint info badge */
+      .lms-info-badge {
+        cursor: pointer;
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform 0.15s ease;
+      }
+
+      .lms-info-badge__bg,
+      .lms-info-badge__dot,
+      .lms-info-badge__bar {
+        transition: fill 0.15s ease;
+      }
+
+      .lms-info-badge:hover {
+        transform: translate(-2px, -2px);
+      }
+
+      .lms-info-badge:hover .lms-info-badge__bg {
+        fill: var(--seafoam);
+      }
+
+      .lms-info-badge:hover .lms-info-badge__dot,
+      .lms-info-badge:hover .lms-info-badge__bar {
+        fill: var(--ink);
+      }
+
+      .lms-info-badge:active {
+        transform: translate(1px, 1px);
+      }
+
+      /* Bottom card: Spectrum / Waveform pipes */
+      .lms-waveform {
+        cursor: pointer;
+      }
+
+      .lms-wave-bar {
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), fill 0.15s ease;
+      }
+
+      .lms-wave-bar:hover {
+        transform: scaleY(1.38);
+        fill: var(--coral);
+      }
+
+      .lms-wave-bar:active {
+        transform: scaleY(0.75);
+      }
+
+      @keyframes wave-pulse {
+        0%, 100% {
+          transform: scaleY(1);
+        }
+        50% {
+          transform: scaleY(1.32);
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .lms-waveform:hover .lms-wave-bar:not(:hover) {
+          animation: wave-pulse 0.75s ease-in-out infinite;
+        }
+        .lms-waveform:hover .lms-wave-bar--2:not(:hover) {
+          animation-delay: -0.15s;
+        }
+        .lms-waveform:hover .lms-wave-bar--3:not(:hover) {
+          animation-delay: -0.3s;
+        }
+        .lms-waveform:hover .lms-wave-bar--4:not(:hover) {
+          animation-delay: -0.45s;
+        }
+        .lms-waveform:hover .lms-wave-bar--5:not(:hover) {
+          animation-delay: -0.6s;
+        }
+        .lms-waveform:hover .lms-wave-bar--6:not(:hover) {
+          animation-delay: -0.25s;
+        }
+      }
+
+      /* Bottom card: Feature tags */
+      .lms-tag {
+        cursor: pointer;
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform 0.15s ease;
+      }
+
+      .lms-tag__bg,
+      .lms-tag__label {
+        transition: fill 0.15s ease;
+      }
+
+      .lms-tag:hover {
+        transform: translate(-2px, -2px);
+      }
+
+      .lms-tag:active {
+        transform: translate(1px, 1px);
+      }
+
+      .lms-tag--pink:hover .lms-tag__bg {
+        fill: var(--coral);
+      }
+
+      .lms-tag--pink:hover .lms-tag__label {
+        fill: var(--bg);
+      }
+
+      .lms-tag--blue:hover .lms-tag__bg {
+        fill: var(--blue-deep);
+      }
+
+      .lms-tag--blue:hover .lms-tag__label {
+        fill: var(--bg);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+        }
       }
     </style>
     <!-- Drop Shadow Filter for Internal Panels (Darker Blue: #2E5F8F) -->
@@ -29,107 +336,130 @@
   <rect width="480" height="360" fill="transparent" />
 
   <!-- 4:3 Window Shell: Container with Drop Shadow Filter (416 x 312 = exactly 4:3) -->
-  <rect x="28" y="20" width="416" height="312" fill="#DFF5E9" stroke="#1A1815" stroke-width="3" filter="url(#window-shadow)" />
+  <rect class="lms-window-bg" x="28" y="20" width="416" height="312" fill="#DFF5E9" stroke="#1A1815" stroke-width="3" filter="url(#window-shadow)" />
 
   <!-- Window Shell: Titlebar -->
-  <rect x="28" y="20" width="416" height="38" fill="#2E5F8F" stroke="#1A1815" stroke-width="3" />
+  <rect class="lms-titlebar" x="28" y="20" width="416" height="38" fill="#2E5F8F" stroke="#1A1815" stroke-width="3" />
   
   <!-- Titlebar Title -->
-  <text x="42" y="44" class="title-text">CORE TECHNOLOGY LMS v1.3.37</text>
+  <text x="42" y="44" class="title-text lms-title-text">CORE TECHNOLOGY LMS v1.3.37</text>
 
   <!-- Window Shell: Control Buttons -->
   <g id="window-buttons">
     <!-- Minimize button -->
-    <rect x="368" y="31" width="16" height="16" fill="#E6EFF9" stroke="#1A1815" stroke-width="1.8" />
-    <line x1="371" y1="40" x2="381" y2="40" stroke="#1A1815" stroke-width="1.8" stroke-linecap="round" />
+    <g class="lms-win-btn lms-win-btn--min">
+      <rect x="368" y="31" width="16" height="16" fill="#E6EFF9" stroke="#1A1815" stroke-width="1.8" />
+      <line x1="371" y1="40" x2="381" y2="40" stroke="#1A1815" stroke-width="1.8" stroke-linecap="round" />
+    </g>
 
     <!-- Maximize button -->
-    <rect x="390" y="31" width="16" height="16" fill="#E6EFF9" stroke="#1A1815" stroke-width="1.8" />
-    <rect x="394" y="35" width="8" height="8" fill="none" stroke="#1A1815" stroke-width="1.8" />
+    <g class="lms-win-btn lms-win-btn--max">
+      <rect x="390" y="31" width="16" height="16" fill="#E6EFF9" stroke="#1A1815" stroke-width="1.8" />
+      <rect class="lms-win-btn__icon" x="394" y="35" width="8" height="8" fill="none" stroke="#1A1815" stroke-width="1.8" />
+    </g>
 
     <!-- Close button -->
-    <rect x="412" y="31" width="16" height="16" fill="#E6EFF9" stroke="#1A1815" stroke-width="1.8" />
-    <path d="M415 34 l10 10 m0 -10 l-10 10" stroke="#1A1815" stroke-width="1.8" stroke-linecap="round" />
+    <g class="lms-win-btn lms-win-btn--close">
+      <rect x="412" y="31" width="16" height="16" fill="#E6EFF9" stroke="#1A1815" stroke-width="1.8" />
+      <path d="M415 34 l10 10 m0 -10 l-10 10" stroke="#1A1815" stroke-width="1.8" stroke-linecap="round" />
+    </g>
   </g>
 
   <!-- Window Content Area (All Straight / Sharp 90° Corners in Cool Blue Soft) -->
   <!-- Slim Left Sidebar Panel -->
-  <rect x="40" y="68" width="56" height="252" fill="#E6EFF9" stroke="#1A1815" stroke-width="2" />
-  
-  <!-- Sidebar Abstract Items -->
-  <rect x="48" y="78" width="40" height="12" fill="#2E5F8F" stroke="#1A1815" stroke-width="1.5" />
-  
-  <rect x="48" y="98" width="40" height="14" fill="#BFD8F0" stroke="#1A1815" stroke-width="1.5" />
-  <rect x="53" y="103" width="24" height="4" fill="#1A1815" />
+  <g id="lms-sidebar">
+    <rect x="40" y="68" width="56" height="252" fill="#E6EFF9" stroke="#1A1815" stroke-width="2" />
+    
+    <!-- Sidebar Abstract Items -->
+    <rect class="lms-nav-pill lms-nav-pill--primary" x="48" y="78" width="40" height="12" fill="#2E5F8F" stroke="#1A1815" stroke-width="1.5" />
+    
+    <g class="lms-nav-pill lms-nav-pill--active">
+      <rect x="48" y="98" width="40" height="14" fill="#BFD8F0" stroke="#1A1815" stroke-width="1.5" />
+      <rect x="53" y="103" width="24" height="4" fill="#1A1815" />
+    </g>
 
-  <rect x="48" y="120" width="34" height="5" fill="#1A1815" />
-  <rect x="48" y="131" width="26" height="5" fill="#5C5750" opacity="0.6" />
-  <rect x="48" y="142" width="30" height="5" fill="#5C5750" opacity="0.6" />
-  <rect x="48" y="153" width="22" height="5" fill="#5C5750" opacity="0.6" />
+    <rect class="lms-nav-line" x="48" y="120" width="34" height="5" fill="#1A1815" />
+    <rect class="lms-nav-line" x="48" y="131" width="26" height="5" fill="#5C5750" opacity="0.6" />
+    <rect class="lms-nav-line" x="48" y="142" width="30" height="5" fill="#5C5750" opacity="0.6" />
+    <rect class="lms-nav-line" x="48" y="153" width="22" height="5" fill="#5C5750" opacity="0.6" />
 
-  <!-- Sidebar Divider line -->
-  <line x1="45" y1="168" x2="91" y2="168" stroke="#1A1815" stroke-width="1.5" stroke-dasharray="3 3" />
+    <!-- Sidebar Divider line -->
+    <line x1="45" y1="168" x2="91" y2="168" stroke="#1A1815" stroke-width="1.5" stroke-dasharray="3 3" />
 
-  <rect x="48" y="178" width="34" height="5" fill="#5C5750" opacity="0.6" />
-  <rect x="48" y="189" width="28" height="5" fill="#5C5750" opacity="0.6" />
+    <rect class="lms-nav-line" x="48" y="178" width="34" height="5" fill="#5C5750" opacity="0.6" />
+    <rect class="lms-nav-line" x="48" y="189" width="28" height="5" fill="#5C5750" opacity="0.6" />
 
-  <!-- Bottom Mini Status Block (Coral accent) -->
-  <rect x="48" y="294" width="40" height="18" fill="#FF6B4A" stroke="#1A1815" stroke-width="1.5" />
-  <rect x="55" y="300" width="5" height="5" fill="#E6EFF9" stroke="#1A1815" stroke-width="1" />
-  <rect x="63" y="301" width="16" height="3" fill="#E6EFF9" />
+    <!-- Bottom Mini Status Block (Coral accent) -->
+    <g class="lms-status-badge">
+      <rect class="lms-status-badge__bg" x="48" y="294" width="40" height="18" fill="#FF6B4A" stroke="#1A1815" stroke-width="1.5" />
+      <rect class="lms-status-badge__dot" x="55" y="300" width="5" height="5" fill="#E6EFF9" stroke="#1A1815" stroke-width="1" />
+      <rect x="63" y="301" width="16" height="3" fill="#E6EFF9" />
+    </g>
+  </g>
 
   <!-- Right Area: Top Abstract Card (Analytics - 4:3 Proportional Layout) -->
-  <g id="abstract-card-top">
+  <g id="abstract-card-top" class="lms-card">
     <!-- Card with Filter Drop Shadow -->
-    <rect x="108" y="68" width="324" height="120" fill="#E6EFF9" stroke="#1A1815" stroke-width="2" filter="url(#panel-shadow)" />
+    <rect class="lms-card__surface" x="108" y="68" width="324" height="120" fill="#E6EFF9" stroke="#1A1815" stroke-width="2" filter="url(#panel-shadow)" />
     
     <!-- Abstract Header Lines -->
-    <rect x="122" y="80" width="135" height="8" fill="#1A1815" />
+    <rect class="lms-card__heading" x="122" y="80" width="135" height="8" fill="#1A1815" />
     <rect x="122" y="93" width="75" height="5" fill="#5C5750" opacity="0.6" />
 
     <!-- Abstract Bar Chart -->
-    <rect x="122" y="132" width="20" height="44" fill="#2E5F8F" stroke="#1A1815" stroke-width="1.5" />
-    <rect x="148" y="120" width="20" height="56" fill="#8FE3C0" stroke="#1A1815" stroke-width="1.5" />
-    <rect x="174" y="110" width="20" height="66" fill="#FF6B4A" stroke="#1A1815" stroke-width="1.5" />
-    <rect x="200" y="124" width="20" height="52" fill="#BFD8F0" stroke="#1A1815" stroke-width="1.5" />
+    <g class="lms-chart">
+      <rect class="lms-bar lms-bar--1" x="122" y="132" width="20" height="44" fill="#2E5F8F" stroke="#1A1815" stroke-width="1.5" />
+      <rect class="lms-bar lms-bar--2" x="148" y="120" width="20" height="56" fill="#8FE3C0" stroke="#1A1815" stroke-width="1.5" />
+      <rect class="lms-bar lms-bar--3" x="174" y="110" width="20" height="66" fill="#FF6B4A" stroke="#1A1815" stroke-width="1.5" />
+      <rect class="lms-bar lms-bar--4" x="200" y="124" width="20" height="52" fill="#BFD8F0" stroke="#1A1815" stroke-width="1.5" />
+    </g>
 
     <!-- Abstract Info Badge & Lines (Cool Mint Badge) -->
-    <rect x="246" y="112" width="174" height="24" fill="#DFF5E9" stroke="#1A1815" stroke-width="1.5" />
-    <rect x="256" y="120" width="8" height="8" fill="#00785C" />
-    <rect x="270" y="121" width="138" height="6" fill="#00785C" />
+    <g class="lms-info-badge">
+      <rect class="lms-info-badge__bg" x="246" y="112" width="174" height="24" fill="#DFF5E9" stroke="#1A1815" stroke-width="1.5" />
+      <rect class="lms-info-badge__dot" x="256" y="120" width="8" height="8" fill="#00785C" />
+      <rect class="lms-info-badge__bar" x="270" y="121" width="138" height="6" fill="#00785C" />
+    </g>
 
-    <rect x="246" y="146" width="145" height="5" fill="#1A1815" />
-    <rect x="246" y="157" width="115" height="5" fill="#5C5750" opacity="0.6" />
-    <rect x="246" y="168" width="130" height="5" fill="#5C5750" opacity="0.4" />
+    <rect class="lms-text-line" x="246" y="146" width="145" height="5" fill="#1A1815" />
+    <rect class="lms-text-line" x="246" y="157" width="115" height="5" fill="#5C5750" opacity="0.6" />
+    <rect class="lms-text-line" x="246" y="168" width="130" height="5" fill="#5C5750" opacity="0.4" />
   </g>
 
   <!-- Right Area: Bottom Abstract Card (Adaptive Tools - 4:3 Proportional Layout) -->
-  <g id="abstract-card-bottom">
+  <g id="abstract-card-bottom" class="lms-card">
     <!-- Card with Filter Drop Shadow -->
-    <rect x="108" y="200" width="324" height="120" fill="#E6EFF9" stroke="#1A1815" stroke-width="2" filter="url(#panel-shadow)" />
+    <rect class="lms-card__surface" x="108" y="200" width="324" height="120" fill="#E6EFF9" stroke="#1A1815" stroke-width="2" filter="url(#panel-shadow)" />
     
     <!-- Abstract Header Lines -->
-    <rect x="122" y="212" width="145" height="8" fill="#1A1815" />
+    <rect class="lms-card__heading" x="122" y="212" width="145" height="8" fill="#1A1815" />
     <rect x="122" y="225" width="85" height="5" fill="#5C5750" opacity="0.6" />
 
     <!-- Abstract Spectrum / Waveform pipes -->
-    <rect x="124" y="246" width="4" height="24" fill="#1A1815" />
-    <rect x="133" y="238" width="4" height="40" fill="#FF6B4A" />
-    <rect x="142" y="242" width="4" height="32" fill="#1A1815" />
-    <rect x="151" y="232" width="4" height="52" fill="#2E5F8F" />
-    <rect x="160" y="244" width="4" height="28" fill="#8FE3C0" />
-    <rect x="169" y="236" width="4" height="44" fill="#1A1815" />
+    <g class="lms-waveform">
+      <rect x="120" y="230" width="58" height="56" fill="transparent" />
+      <rect class="lms-wave-bar lms-wave-bar--1" x="124" y="246" width="4" height="24" fill="#1A1815" />
+      <rect class="lms-wave-bar lms-wave-bar--2" x="133" y="238" width="4" height="40" fill="#FF6B4A" />
+      <rect class="lms-wave-bar lms-wave-bar--3" x="142" y="242" width="4" height="32" fill="#1A1815" />
+      <rect class="lms-wave-bar lms-wave-bar--4" x="151" y="232" width="4" height="52" fill="#2E5F8F" />
+      <rect class="lms-wave-bar lms-wave-bar--5" x="160" y="244" width="4" height="28" fill="#8FE3C0" />
+      <rect class="lms-wave-bar lms-wave-bar--6" x="169" y="236" width="4" height="44" fill="#1A1815" />
+    </g>
 
     <!-- Abstract Content Lines -->
-    <rect x="190" y="244" width="228" height="6" fill="#1A1815" />
-    <rect x="190" y="258" width="180" height="6" fill="#5C5750" opacity="0.7" />
-    <rect x="190" y="272" width="130" height="6" fill="#5C5750" opacity="0.4" />
+    <rect class="lms-text-line" x="190" y="244" width="228" height="6" fill="#1A1815" />
+    <rect class="lms-text-line" x="190" y="258" width="180" height="6" fill="#5C5750" opacity="0.7" />
+    <rect class="lms-text-line" x="190" y="272" width="130" height="6" fill="#5C5750" opacity="0.4" />
 
     <!-- Abstract Tags -->
-    <rect x="122" y="292" width="95" height="18" fill="#F7EEED" stroke="#1A1815" stroke-width="1.2" />
-    <rect x="132" y="298" width="75" height="5" fill="#1A1815" />
+    <g class="lms-tag lms-tag--pink">
+      <rect class="lms-tag__bg" x="122" y="292" width="95" height="18" fill="#F7EEED" stroke="#1A1815" stroke-width="1.2" />
+      <rect class="lms-tag__label" x="132" y="298" width="75" height="5" fill="#1A1815" />
+    </g>
 
-    <rect x="228" y="292" width="105" height="18" fill="#BFD8F0" stroke="#1A1815" stroke-width="1.2" />
-    <rect x="238" y="298" width="85" height="5" fill="#2E5F8F" />
+    <g class="lms-tag lms-tag--blue">
+      <rect class="lms-tag__bg" x="228" y="292" width="105" height="18" fill="#BFD8F0" stroke="#1A1815" stroke-width="1.2" />
+      <rect class="lms-tag__label" x="238" y="298" width="85" height="5" fill="#2E5F8F" />
+    </g>
   </g>
 </svg>
