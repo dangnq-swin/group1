@@ -133,6 +133,7 @@
 }
 
 @keyframes player-leave {
+
     /* display flips discretely between the keyframes that carry it, so
        keep it only in the last step: opacity finishes the fade first,
        then the play screen leaves layout entirely and the marquee sits
@@ -161,6 +162,31 @@
 
     to {
         clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Slide 3 (#pitch-profit): the two sticker spans slap on one
+       after the other — "sticker" plates landing on the page.
+       Stagger via animation-range, NOT delay (delay is ignored
+       on scroll timelines). Keyframe translate/scale, not
+       transform — the 2nd span's resting rotate(-1.2deg) lives
+       in transform (index.css), and keyframing transform here
+       would override it for good under fill: both. */
+@keyframes sticker-slap {
+    from {
+        opacity: 0;
+        translate: 0 -2.5rem;
+        scale: 1.5;
+    }
+
+    70% {
+        scale: 0.94;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
     }
 }
 
@@ -248,6 +274,20 @@
             animation: fly-in-left 1.2s ease-out both;
             animation-timeline: --panel;
             animation-range: entry 0% entry 80%;
+        }
+
+        /* Slide 3 (#pitch-profit): stickers slap down one after
+           the other while the panel scrolls in. 2nd sticker:
+           later range = the stagger (delay is a no-op on a
+           scroll timeline). */
+        .anim--slap>span {
+            animation: sticker-slap 1s ease-out both;
+            animation-timeline: --panel;
+            animation-range: entry 70% entry 90%;
+        }
+
+        .anim--slap>span+span {
+            animation-range: entry 80% entry 100%;
         }
     }
 }
