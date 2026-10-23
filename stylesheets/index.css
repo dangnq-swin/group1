@@ -94,6 +94,27 @@ table -> figure -> scroll hint.*/
     #products .products-hint {
         order: 6;
     }
+
+    /* Pitch More illustration scale down on narrow viewports */
+    #pitch-more .photo {
+        max-width: min(22rem, 85vw);
+        margin-block: 0.5rem;
+    }
+}
+
+/* Photo sizing so that it can be 4/3 */
+#pitch-more .photo {
+    width: 100%;
+    max-width: 28rem;
+    margin-inline: auto;
+}
+
+#pitch-more .photo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: var(--blue-soft);
 }
 
 /* For larger screen sizes */
@@ -112,6 +133,23 @@ table -> figure -> scroll hint.*/
     .products-heading,
     .products-hint {
         text-align: right;
+    }
+
+    /* Pitch more slide split grid */
+    #pitch-more .grid--split {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        align-items: center;
+        gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    #pitch-more .grid--split>[data-mobile-pane] {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #pitch-more .pitch-copy {
+        margin-inline: 0;
+        max-width: none;
     }
 }
 
@@ -163,9 +201,9 @@ table -> figure -> scroll hint.*/
     the table and widen the page instead of scrolling themselves */
     min-width: 0;
     max-width: 100%;
-    overflow: auto;
-    /* when scrolling quickly, contain it so that the section doesn't skip */
-    overscroll-behavior: contain;
+    overflow-x: auto;
+    /* Contain horizontal slide */
+    overscroll-behavior-x: contain;
     background: var(--bg);
     box-shadow: var(--shadow-block);
 }
@@ -351,6 +389,11 @@ body:has(#play:not(:checked)) .pitch-hero>:not(.play-screen) {
     display: none;
 }
 
+/* Hide country acknowledgement before play is clicked */
+body:has(#play:not(:checked)) .country-acknowledgement {
+    display: none;
+}
+
 /* Hide playscreen after button is pressed */
 body:has(#play:checked) .play-screen {
     display: none;
@@ -382,7 +425,7 @@ body:has(#play:checked) .play-screen {
     width: min(36rem, 100%);
     overflow: hidden;
     border: 3px solid var(--ink);
-    border-radius: 1rem;
+    border-radius: 0;
     background: var(--seafoam-soft);
     box-shadow: var(--shadow-block);
 }
@@ -417,7 +460,7 @@ body:has(#play:checked) .play-screen {
     width: min(2.1rem, 6svh);
     height: min(2.1rem, 6svh);
     border: 2px solid var(--ink);
-    border-radius: 0.4rem;
+    border-radius: 0;
     background: var(--bg);
 }
 

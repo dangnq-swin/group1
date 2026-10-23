@@ -43,7 +43,9 @@
 <body>
     <header>
         <a class="brand" href="index.html">
-            <span class="brand-mark" aria-hidden="true"></span>
+            <span class="brand-mark" aria-hidden="true">
+                <img src="images/brandmark.svg" alt="" width="32" height="32" />
+            </span>
             <span>
                 <span class="brand-name">Core Technology</span>
                 <span class="brand-slogan">You have the core. We build the rest</span>
@@ -68,7 +70,7 @@
                                     <path d="M3 12h10" />
                                 </svg></span>
                             <span><svg viewBox="0 0 16 16" focusable="false">
-                                    <rect x="3" y="3" width="10" height="10" rx="1.5" />
+                                    <rect x="3" y="3" width="10" height="10" />
                                 </svg></span>
                             <span><svg viewBox="0 0 16 16" focusable="false">
                                     <path d="M3.5 3.5l9 9m0-9-9 9" />
@@ -132,22 +134,32 @@
         </section>
         <!-- Pitch copy 1st -->
         <section class="panel" id="pitch-more" aria-label="Our pitch, part one">
-            <div class="pitch-copy anim--wipe">
-                <p class="pitch-standfirst">You, or your institution, might ask rhetorically:</p>
-                <p class="pitch-quote">
-                    How do we make <span class="money">more money</span> while being more
-                    <del>woke</del> accessible?
-                </p>
-                <p>
-                    That is where we might barge in,
-                    respectfully as business partners of course! We specialize in making sure that your institution
-                    has an
-                    accessible
-                    platform: that your current students can navigate your digital
-                    ecosystem with ease, that you hit your projected enrollment rate.
-                    That's basically magic. It's not just magical, it's supernatural. It's uncanny how well
-                    our tools will integrate with your workflows.
-                </p>
+            <div class="grid grid--split">
+                <div data-mobile-pane>
+                    <div class="pitch-copy anim--wipe">
+                        <p class="pitch-standfirst">You, or your institution, might ask rhetorically:</p>
+                        <p class="pitch-quote">
+                            How do we make <span class="money">more money</span> while being more
+                            <del>woke</del> accessible?
+                        </p>
+                        <p>
+                            That is where we barge in, respectfully as business partners of course!
+                            We are a bespoke educational technology boutique dedicated to crafting
+                            accessible, WCAG-compliant digital learning platforms and student workflows. We make sure
+                            that your current students can navigate your digital ecosystem with ease, and that you hit
+                            your projected enrollment goals without friction. It's not just magical, it's supernatural
+                            how well
+                            our tools will uncannily integrate with your workflows.
+                        </p>
+                    </div>
+                </div>
+                <div data-mobile-pane>
+                    <figure class="photo anim--zoom">
+                        <img src="images/company-illustration.svg"
+                            alt="Abstract wireframe illustration of Core Technology LMS interface">
+                        <figcaption>Core Technology LMS: unified digital learning and accessibility suite</figcaption>
+                    </figure>
+                </div>
             </div>
             <p class="panel-hint" aria-hidden="true"><a href="#pitch-profit">Read on &darr;</a></p>
         </section>
@@ -183,8 +195,8 @@
                     <div class="product-search" role="search" aria-label="Search our products">
                         <label for="product-search-input">Look up your perfect tool</label>
                         <div class="product-search__row">
-                            <input class="product-search__input" id="product-search-input" type="search" name="q"
-                                placeholder="e.g. replacing employees with LLMs, checking stocks while driving"
+                            <input class="product-search__input" id="product-search-input" type="search"
+                                placeholder="e.g. accessibility audit, LMS integration, student analytics"
                                 autocomplete="off">
                             <button class="product-search__button" type="button">Search</button>
                         </div>
@@ -238,8 +250,7 @@
                     <h2 id="products-title" class="products-heading">Here's what's in the Arsenal: we don't come
                         second.</h2>
                     <figure class="photo anim--zoom">
-                        <img src="https://images.pexels.com/photos/5717719/pexels-photo-5717719.jpeg"
-                            alt="Person working with laptop" />
+                        <img src="images/pexels-photo-5717719.jpeg" alt="Person working with a laptop" />
                         <figcaption>Working with our tools is extremely simple. Just look at this stock photo!
                         </figcaption>
                     </figure>
@@ -255,8 +266,7 @@
                 picked:
             </h2>
             <blockquote>
-                <p>
-                    Before I tried the Core Technology's In-Shareholders-Boots Putter&trade;.
+                <p> Before I tried the Core Technology's In-Shareholders-Boots Putter&trade;.
                     I had the impression that investors were only there to leech off our profits and to
                     push us to further commercialize our operations, but afterward I now understand that they're
                     too are
@@ -264,22 +274,22 @@
                     they need to feed their family and pay for their yachts' fuel too. I am now a more empathetic
                     person.
                 </p>
-                <footer>&mdash;Professor A (she/her)</footer>
+                <footer>&mdash;Professor A (he/him), <cite>After trying our product</cite></footer>
             </blockquote>
             <blockquote>
-                <p>
-                    I am quite fond of the new web page redesigns, which had
+                <p> I am quite fond of the new web page redesigns, which had
                     an increased contrast and the color palette was red-green
                     colorblind friendly too. And they also let me choose my pronouns,
                     which I suppose is a really nice gesture. I genuinely don't have
                     anything sarcastic to say about this.
                 </p>
-                <footer>&mdash;Lilith (she/they)</footer>
+                <footer>&mdash;Lilith (she/they), <cite>In an anonymous feedback</cite></footer>
             </blockquote>
             <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
                 <footer>&mdash;Apparently Cicero himself (long/dead)</footer>
             </blockquote>
             <p class="panel-hint" aria-hidden="true"><a href="#offers">Our
@@ -291,24 +301,42 @@
                 sorry about that. However, wanna work for us? We're hiring!
             </h2>
             <p>Please check the jobs section of this web page for further details.
-                And if you're looking to work against us&hellip; Well, let's just say:</p>
+                And if you're looking to work against us&hellip; well, to quote our Director of Operations:</p>
             <blockquote>
-                <p style="text-align: center;">I got a Glock in my 'Rari, ay <br />
-                    17 shots, no 38</p>
-                <footer>&mdash;Fetty Wap (Willie Junior Maxwell II), <cite>679</cite></footer>
+                <p> We have a lot of competitions, but they're
+                    mostly bigger companies. I like indie businesses myself. Together, we could all facilitate a
+                    competitive environment where all of us could all thrive within a
+                    specific education niche that we carved for ourselves, and besides,
+                    nothing like a health rivalry right? I wish you the best of luck with your startup.
+                </p>
+                <footer>&mdash;Dayvon Daquan Bennett, <cite>Conversation with a leaving employee</cite>
+                </footer>
             </blockquote>
             <p class="panel-hint" aria-hidden="true"><a href="#pitch">Read
                     our pitch again
                     &uarr;</a></p>
         </section>
     </main>
+
+    <!-- Acknowledgement of Country -->
+    <aside class="country-acknowledgement" aria-label="Acknowledgement of Country">
+        <p>
+            <strong>Acknowledgement of Country:</strong> We respectfully acknowledge the Wurundjeri Woi-wurrung People
+            of the Kulin Nation, who are the Traditional Owners of the lands on which our operations are based in
+            Melbourne&rsquo;s east, and pay our respects to their Elders past, present, and emerging. We are honoured to
+            recognise our connection to Wurundjeri Country, history, culture, and spirituality, and strive to ensure
+            that we create digital learning tools in a manner that respects and honours Aboriginal and Torres Strait
+            Islander peoples across Australia.
+        </p>
+    </aside>
+
     <!-- Footer section-->
     <footer aria-label="Site">
         <p class="footer-note">&copy; 2026 Core Technology.</p>
         <ul class="footer-links">
             <li><a href="#">Jira project</a></li>
-            <li><a href="#">GitHub repository</a></li>
-            <li><a href="mailto:info@example.com">info@example.com</a></li>
+            <li><a href="https://github.com/dangnq-swin/group1">GitHub repository</a></li>
+            <li><a href="mailto:hi@coretechnology.example">hi@coretechnology.example</a></li>
         </ul>
     </footer>
 
