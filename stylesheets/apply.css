@@ -1,0 +1,156 @@
+/* Apply page styles. Loaded after styles.css, which provides the colour
+   variables, reset, typography, header/nav, footer and button styles. */
+
+/* Form layout: one column on phones, two columns from 40rem (Grid) */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem 1.1rem;
+}
+
+@media (min-width: 40rem) {
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+/* Field that spans both grid columns */
+.field--full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* Text inputs: square corners come from the global input rule */
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border: 2px solid var(--ink);
+    background: var(--bg);
+    color: var(--ink);
+    font: inherit;
+}
+
+.form-grid select {
+    /* selects are not covered by the global input rule */
+    border-radius: 0;
+}
+
+.form-grid textarea {
+    min-height: 6.5rem;
+    resize: vertical;
+}
+
+.form-grid input::placeholder,
+.form-grid textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.7;
+}
+
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus {
+    border-color: var(--blue-deep);
+}
+
+/* Radio / checkbox groups: no box, just the legend and the option tiles */
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+legend {
+    /* legend isn't a flex item, so space it from the tiles manually */
+    margin-bottom: 0.5rem;
+    padding: 0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    /* same as the other field labels */
+    color: var(--muted);
+}
+
+.choice-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* Each option is a button-like tile.
+   .field .choice must beat .field label, or the options render as tiny caps */
+.field .choice {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.8rem;
+    border: 2px solid var(--ink);
+    background: var(--bg);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--ink);
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.field .choice:hover {
+    background: var(--blue-soft);
+}
+
+/* Selected tile: same blue fill + coral offset shadow as buttons */
+.field .choice:has(input:checked) {
+    background: var(--blue);
+    box-shadow: 4px 4px 0 var(--coral);
+    transform: translate(-1px, -1px);
+}
+
+/* Move the keyboard focus ring from the tiny input to the whole tile */
+.field .choice:has(input:focus-visible) {
+    outline: 3px solid var(--blue-deep);
+    outline-offset: 3px;
+}
+
+.field .choice:has(input:focus-visible) input {
+    outline: none;
+}
+
+.choice input {
+    width: auto;
+    margin: 0;
+    accent-color: var(--ink);
+    cursor: pointer;
+}
+
+/* Submit / reset buttons (button look comes from styles.css) */
+.btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+}
+
+.form-note {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.req {
+    color: var(--blue-deep);
+}

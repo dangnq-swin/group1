@@ -1,192 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apply for a role - Core Technology</title>
-  
-  <!-- Import Google Fonts as defined in style.css -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Truculenta:opsz,wght@12..72,700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Core Technology: Apply</title>
+
+  <link rel="stylesheet" href="stylesheets/fonts.css">
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/apply.css">
+
 </head>
+
 <body>
 
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <!--Header -->
+  <header>
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="images/brandmark.svg" alt="" width="32" height="32" />
+      </span>
+      <span>
+        <span class="brand-name">Core Technology</span>
+        <span class="brand-slogan">You have the core. We build the rest</span>
+      </span>
+    </a>
 
-  <div class="site">
-    <!-- Masthead / Navigation -->
-    <header class="masthead">
-      <a href="index.html" class="brand">
-        <div class="brand-mark"></div>
-        <div>
-          <span class="brand-name">Core Technology</span>
-          <span class="brand-slogan">YOU HAVE THE CORE. WE BUILD THE REST</span>
-        </div>
-      </a>
-      <nav class="nav" aria-label="Main navigation">
-        <a href="index.html">HOME</a>
-        <a href="jobs.html">JOBS</a>
-        <a href="apply.html" aria-current="page">APPLY</a>
-        <a href="about.html">ABOUT</a>
-      </nav>
-    </header>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="apply.html" aria-current="page">Apply</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
 
-    <!-- Main Content -->
-    <main id="main">
-      <section class="hero-copy">
-        <span class="eyebrow">APPLICATION FORM</span>
-        <h1>Apply for a role</h1>
-        <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. All fields are required except “Other skills”.</p>
-      </section>
+  <main id="main" class="stack">
+    <section class="hero-copy">
+      <h1>Apply for a role</h1>
+      <p>If you're interested in our job opportunities, please fill out the form below. All fields are required except “Other
+        skills”.</p>
+    </section>
 
-      <form action="https://mercury.swin.edu.au/itread/process.php" method="post" novalidate>
-        <h2>Your details</h2>
+    <form action="https://mercury.swin.edu.au/itread/process.php" method="post" novalidate>
+      <h2>Your details</h2>
 
-        <div class="form-grid">
-          <!-- Job Reference Number -->
-          <div class="field">
-            <label for="job-ref">JOB REFERENCE NUMBER <span class="req">*</span></label>
-            <input type="text" id="job-ref" name="job_ref" required pattern="[A-Za-z0-9]{5}" placeholder="A1B2C">
-          </div>
-
-          <!-- Date of Birth -->
-          <div class="field">
-            <label for="dob">DATE OF BIRTH <span class="req">*</span></label>
-            <input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" required pattern="\d{2}/\d{2}/\d{4}">
-          </div>
-
-          <!-- First Name -->
-          <div class="field">
-            <label for="first-name">FIRST NAME <span class="req">*</span></label>
-            <input type="text" id="first-name" name="first_name" placeholder="Lorem" maxlength="20" required pattern="[A-Za-z]+">
-          </div>
-
-          <!-- Last Name -->
-          <div class="field">
-            <label for="last-name">LAST NAME <span class="req">*</span></label>
-            <input type="text" id="last-name" name="last_name" placeholder="Ipsum" maxlength="20" required pattern="[A-Za-z]+">
-          </div>
-
-          <!-- Gender -->
-          <fieldset class="field field--full">
-            <legend>GENDER <span class="req">*</span></legend>
-            <div class="choice-row">
-              <label class="choice">
-                <input type="radio" name="gender" value="female" required> Female
-              </label>
-              <label class="choice">
-                <input type="radio" name="gender" value="male"> Male
-              </label>
-              <label class="choice">
-                <input type="radio" name="gender" value="non-binary"> Non-binary
-              </label>
-              <label class="choice">
-                <input type="radio" name="gender" value="prefer-not-to-say"> Prefer not to say
-              </label>
-            </div>
-          </fieldset>
-
-          <!-- Street Address -->
-          <div class="field field--full">
-            <label for="street">STREET ADDRESS <span class="req">*</span></label>
-            <input type="text" id="street" name="street" placeholder="123 Lorem Street" maxlength="40" required>
-          </div>
-
-          <!-- Suburb / Town -->
-          <div class="field">
-            <label for="suburb">SUBURB / TOWN <span class="req">*</span></label>
-            <input type="text" id="suburb" name="suburb" placeholder="Ipsumville" maxlength="40" required>
-          </div>
-
-          <!-- State -->
-          <div class="field">
-            <label for="state">STATE <span class="req">*</span></label>
-            <select id="state" name="state" required>
-              <option value="" disabled selected>Select a state...</option>
-              <option value="VIC">VIC</option>
-              <option value="NSW">NSW</option>
-              <option value="QLD">QLD</option>
-              <option value="NT">NT</option>
-              <option value="WA">WA</option>
-              <option value="SA">SA</option>
-              <option value="TAS">TAS</option>
-
-              <option value="ACT">ACT</option>
-            </select>
-          </div>
-
-          <!-- Postcode -->
-          <div class="field">
-            <label for="postcode">POSTCODE <span class="req">*</span></label>
-            <input type="text" id="postcode" name="postcode" placeholder="3122" required pattern="\d{4}">
-          </div>
-
-          <!-- Email -->
-          <div class="field">
-            <label for="email">EMAIL <span class="req">*</span></label>
-            <input type="email" id="email" name="email" placeholder="name@example.com" required>
-          </div>
-
-          <!-- Phone Number -->
-          <div class="field field--full">
-            <label for="phone">PHONE NUMBER <span class="req">*</span></label>
-            <input type="tel" id="phone" name="phone" placeholder="0412345678" required pattern="[\d\s]{8,12}">
-          </div>
-
-          <!-- Skills Checklist -->
-          <fieldset class="field field--full">
-            <legend>SKILLS <span class="req">*</span></legend>
-            <div class="choice-row">
-              <label class="choice">
-                <input type="checkbox" name="skills[]" value="HTML5"> HTML5
-              </label>
-              <label class="choice">
-                <input type="checkbox" name="skills[]" value="CSS3"> CSS3
-              </label>
-              <label class="choice">
-                <input type="checkbox" name="skills[]" value="JavaScript"> JavaScript
-              </label>
-              <label class="choice">
-                <input type="checkbox" name="skills[]" value="Figma"> Figma
-              </label>
-              <label class="choice">
-                <input type="checkbox" name="skills[]" value="Accessibility"> Accessibility
-              </label>
-            </div>
-          </fieldset>
-
-          <!-- Other Skills -->
-          <div class="field field--full">
-            <label for="other-skills">OTHER SKILLS</label>
-            <textarea id="other-skills" name="other_skills" placeholder="Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."></textarea>
-          </div>
+      <div class="form-grid">
+        <!-- Job Reference Number -->
+        <div class="field">
+          <label for="job-ref">JOB REFERENCE NUMBER <span class="req">*</span></label>
+          <input type="text" id="job-ref" name="job_ref" required pattern="[A-Za-z0-9]{5}" placeholder="A1B2C">
         </div>
 
-        <br>
-
-        <!-- Buttons -->
-        <div class="btn-row">
-          <button type="submit" class="btn">Submit application</button>
-          <button type="reset" class="btn btn--ghost">Clear form</button>
+        <!-- Date of Birth -->
+        <div class="field">
+          <label for="dob">DATE OF BIRTH <span class="req">*</span></label>
+          <input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" required pattern="\d{2}/\d{2}/\d{4}">
         </div>
 
-        <p class="form-note" style="margin-top: 0.8rem;">Fields marked <span class="req">*</span> are required.</p>
-      </form>
-    </main>
+        <!-- First Name -->
+        <div class="field">
+          <label for="first-name">FIRST NAME <span class="req">*</span></label>
+          <input type="text" id="first-name" name="first_name" placeholder="Độ " maxlength="20" required
+            pattern="[A-Za-z]+">
+        </div>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-      <p class="footer-note">&copy; 2025 Core Technology. Acknowledge and respect Traditional Owners.</p>
-      <ul class="footer-links">
-        <li><a href="https://jira.swinburne.edu.au" target="_blank" rel="noopener">Jira project</a></li>
-        <li><a href="https://github.com" target="_blank" rel="noopener">GitHub repository</a></li>
-        <li><a href="mailto:info@loremipsum.example">info@loremipsum.example</a></li>
-      </ul>
-    </footer>
-  </div>
+        <!-- Last Name -->
+        <div class="field">
+          <label for="last-name">LAST NAME <span class="req">*</span></label>
+          <input type="text" id="last-name" name="last_name" placeholder="Mixi " maxlength="20" required
+            pattern="[A-Za-z]+">
+        </div>
+
+        <!-- Gender -->
+        <fieldset class="field field--full">
+          <legend>GENDER <span class="req">*</span></legend>
+          <div class="choice-row">
+            <label class="choice">
+              <input type="radio" name="gender" value="female" required> Female
+            </label>
+            <label class="choice">
+              <input type="radio" name="gender" value="male"> Male
+            </label>
+            <label class="choice">
+              <input type="radio" name="gender" value="non-binary"> Non-binary
+            </label>
+            <label class="choice">
+              <input type="radio" name="gender" value="prefer-not-to-say"> Prefer not to say
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Street Address -->
+        <div class="field field--full">
+          <label for="street">STREET ADDRESS <span class="req">*</span></label>
+          <input type="text" id="street" name="street" placeholder="455 George St" maxlength="40" required>
+        </div>
+
+        <!-- Suburb / Town -->
+        <div class="field">
+          <label for="suburb">SUBURB / TOWN <span class="req">*</span></label>
+          <input type="text" id="suburb" name="suburb" placeholder="Sydney" maxlength="40" required>
+        </div>
+
+        <!-- State -->
+        <div class="field">
+          <label for="state">STATE <span class="req">*</span></label>
+          <select id="state" name="state" required>
+            <option value="" disabled selected>Select a state...</option>
+            <option value="VIC">VIC</option>
+            <option value="NSW">NSW</option>
+            <option value="QLD">QLD</option>
+            <option value="NT">NT</option>
+            <option value="WA">WA</option>
+            <option value="SA">SA</option>
+            <option value="TAS">TAS</option>
+
+            <option value="ACT">ACT</option>
+          </select>
+        </div>
+
+        <!-- Postcode -->
+        <div class="field">
+          <label for="postcode">POSTCODE <span class="req">*</span></label>
+          <input type="text" id="postcode" name="postcode" placeholder="2000 " required pattern="\d{4}">
+        </div>
+
+        <!-- Email -->
+        <div class="field">
+          <label for="email">EMAIL <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="name@example.com" required>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="field field--full">
+          <label for="phone">PHONE NUMBER <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="113" required pattern="[\d\s]{8,12}">
+        </div>
+
+        <!-- Skills Checklist -->
+        <fieldset class="field field--full">
+          <legend>SKILLS <span class="req">*</span></legend>
+          <div class="choice-row">
+            <label class="choice">
+              <input type="checkbox" name="skills[]" value="HTML5"> HTML5
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="skills[]" value="CSS3"> CSS3
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="skills[]" value="JavaScript"> JavaScript
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="skills[]" value="Figma"> Figma
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="skills[]" value="Accessibility"> Accessibility
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Other Skills -->
+        <div class="field field--full">
+          <label for="other-skills">OTHER SKILLS</label>
+          <textarea id="other-skills" name="other_skills"
+            placeholder="Please list any skills you have if you think they are valuable for us..."></textarea>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="btn-row">
+        <button type="submit">Submit application</button>
+        <button type="reset">Clear form</button>
+      </div>
+
+      <p class="form-note" style="margin-top: 0.8rem;">Fields marked <span class="req">*</span> are required.</p>
+    </form>
+  </main>
+
+  <!-- Acknowledgement of Country -->
+  <aside class="country-acknowledgement" aria-label="Acknowledgement of Country">
+    <p>
+      <strong>Acknowledgement of Country:</strong> We respectfully acknowledge the Wurundjeri Woi-wurrung People of the
+      Kulin Nation, who are the Traditional Owners of the lands on which our operations are based in Melbourne&rsquo;s
+      east, and pay our respects to their Elders past, present, and emerging. We are honoured to recognise our
+      connection to Wurundjeri Country, history, culture, and spirituality, and strive to ensure that we create digital
+      learning tools in a manner that respects and honours Aboriginal and Torres Strait Islander peoples across
+      Australia.
+    </p>
+  </aside>
+
+  <!-- Footer -->
+  <footer aria-label="Site">
+    <p class="footer-note">© 2026 Core Technology.</p>
+    <ul class="footer-links">
+      <li><a href="#">Jira project</a></li>
+      <li><a href="https://github.com/dangnq-swin/group1">GitHub repository</a></li>
+      <li><a href="mailto:hi@coretechnology.example">hi@coretechnology.example</a></li>
+    </ul>
+  </footer>
 
 </body>
+
 </html>
