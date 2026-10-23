@@ -62,6 +62,16 @@
     }
 }
 
+@keyframes spin-ring {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes quote-border {
 
     0%,
@@ -116,6 +126,11 @@
     #offers blockquote {
         animation: sway 8s ease-in-out infinite;
         transform-origin: top center;
+    }
+
+    /* Slide 6 (#offers): hand-drawn arrows orbit slowly around the jobs CTA */
+    .offers-cta__arrows {
+        animation: spin-ring 24s linear infinite;
     }
 
     /* Slide 1 (#pitch): already on screen at load — a plain
@@ -315,4 +330,80 @@
 #products .product-search__button:focus-visible {
     outline: 3px solid var(--coral);
     outline-offset: 2px;
+}
+
+
+/* Offers section CTA: button surrounded by a circle of hand-drawn arrows */
+.offers-cta {
+    --ring-size: clamp(18.5rem, 50vw, 20.5rem);
+    align-self: center;
+    display: grid;
+    place-items: center;
+    padding-block: 0.75rem;
+    margin-block: 0.5rem;
+}
+
+.offers-cta>* {
+    grid-area: 1 / 1;
+}
+
+.offers-cta__btn {
+    position: relative;
+    z-index: 1;
+}
+
+/* In-flow box sized to the full arrow circle so arrows never clip adjacent text */
+.offers-cta__arrows {
+    display: grid;
+    place-items: center;
+    width: var(--ring-size);
+    height: var(--ring-size);
+    pointer-events: none;
+}
+
+.offers-cta__arrow {
+    --arrow-dist: calc(var(--ring-size) / 2 - 1.6rem);
+    grid-area: 1 / 1;
+    width: 3rem;
+    height: 1.7rem;
+    background: url("../icons/hand-arrow.svg") center / contain no-repeat;
+    transform: rotate(var(--angle, 0deg)) translateX(var(--arrow-dist));
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.offers-cta__arrow:nth-child(1) {
+    --angle: 0deg;
+}
+
+.offers-cta__arrow:nth-child(2) {
+    --angle: 45deg;
+}
+
+.offers-cta__arrow:nth-child(3) {
+    --angle: 90deg;
+}
+
+.offers-cta__arrow:nth-child(4) {
+    --angle: 135deg;
+}
+
+.offers-cta__arrow:nth-child(5) {
+    --angle: 180deg;
+}
+
+.offers-cta__arrow:nth-child(6) {
+    --angle: 225deg;
+}
+
+.offers-cta__arrow:nth-child(7) {
+    --angle: 270deg;
+}
+
+.offers-cta__arrow:nth-child(8) {
+    --angle: 315deg;
+}
+
+.offers-cta__btn:hover~.offers-cta__arrows .offers-cta__arrow,
+.offers-cta__btn:focus-visible~.offers-cta__arrows .offers-cta__arrow {
+    --arrow-dist: 6.9rem;
 }

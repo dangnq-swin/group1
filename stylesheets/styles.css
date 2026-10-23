@@ -332,7 +332,9 @@ tbody th {
 }
 
 /* Buttons */
-button {
+button,
+.button {
+    display: inline-block;
     padding: 0.7rem 1.3rem;
     border: 2px solid var(--ink);
     background: var(--blue);
@@ -340,18 +342,21 @@ button {
     font: inherit;
     font-weight: 600;
     font-size: 0.95rem;
+    text-decoration: none;
     box-shadow: 4px 4px 0 var(--coral);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
     cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.button:hover {
     transform: translate(-1px, -1px);
     box-shadow: 6px 6px 0 var(--coral);
     background: var(--blue-soft);
 }
 
-button:active {
+button:active,
+.button:active {
     transform: translate(4px, 4px);
     box-shadow: none;
 }
