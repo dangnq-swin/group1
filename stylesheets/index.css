@@ -10,6 +10,15 @@
 /* Separate color for panels */
 .panel:nth-child(1) {
     background-color: var(--blue-soft);
+    /* wrinkled paper grain pattern with opacity */
+    background-image:
+        linear-gradient(
+            color-mix(in srgb, var(--blue-soft) 55%, transparent),
+            color-mix(in srgb, var(--blue-soft) 55%, transparent)
+        ),
+        url("../images/paper-grain.svg");
+    background-size: auto, 320px 320px;
+    background-blend-mode: normal, multiply;
 }
 
 .panel:nth-child(2) {
