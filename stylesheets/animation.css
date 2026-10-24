@@ -163,6 +163,23 @@
         animation: float-y 6s ease-in-out infinite;
     }
 
+    /* Slide 3 (#pitch-profit): stat cards float, desynced like testimonials */
+    #pitch-profit .deck-stat:nth-child(1) {
+        animation: float-y 3s ease-in-out infinite;
+    }
+
+    #pitch-profit .deck-stat:nth-child(2) {
+        animation: float-y 4s ease-in-out infinite -0.5s;
+    }
+
+    #pitch-profit .deck-stat:nth-child(3) {
+        animation: float-y 5s ease-in-out infinite -1.2s;
+    }
+
+    #pitch-profit .deck-stat:hover {
+        animation-play-state: paused;
+    }
+
     /* Slide 5 (#testimonials): cards float, desynced
        (negative delays = start mid-cycle, no frozen intro) */
     #testimonials blockquote:nth-of-type(1) {
@@ -232,6 +249,19 @@
 
     to {
         clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Slide 2: comparison cards float up into place */
+@keyframes card-float-in {
+    from {
+        opacity: 0;
+        translate: 0 2.5rem;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
     }
 }
 
@@ -360,11 +390,22 @@
             view-timeline-name: --panel;
         }
 
-        /* Slide 2: Wipe, From Left */
+        /* Slide 2: Wipe for pitch quote & standfirst */
         .anim--wipe {
             animation: wipe-left 1s ease-out both;
             animation-timeline: --panel;
-            animation-range: entry 50% entry 100%;
+            animation-range: entry 30% entry 75%;
+        }
+
+        /* Slide 2: Floating comparison cards */
+        .anim--float {
+            animation: card-float-in 1s ease-out both;
+            animation-timeline: --panel;
+            animation-range: entry 40% entry 85%;
+        }
+
+        .anim--float + .anim--float {
+            animation-range: entry 55% entry 100%;
         }
 
         /* Slide 4: Zoom on the photo */

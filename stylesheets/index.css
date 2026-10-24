@@ -455,6 +455,105 @@ h2.pitch-subtitle {
     border-bottom: 2px dotted var(--blue-deep);
 }
 
+/* Pitch Deck comparison cards (#pitch-more) */
+.deck-compare {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+
+.deck-compare__card {
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    box-shadow: var(--shadow-block);
+    padding: 1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.deck-compare__card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0 var(--ink);
+}
+
+.deck-compare__card--synergy {
+    background: var(--seafoam-soft);
+}
+
+.deck-compare__title {
+    margin: 0;
+    font-family: "Truculenta", Georgia, serif;
+    font-size: 1.25rem;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.deck-compare__desc {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    color: var(--ink);
+}
+
+/* Pitch Deck stat callouts (#pitch-profit) */
+#pitch-profit .pitch-copy {
+    max-width: min(62rem, 100%);
+    width: 100%;
+}
+
+.pitch-lead {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.45;
+    margin: 1.25rem 0 0;
+}
+
+.deck-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: 1.5rem;
+}
+
+.deck-stat {
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    box-shadow: var(--shadow-block);
+    padding: clamp(1.1rem, 2.5vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.deck-stat__num {
+    font-family: "Truculenta", Georgia, serif;
+    font-size: clamp(2.6rem, 5.5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--coral);
+}
+
+.deck-stat__label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid var(--ink);
+}
+
+.deck-stat__desc {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    color: var(--muted);
+}
+
 /* Dynamically showing content depending on whether or not the play checkbox is 
 ticked */
 
