@@ -1,0 +1,29 @@
+.aside-note {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.25rem 0 0.25rem 0.9rem;
+    border-left: 4px solid var(--blue);
+    font-size: 0.9rem;
+}
+
+.aside-note h2 {
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 56rem) {
+    .aside-note {
+        float: right;
+        width: 25%;
+        margin: 0.25rem 0 1.2rem 1.6rem;
+        padding: 0.25rem 0 0.25rem 0.9rem;
+    }
+
+    /* keeps the text from sliding under the float */
+    .job-card {
+        overflow: hidden;
+    }
+}
