@@ -163,6 +163,23 @@
         animation: float-y 6s ease-in-out infinite;
     }
 
+    /* Slide 3 (#pitch-profit): stat cards float, desynced like testimonials */
+    #pitch-profit .deck-stat:nth-child(1) {
+        animation: float-y 3s ease-in-out infinite;
+    }
+
+    #pitch-profit .deck-stat:nth-child(2) {
+        animation: float-y 4s ease-in-out infinite -0.5s;
+    }
+
+    #pitch-profit .deck-stat:nth-child(3) {
+        animation: float-y 5s ease-in-out infinite -1.2s;
+    }
+
+    #pitch-profit .deck-stat:hover {
+        animation-play-state: paused;
+    }
+
     /* Slide 5 (#testimonials): cards float, desynced
        (negative delays = start mid-cycle, no frozen intro) */
     #testimonials blockquote:nth-of-type(1) {
@@ -235,28 +252,79 @@
     }
 }
 
-/* Slide 3 (#pitch-profit): the two sticker spans slap on one
-       after the other — "sticker" plates landing on the page.
-       Stagger via animation-range, NOT delay (delay is ignored
-       on scroll timelines). Keyframe translate/scale, not
-       transform — the 2nd span's resting rotate(-1.2deg) lives
-       in transform (index.css), and keyframing transform here
-       would override it for good under fill: both. */
-@keyframes sticker-slap {
+/* Slide 2: comparison cards float up into place */
+@keyframes card-float-in {
     from {
         opacity: 0;
-        translate: 0 -2.5rem;
-        scale: 1.5;
-    }
-
-    70% {
-        scale: 0.94;
+        translate: 0 2.5rem;
     }
 
     to {
         opacity: 1;
         translate: 0 0;
+    }
+}
+
+/* Slide 3 (#pitch-profit): a paper cut-out arm
+   (images/arm-cutout.webp) carries each sticker span in from
+   under the panel's left edge, presses it onto the page, and
+   pulls back out — once per sticker, one after the other.
+   Stagger via animation-range, NOT delay (delay is ignored
+   on scroll timelines). Keyframe translate/scale, not
+   transform — the 2nd span's resting rotate(-1.2deg) lives
+   in transform (index.css), and keyframing transform here
+   would override it for good under fill: both. */
+
+/* The sticker: carried in slightly lifted off the page (bigger
+   shadow), then pressed flat and left there. */
+@keyframes sticker-place {
+    from {
+        translate: -100vw -0.25em;
+        scale: 1.04;
+    }
+
+    45% {
+        translate: 0 -0.25em;
+        scale: 1.04;
+    }
+
+    55%,
+    to {
+        translate: 0 0;
         scale: 1;
+    }
+}
+
+@keyframes sticker-shadow {
+
+    from,
+    45% {
+        box-shadow: 10px 12px 0 var(--blue-deep);
+    }
+
+    55%,
+    to {
+        box-shadow: 5px 5px 0 var(--blue-deep);
+    }
+}
+
+/* The arm rides along with its sticker (it is the sticker's
+   ::before), pushes down as the sticker lands, then slides back
+   out the way it came while the sticker stays put. */
+@keyframes arm-place {
+
+    from,
+    45% {
+        translate: 0 0;
+    }
+
+    55%,
+    62% {
+        translate: 0 0.12em;
+    }
+
+    to {
+        translate: -110vw 0.3em;
     }
 }
 
@@ -322,11 +390,22 @@
             view-timeline-name: --panel;
         }
 
-        /* Slide 2: Wipe, From Left */
+        /* Slide 2: Wipe for pitch quote & standfirst */
         .anim--wipe {
             animation: wipe-left 1s ease-out both;
             animation-timeline: --panel;
-            animation-range: entry 50% entry 100%;
+            animation-range: entry 30% entry 75%;
+        }
+
+        /* Slide 2: Floating comparison cards */
+        .anim--float {
+            animation: card-float-in 1s ease-out both;
+            animation-timeline: --panel;
+            animation-range: entry 40% entry 85%;
+        }
+
+        .anim--float + .anim--float {
+            animation-range: entry 55% entry 100%;
         }
 
         /* Slide 4: Zoom on the photo */
@@ -346,18 +425,73 @@
             animation-range: entry 0% entry 80%;
         }
 
-        /* Slide 3 (#pitch-profit): stickers slap down one after
-           the other while the panel scrolls in. 2nd sticker:
-           later range = the stagger (delay is a no-op on a
-           scroll timeline). */
-        .anim--slap>span {
-            animation: sticker-slap 1s ease-out both;
-            animation-timeline: --panel;
-            animation-range: entry 70% entry 90%;
+        /* Slide 3 (#pitch-profit): the cut-out arm places the
+           stickers one after the other while the panel scrolls
+           in. 2nd sticker: later range = the stagger (delay is a
+           no-op on a scroll timeline). The arm only exists in
+           here, so static/reduced-motion readers never see a
+           stray hand parked over the quote. The panel clips like
+           #products, so the arm emerges from under its left edge
+           and its parked (off-panel) end state adds no sideways
+           scroll. */
+        #pitch-profit {
+            overflow: clip;
         }
 
-        .anim--slap>span+span {
-            animation-range: entry 80% entry 100%;
+        .anim--place>span {
+            position: relative;
+            background: transparent;
+            box-shadow: none;
+            animation: sticker-place 1s linear both;
+            animation-timeline: --panel;
+            animation-range: entry 20% entry 65%;
+        }
+
+        .anim--place>span+span {
+            animation-range: entry 55% entry 100%;
+        }
+
+        /* Draw the sticker plate on ::after (z-index: -1) so the hand
+           on ::before (z-index: -2) sits behind the entire sticker
+           plate and its shadow, not sandwiched between the background
+           and the letters. */
+        .anim--place>span::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: var(--ink);
+            box-shadow: 5px 5px 0 var(--blue-deep);
+            pointer-events: none;
+            animation: sticker-shadow 1s linear both;
+            animation-timeline: --panel;
+            animation-range: inherit;
+        }
+
+        .anim--place>span+span::after {
+            background: var(--blue);
+        }
+
+        /* The C-grip hand cutout is ~0.965:1; its C-shaped opening
+           sits in the right 22% of the image, vertically centred at
+           ~25% of the image height with a ~19.5% vertical span between
+           fingers and thumb. Sizing the cutout to 5.6em tall makes that
+           C-gap ~1.1em high — hugging the top and bottom edges of the
+           sticker plate while the left edge sits inside the C-notch. */
+        .anim--place>span::before {
+            content: "";
+            position: absolute;
+            z-index: -2;
+            left: calc(-0.79 * 5.6em * 0.965);
+            top: calc(50% - 0.25 * 5.6em);
+            width: calc(5.6em * 0.965);
+            height: 5.6em;
+            background: url("../images/arm-cutout.webp") right center / contain no-repeat;
+            filter: drop-shadow(3px 5px 0 rgb(0 0 0 / 0.22));
+            pointer-events: none;
+            animation: arm-place 1s linear both;
+            animation-timeline: --panel;
+            animation-range: inherit;
         }
     }
 }
