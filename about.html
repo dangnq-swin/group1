@@ -15,8 +15,10 @@
   <style>
     /* ===== 1. PAGE BASICS ===== */
 
-    /* The header is sticky, so leave room above a section when a link jumps to it */
-    [id] { scroll-margin-top: 5rem; }
+    /* Khoang trang cua header */
+    [id] {
+      scroll-margin-top: 5rem;
+    }
 
     /* Intro paragraph under the h1 */
     .about .lead {
@@ -24,11 +26,16 @@
       font-size: 1.3rem;
     }
 
-    /* Two-column layouts (one column on phones, two from 48rem = 768px).
-       styles.css only provides ".grid", so the columns are defined here. */
+    /* 2 cot */
     @media (min-width: 48rem) {
-      .about .grid--2     { grid-template-columns: 1fr 1fr; }
-      .about .grid--split { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+      .about .grid--2 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about .grid--split {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: start;
+      }
     }
 
     /* ===== 2. "ON THIS PAGE" LINKS ===== */
@@ -59,7 +66,9 @@
 
     /* ===== 3. MEMBER CARDS ===== */
 
-    .members-grid { margin-top: 1rem; }
+    .members-grid {
+      margin-top: 1rem;
+    }
 
     .member {
       padding: clamp(1rem, 2.5vw, 1.4rem);
@@ -69,7 +78,7 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
     }
 
-    /* Name and student ID sit on one line (wrap on small screens) */
+    /* Ten + ma sinh vien cung 1 hang */
     .member h3 {
       display: flex;
       flex-wrap: wrap;
@@ -90,10 +99,12 @@
       letter-spacing: 0.12em;
     }
 
-    /* When someone clicks a name in the Fun facts table, the card they land on lights up */
-    .member:target { background: #DFF5E9; }
+    /* Hieu ung cua card khi duoc chon */
+    .member:target {
+      background: #DFF5E9;
+    }
 
-    /* The global blockquote is a card with a shadow; inside a card, a simple coral bar is enough */
+    /* Hieu ung cua blockquote ben trong card */
     .member blockquote {
       display: block;
       margin: 0.8rem 0 0;
@@ -104,12 +115,24 @@
       background: transparent;
     }
 
-    .quote       { margin: 0; font-style: italic; font-weight: 500; }
-    .quote-trans { margin: 0.2rem 0 0; color: #5C5750; font-size: 0.85rem; }
+    .quote {
+      margin: 0;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .quote-trans {
+      margin: 0.2rem 0 0;
+      color: #5C5750;
+      font-size: 0.85rem;
+    }
 
     /* ===== 4. MISSION + VISION ===== */
 
-    .mv-intro { margin-bottom: 1.5rem; max-width: 70ch; }
+    .mv-intro {
+      margin-bottom: 1.5rem;
+      max-width: 70ch;
+    }
 
     .mv-card {
       padding: clamp(1rem, 2.5vw, 1.5rem);
@@ -117,26 +140,58 @@
       box-shadow: 8px 8px 0 #1A1815;
     }
 
-    .mv-card--mission { background: #DFF5E9; }
-    .mv-card--vision  { background: #E6EFF9; }
+    .mv-card--mission {
+      background: #DFF5E9;
+    }
 
-    .mv-card h3 { font-size: 1.7rem; }
+    .mv-card--vision {
+      background: #E6EFF9;
+    }
 
-    .note { color: #5C5750; }
+    .mv-card h3 {
+      font-size: 1.7rem;
+    }
 
-    /* Click-to-open items: the <summary> line is the button */
+    .note {
+      color: #5C5750;
+    }
+
+    /* bam de mo rong */
     .mission-item summary {
       padding: 0.4rem 0;
       cursor: pointer;
       list-style: none;
     }
-    .mission-item summary::-webkit-details-marker { display: none; }
 
-    .mission-item summary h4 { display: inline; margin: 0; font-size: 1.15rem; }
-    .mission-item summary::before             { content: "+"; margin-right: 0.45rem; color: #00785C; font-weight: 700; }
-    .mission-item[open] summary::before       { content: "\2212"; }
-    .mission-item summary:hover h4            { color: #00785C; }
-    .mission-item summary:focus-visible       { outline: 3px solid #2E5F8F; outline-offset: 3px; }
+    .mission-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mission-item summary h4 {
+      display: inline;
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .mission-item summary::before {
+      content: "+";
+      margin-right: 0.45rem;
+      color: #00785C;
+      font-weight: 700;
+    }
+
+    .mission-item[open] summary::before {
+      content: "\2212";
+    }
+
+    .mission-item summary:hover h4 {
+      color: #00785C;
+    }
+
+    .mission-item summary:focus-visible {
+      outline: 3px solid #2E5F8F;
+      outline-offset: 3px;
+    }
 
     .mission-item p {
       margin: 0.2rem 0 0.8rem 0.3rem;
@@ -146,13 +201,33 @@
 
     /* ===== 5. TEAM INFO + BORDERED FIGURE ===== */
 
-    .facts { margin: 0; }
-    .facts > div { padding: 0.6rem 0; border-bottom: 1px dotted #5C5750; }
-    .facts dt { display: inline; margin-right: 0.35rem; font-weight: 700; }
-    .facts dd { display: inline; margin: 0; }
-    .facts ul { margin: 0.4rem 0 0; padding-left: 1.4rem; list-style: circle; }
+    .facts {
+      margin: 0;
+    }
 
-    /* Bordered figure: ink border + hard shadow, same style as the other pages */
+    .facts>div {
+      padding: 0.6rem 0;
+      border-bottom: 1px dotted #5C5750;
+    }
+
+    .facts dt {
+      display: inline;
+      margin-right: 0.35rem;
+      font-weight: 700;
+    }
+
+    .facts dd {
+      display: inline;
+      margin: 0;
+    }
+
+    .facts ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.4rem;
+      list-style: circle;
+    }
+
+    /* Duong vien */
     .about figure.photo {
       padding: 0.75rem;
       border: 2px solid #1A1815;
@@ -173,14 +248,24 @@
       text-transform: uppercase;
     }
 
-    /* If a real <img> replaces the placeholder: the figure already has the border */
-    .about figure.photo img { border: 0; box-shadow: none; }
+    /* Thay anh vao van co vien */
+    .about figure.photo img {
+      border: 0;
+      box-shadow: none;
+    }
 
     /* ===== 6. FUN FACTS TABLE ===== */
 
-    /* Scrolls sideways on phones; the padding leaves room for the table's shadow */
-    .table-wrap { overflow-x: auto; padding: 0 10px 10px 0; }
-    .table-wrap:focus-visible { outline: 3px solid #2E5F8F; outline-offset: 3px; }
+    /* Cuon tren dien thoai */
+    .table-wrap {
+      overflow-x: auto;
+      padding: 0 10px 10px 0;
+    }
+
+    .table-wrap:focus-visible {
+      outline: 3px solid #2E5F8F;
+      outline-offset: 3px;
+    }
 
     .about caption {
       padding-bottom: 0.6rem;
@@ -190,42 +275,72 @@
       font-weight: 700;
     }
 
-    .about tbody th a { font-weight: 700; }
+    .about tbody th a {
+      font-weight: 700;
+    }
 
-    /* Hover effect: the row under the mouse turns seafoam */
-    .about tbody tr { transition: background-color 0.15s ease; }
-    .about tbody tr:hover { background: #DFF5E9; }
+    /* Hieu ung khi di chuyen chuot */
+    .about tbody tr {
+      transition: background-color 0.15s ease;
+    }
+
+    .about tbody tr:hover {
+      background: #DFF5E9;
+    }
 
     /* ===== 7. ACKNOWLEDGEMENT (card style comes from styles.css) ===== */
 
-    .country-acknowledgement h2 { margin-bottom: 0.4rem; font-size: 1.5rem; }
-    .country-acknowledgement p + p { margin-top: 0.7rem; }
+    .country-acknowledgement h2 {
+      margin-bottom: 0.4rem;
+      font-size: 1.5rem;
+    }
+
+    .country-acknowledgement p+p {
+      margin-top: 0.7rem;
+    }
 
     /* ===== 8. SIMPLE MOTION (switched off for people who prefer reduced motion) ===== */
 
     @keyframes about-rise {
-      from { opacity: 0; transform: translateY(1.5rem); }
-      to   { opacity: 1; transform: none; }
+      from {
+        opacity: 0;
+        transform: translateY(1.5rem);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     @media (prefers-reduced-motion: no-preference) {
-      /* Effect 1: every block fades up when the page loads */
-      .about > * { animation: about-rise 0.6s ease-out both; }
 
-      /* Effect 2: a click-link chip lifts up on hover */
+      /* Hieu ung 1 */
+      .about>* {
+        animation: about-rise 0.6s ease-out both;
+      }
+
+      /* Hieu ung 2 */
       .toc a:hover,
-      .toc a:focus-visible { transform: translateY(-2px); }
+      .toc a:focus-visible {
+        transform: translateY(-2px);
+      }
 
-      /* Effect 3: cards lift up and the shadow grows */
+      /* Hieu ung 3 */
       .member:hover,
       .mv-card:hover {
         transform: translate(-3px, -3px);
         box-shadow: 11px 11px 0 #1A1815;
       }
-      .mv-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
 
-      /* Effect 4: the group photo tilts a little */
-      .about figure.photo:hover { transform: rotate(-1deg); }
+      .mv-card {
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      /* Hieu ung 4 */
+      .about figure.photo:hover {
+        transform: rotate(-1deg);
+      }
     }
   </style>
 </head>
@@ -240,7 +355,7 @@
       </span>
       <span>
         <span class="brand-name">Core Technology</span>
-        <span class="brand-slogan">You have the core. We build the rest</span>
+        <span class="brand-slogan">You have the core. We do the rest</span>
       </span>
     </a>
 
@@ -256,10 +371,11 @@
 
     <!-- 1. Intro + on-this-page links -->
     <section class="about-hero" aria-labelledby="about-title">
-      <h1 id="about-title">Core Technology, since 2019</h1>
+      <h1 id="about-title">Core Technology - COS10026 Web Technology</h1>
       <!-- Inline CSS example -->
       <p class="lead" style="max-width: 60ch;">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. We build digital learning tools and platforms, and the people behind them are introduced below.
+        This is a group project for the COS10026 Web Technology course at Swinburne University of Technology. The team
+        has built a simple website to demonstrate their skills in HTML, CSS, and accessibility best practices.
       </p>
       <nav class="toc" aria-label="On this page">
         <a href="#members">Who we are</a>
@@ -272,8 +388,11 @@
     <!-- 2. Acknowledgement of Country -->
     <aside class="country-acknowledgement" aria-labelledby="ack-title">
       <h2 id="ack-title">Acknowledgement of Country</h2>
-      <p>Core Technology acknowledges the Traditional Custodians of the lands and waters where we learn and work, and pays respect to Elders past and present. This project is committed to listening, learning, and building partnerships that support Aboriginal and Torres Strait Islander students and communities.</p>
-      <p>We warmly encourage applications from Aboriginal and Torres Strait Islander peoples and continue to review our products to ensure they are accessible, inclusive and culturally respectful.</p>
+      <p>We respectfully acknowledge the Wurundjeri Woi-wurrung People of the Kulin Nation, who are the Traditional
+        Owners of the lands on which our operations are based in Melbourne's east, and pay our respects to their Elders
+        past, present, and emerging. We are honoured to recognise our connection to Wurundjeri Country, history,
+        culture, and spirituality, and strive to ensure that we create digital learning tools in a manner that respects
+        and honours Aboriginal and Torres Strait Islander peoples across Australia..</p>
     </aside>
 
     <!-- 3. Members -->
@@ -282,17 +401,19 @@
       <div class="grid grid--2 members-grid">
 
         <article class="member" id="member-1">
-          <h3>Lorem Ipsum <span class="student-id">104123456</span></h3>
-          <p><strong>Contributions:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Phan Cong Minh <span class="student-id">106400525</span></h3>
+          <p><strong>Contributions:</strong> Designed and coded the about.html page.</p>
           <blockquote>
-            <p class="quote" lang="la">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.</p>
-            <p class="quote-trans">— Latin. Translation: No one loves pain itself because it is pain.</p>
+            <p class="quote" lang="la">Khong co viec gi kho, chi so khong co ChatGPT.</p>
+            <p class="quote-trans"> — Phan Cong Minh — </p>
           </blockquote>
         </article>
 
         <article class="member" id="member-2">
-          <h3>Dolor Sit <span class="student-id">104123457</span></h3>
-          <p><strong>Contributions:</strong> Sed do eiusmod tempor incididunt ut labore.</p>
+          <h3>Nguyen Quang Dang <span class="student-id">104123457</span></h3>
+          <p><strong>Contributions:</strong> designed and coded the index.html page, including the background graphics
+            using
+            CSS and homepage effects.</p>
           <blockquote>
             <p class="quote" lang="la">Ut enim ad minim veniam, quis nostrud exercitation.</p>
             <p class="quote-trans">— Latin. Translation: So that we may enjoy the benefits of honest labour.</p>
@@ -300,8 +421,8 @@
         </article>
 
         <article class="member" id="member-3">
-          <h3>Amet Consectetur <span class="student-id">104123458</span></h3>
-          <p><strong>Contributions:</strong> Duis aute irure dolor in reprehenderit.</p>
+          <h3>Pham Trong Quang <span class="student-id">104123458</span></h3>
+          <p><strong>Contributions:</strong> Designed and coded the apply.html page.</p>
           <blockquote>
             <p class="quote" lang="la">Excepteur sint occaecat cupidatat non proident.</p>
             <p class="quote-trans">— Latin. Translation: Except those who are blinded by desire.</p>
@@ -309,8 +430,8 @@
         </article>
 
         <article class="member" id="member-4">
-          <h3>Adipiscing Elit <span class="student-id">104123459</span></h3>
-          <p><strong>Contributions:</strong> Ut enim ad minim veniam, quis nostrud.</p>
+          <h3>Le Man Doanh <span class="student-id">104123459</span></h3>
+          <p><strong>Contributions:</strong> Designed and coded the jobs.html page.</p>
           <blockquote>
             <p class="quote" lang="la">Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p class="quote-trans">— Latin. Translation: Those who do their duty without seeking reward.</p>
@@ -320,26 +441,34 @@
       </div>
     </section>
 
-    <!-- 4. Mission + Vision (merged with social mission) -->
+    <!-- 4. Mission + Vision  -->
     <section id="mission" aria-labelledby="mission-title">
       <h2 id="mission-title">Our mission and vision</h2>
-      <p class="mv-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Learning tools should not assume a fast connection, a quiet room, or a user who can see the screen perfectly.</p>
+      <p class="mv-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore. Learning tools should not assume a fast connection, a quiet room, or a user who can see the screen
+        perfectly.</p>
 
       <div class="grid grid--2">
 
         <!-- Left: what we do today -->
         <article class="mv-card mv-card--mission">
           <h3>Mission</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-          <p class="note">In practice: every release is tested with screen readers, keyboard-only navigation, and users with low vision before it ships.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+          <p class="note">In practice: every release is tested with screen readers, keyboard-only navigation, and users
+            with low vision before it ships.</p>
 
           <details class="mission-item" open>
-            <summary><h4>Access first</h4></summary>
+            <summary>
+              <h4>Access first</h4>
+            </summary>
             <p>Every product ships meeting WCAG 2.2 AA, and we test with assistive technology before release.</p>
           </details>
 
           <details class="mission-item" open>
-            <summary><h4>Open by default</h4></summary>
+            <summary>
+              <h4>Open by default</h4>
+            </summary>
             <p>Our design system and accessibility checklists are published, so other small teams can reuse them.</p>
           </details>
         </article>
@@ -347,16 +476,22 @@
         <!-- Right: where we are heading -->
         <article class="mv-card mv-card--vision">
           <h3>Vision</h3>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-          <p class="note">Where we are heading: a platform that adapts to the learner rather than asking the learner to adapt to it.</p>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident.</p>
+          <p class="note">Where we are heading: a platform that adapts to the learner rather than asking the learner to
+            adapt to it.</p>
 
           <details class="mission-item" open>
-            <summary><h4>Low bandwidth</h4></summary>
+            <summary>
+              <h4>Low bandwidth</h4>
+            </summary>
             <p>Pages are built to work on a 3G connection, because students are not always on campus wifi.</p>
           </details>
 
           <details class="mission-item" open>
-            <summary><h4>Local partnerships</h4></summary>
+            <summary>
+              <h4>Local partnerships</h4>
+            </summary>
             <p>We work with community education providers to keep course content affordable and relevant.</p>
           </details>
         </article>
@@ -364,7 +499,7 @@
       </div>
     </section>
 
-    <!-- 5. The team + bordered figure -->
+    <!-- 5. The team -->
     <div class="grid grid--split">
       <section id="team" aria-labelledby="team-title">
         <h2 id="team-title">The team</h2>
@@ -374,7 +509,7 @@
             <dd>Core Technology
               <ul>
                 <li><strong>Class day:</strong> Saturday</li>
-                <li><strong>Class time:</strong> 07:00 – 11:00</li>
+                <li><strong>Class time:</strong> 07:00 - 11:00</li>
               </ul>
             </dd>
           </div>
@@ -390,12 +525,12 @@
       </section>
 
       <figure class="photo">
-        <!-- Placeholder. To use a real photo replace this div with:
+        <!-- Placeholder.:
              <img src="images/group-photo.jpg" alt="Describe the photo" width="800" height="600"> -->
         <div class="media" role="img" aria-label="Group photo placeholder" style="aspect-ratio: 4 / 3;">
           Group photo placeholder · 4:3
         </div>
-        <figcaption>Figure 1.Anh cua nhom dau buuoi.</figcaption>
+        <figcaption>Figure 1.Anh cua nhom.</figcaption>
       </figure>
     </div>
 
@@ -409,31 +544,31 @@
             <tr>
               <th scope="col">Member</th>
               <th scope="col">Dream job</th>
-              <th scope="col">Coding snack</th>
               <th scope="col">Hometown</th>
+              <th scope="col">Hobbies</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row"><a href="#member-1">Lorem Ipsum</a></th>
-              <td>Design engineer</td>
-              <td>Lorem nuts</td>
-              <td>Ipsumville</td>
+              <th scope="row"><a href="#member-1">Phan Cong Minh</a></th>
+              <td>Software Engineer</td>
+              <td>Ha Tinh</td>
+              <td>Eat, sleep, drink</td>
             </tr>
             <tr>
-              <th scope="row"><a href="#member-2">Dolor Sit</a></th>
+              <th scope="row"><a href="#member-2">Nguyen Quang Dang</a></th>
               <td>Front-end architect</td>
               <td>Dolor chips</td>
               <td>Amet Creek</td>
             </tr>
             <tr>
-              <th scope="row"><a href="#member-3">Amet Consectetur</a></th>
+              <th scope="row"><a href="#member-3">Pham Trong Quang</a></th>
               <td>Accessibility lead</td>
               <td>Consectetur tea</td>
               <td>Adipiscing Bay</td>
             </tr>
             <tr>
-              <th scope="row"><a href="#member-4">Adipiscing Elit</a></th>
+              <th scope="row"><a href="#member-4">Le Man Doanh</a></th>
               <td>Product designer</td>
               <td>Elit biscuits</td>
               <td>Eiusmod Springs</td>
