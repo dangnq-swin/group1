@@ -5,193 +5,288 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Core Technology: About</title>
+
+  <link rel="stylesheet" href="stylesheets/fonts.css">
   <link rel="stylesheet" href="stylesheets/styles.css">
 
-  <!-- Embedded CSS: rules that only apply to the About page -->
+  <!-- Embedded CSS: rules that only apply to the About page.
+       Colours come from the shared palette in styles.css (var(--...)),
+       and a few use hex codes directly (as the brief asks). -->
   <style>
-    /* ===== ABOUT PAGE (embedded CSS) ===== */
-    html { scroll-behavior: smooth; }
-    body { background-image: none; }
-    [id] { scroll-margin-top: 1rem; }
-    .about .eyebrow { margin:0 0 .4rem; color:#2E5F8F; font-size:.8rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
-    .about .lead { color:#5C5750; font-size:1.3rem; }
-    .toc { display:flex; flex-wrap:wrap; gap:.5rem .6rem; margin-top:1rem; }
-    .toc a { padding:.25rem .8rem; border:2px solid #1A1815; background:#FAF6EE; color:#1A1815; font-size:.85rem; font-weight:600; text-decoration:none; transition: background-color .15s ease, transform .12s ease; }
-    .toc a:hover,.toc a:focus-visible { background:#BFD8F0; transform:translateY(-2px); }
-    .timeline { list-style:none; margin:1rem 0 0; padding:0 0 0 1.5rem; border-left:2px solid #1A1815; }
-    .timeline li { position:relative; padding-bottom:1.5rem; }
-    .timeline li::before { content:""; position:absolute; left:calc(-2rem - 1px); top:.35rem; box-sizing:border-box; width:1rem; height:1rem; border:2px solid #2E5F8F; border-radius:50%; background:#BFD8F0; transition:background-color .15s ease; }
-    .timeline li:hover::before { background:#2E5F8F; }
-    .timeline li:hover h3 { color:#2E5F8F; }
-    .timeline h3 { margin:0 0 .2rem; }
-    .tl-meta { margin:0; color:#2E5F8F; font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
-    .note { color:#5C5750; }
-    .facts { margin:0; }
-    .facts > div { padding:.6rem 0; border-bottom:1px dotted #5C5750; }
-    .facts dt { display:inline; margin-right:.35rem; font-weight:700; }
-    .facts dd { display:inline; margin:0; }
-    .facts ul { margin:.4rem 0 0; padding-left:1.4rem; list-style:circle; }
-    .about figure.photo { padding:.75rem; border:2px solid #1A1815; background:#FFFFFF; box-shadow:6px 6px 0 #1A1815; }
-    .about figure.photo .media { background:#F0E6D3; border:1px dashed #5C5750; font-size:.8rem; letter-spacing:.1em; }
-    .about figure.photo img { border:0; box-shadow:none; max-height:none; }
-    .student-id { display:inline-block; margin-left:.5rem; padding:.05rem .5rem; border:2px solid #2E5F8F; background:#E6EFF9; color:#2E5F8F; font-family: ui-monospace,"Courier New",monospace; font-size:.8rem; font-weight:700; letter-spacing:.12em; vertical-align:middle; }
-    .member { margin-top:1.5rem; padding:.5rem .75rem; }
-    .member h3 { margin-bottom:.3rem; }
-    .member:target { background:#E6EFF9; }
-    .member blockquote { margin:.6rem 0 0; padding-left:1rem; border-left:4px solid #2E5F8F; }
-    .quote { margin:0; font-style:italic; font-weight:500; }
-    .quote-trans { margin:0; color:#5C5750; font-size:.85rem; }
-    .mission-item summary { padding:.4rem 0; cursor:pointer; list-style:none; }
-    .mission-item summary::-webkit-details-marker { display:none; }
-    .mission-item summary h3 { display:inline; margin:0; }
-    .mission-item summary::before { content:"+ "; color:#2E5F8F; font-weight:700; }
-    .mission-item[open] summary::before { content:"\2212 "; }
-    .mission-item summary:hover h3 { color:#2E5F8F; }
-    .mission-item summary:focus-visible { outline:3px solid #2E5F8F; outline-offset:3px; }
-    .mission-item p { margin:.2rem 0 .8rem .3rem; padding-left:1rem; border-left:3px solid #BFD8F0; color:#5C5750; }
-    .table-wrap { overflow-x:auto; }
-    .about table { box-shadow:none; }
-    .about th,.about td { border:0; border-bottom:1px solid #D9D2C3; }
-    .about thead th { background:none; border-bottom:2px solid #1A1815; color:#5C5750; }
-    .about caption { padding-bottom:.6rem; text-align:left; color:#2E5F8F; font-family:"Truculenta",Georgia,serif; font-weight:700; }
-    .about tbody tr { transition:background-color .15s ease; }
-    .about tbody tr:hover { background:#E6EFF9; }
-    .about tbody th a { font-weight:700; }
-    .acknowledgement { padding:.5rem 0 .5rem 1.25rem; border-left:6px solid #2E5F8F; }
-    .acknowledgement h2 { font-size:clamp(1.3rem,4vw,1.7rem); }
-    
+    /* ===== 1. PAGE BASICS ===== */
+
+    /* The header is sticky, so leave room above a section when a link jumps to it */
+    [id] { scroll-margin-top: 5rem; }
+
+    /* Intro paragraph under the h1 */
+    .about .lead {
+      color: #5C5750;
+      font-size: 1.3rem;
+    }
+
+    /* Two-column layouts (one column on phones, two from 48rem = 768px).
+       styles.css only provides ".grid", so the columns are defined here. */
+    @media (min-width: 48rem) {
+      .about .grid--2     { grid-template-columns: 1fr 1fr; }
+      .about .grid--split { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+    }
+
+    /* ===== 2. "ON THIS PAGE" LINKS ===== */
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .toc a {
+      padding: 0.25rem 0.9rem;
+      border: 2px solid #1A1815;
+      background: #FAF6EE;
+      box-shadow: 3px 3px 0 #1A1815;
+      color: #1A1815;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.15s ease, transform 0.12s ease;
+    }
+
+    .toc a:hover,
+    .toc a:focus-visible {
+      background: #8FE3C0;
+    }
+
+    /* ===== 3. MEMBER CARDS ===== */
+
+    .members-grid { margin-top: 1rem; }
+
+    .member {
+      padding: clamp(1rem, 2.5vw, 1.4rem);
+      border: 2px solid #1A1815;
+      background: #FAF6EE;
+      box-shadow: 8px 8px 0 #1A1815;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    }
+
+    /* Name and student ID sit on one line (wrap on small screens) */
+    .member h3 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.3rem 0.7rem;
+      font-size: 1.5rem;
+    }
+
+    /* Styled student ID: seafoam badge, mono font, spaced digits */
+    .student-id {
+      padding: 0.05rem 0.55rem;
+      border: 2px solid #1A1815;
+      background: #8FE3C0;
+      color: #1A1815;
+      font-family: ui-monospace, "Courier New", monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    /* When someone clicks a name in the Fun facts table, the card they land on lights up */
+    .member:target { background: #DFF5E9; }
+
+    /* The global blockquote is a card with a shadow; inside a card, a simple coral bar is enough */
+    .member blockquote {
+      display: block;
+      margin: 0.8rem 0 0;
+      padding: 0 0 0 1rem;
+      border: 0;
+      border-left: 4px solid #FF6B4A;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .quote       { margin: 0; font-style: italic; font-weight: 500; }
+    .quote-trans { margin: 0.2rem 0 0; color: #5C5750; font-size: 0.85rem; }
+
+    /* ===== 4. MISSION + VISION ===== */
+
+    .mv-intro { margin-bottom: 1.5rem; max-width: 70ch; }
+
+    .mv-card {
+      padding: clamp(1rem, 2.5vw, 1.5rem);
+      border: 2px solid #1A1815;
+      box-shadow: 8px 8px 0 #1A1815;
+    }
+
+    .mv-card--mission { background: #DFF5E9; }
+    .mv-card--vision  { background: #E6EFF9; }
+
+    .mv-card h3 { font-size: 1.7rem; }
+
+    .note { color: #5C5750; }
+
+    /* Click-to-open items: the <summary> line is the button */
+    .mission-item summary {
+      padding: 0.4rem 0;
+      cursor: pointer;
+      list-style: none;
+    }
+    .mission-item summary::-webkit-details-marker { display: none; }
+
+    .mission-item summary h4 { display: inline; margin: 0; font-size: 1.15rem; }
+    .mission-item summary::before             { content: "+"; margin-right: 0.45rem; color: #00785C; font-weight: 700; }
+    .mission-item[open] summary::before       { content: "\2212"; }
+    .mission-item summary:hover h4            { color: #00785C; }
+    .mission-item summary:focus-visible       { outline: 3px solid #2E5F8F; outline-offset: 3px; }
+
+    .mission-item p {
+      margin: 0.2rem 0 0.8rem 0.3rem;
+      padding-left: 1rem;
+      border-left: 3px solid #1A1815;
+    }
+
+    /* ===== 5. TEAM INFO + BORDERED FIGURE ===== */
+
+    .facts { margin: 0; }
+    .facts > div { padding: 0.6rem 0; border-bottom: 1px dotted #5C5750; }
+    .facts dt { display: inline; margin-right: 0.35rem; font-weight: 700; }
+    .facts dd { display: inline; margin: 0; }
+    .facts ul { margin: 0.4rem 0 0; padding-left: 1.4rem; list-style: circle; }
+
+    /* Bordered figure: ink border + hard shadow, same style as the other pages */
+    .about figure.photo {
+      padding: 0.75rem;
+      border: 2px solid #1A1815;
+      background: #FFFFFF;
+      box-shadow: 8px 8px 0 #1A1815;
+      transition: transform 0.2s ease;
+    }
+
+    .about figure.photo .media {
+      display: grid;
+      place-items: center;
+      background: #F0E6D3;
+      border: 1px dashed #5C5750;
+      color: #5C5750;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* If a real <img> replaces the placeholder: the figure already has the border */
+    .about figure.photo img { border: 0; box-shadow: none; }
+
+    /* ===== 6. FUN FACTS TABLE ===== */
+
+    /* Scrolls sideways on phones; the padding leaves room for the table's shadow */
+    .table-wrap { overflow-x: auto; padding: 0 10px 10px 0; }
+    .table-wrap:focus-visible { outline: 3px solid #2E5F8F; outline-offset: 3px; }
+
+    .about caption {
+      padding-bottom: 0.6rem;
+      text-align: left;
+      color: #2E5F8F;
+      font-family: "Truculenta", Georgia, serif;
+      font-weight: 700;
+    }
+
+    .about tbody th a { font-weight: 700; }
+
+    /* Hover effect: the row under the mouse turns seafoam */
+    .about tbody tr { transition: background-color 0.15s ease; }
+    .about tbody tr:hover { background: #DFF5E9; }
+
+    /* ===== 7. ACKNOWLEDGEMENT (card style comes from styles.css) ===== */
+
+    .country-acknowledgement h2 { margin-bottom: 0.4rem; font-size: 1.5rem; }
+    .country-acknowledgement p + p { margin-top: 0.7rem; }
+
+    /* ===== 8. SIMPLE MOTION (switched off for people who prefer reduced motion) ===== */
+
+    @keyframes about-rise {
+      from { opacity: 0; transform: translateY(1.5rem); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      /* Effect 1: every block fades up when the page loads */
+      .about > * { animation: about-rise 0.6s ease-out both; }
+
+      /* Effect 2: a click-link chip lifts up on hover */
+      .toc a:hover,
+      .toc a:focus-visible { transform: translateY(-2px); }
+
+      /* Effect 3: cards lift up and the shadow grows */
+      .member:hover,
+      .mv-card:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 11px 11px 0 #1A1815;
+      }
+      .mv-card { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+
+      /* Effect 4: the group photo tilts a little */
+      .about figure.photo:hover { transform: rotate(-1deg); }
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="site">
+  <!--Header -->
+  <header>
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="images/brandmark.svg" alt="" width="32" height="32" />
+      </span>
+      <span>
+        <span class="brand-name">Core Technology</span>
+        <span class="brand-slogan">You have the core. We build the rest</span>
+      </span>
+    </a>
 
-    <!--Header -->
-    <header>
-      <a class="brand" href="index.html">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>
-          <span class="brand-name">Core Technology</span>
-          <span class="brand-slogan">You have the core. We build the rest</span>
-        </span>
-      </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="apply.html">Apply</a>
+      <a href="about.html" aria-current="page">About</a>
+    </nav>
+  </header>
 
-      <nav class="nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="jobs.html">Jobs</a>
-        <a href="apply.html">Apply</a>
-        <a href="about.html" aria-current="page">About</a>
+  <main id="main" class="stack about">
+
+    <!-- 1. Intro + on-this-page links -->
+    <section class="about-hero" aria-labelledby="about-title">
+      <h1 id="about-title">Core Technology, since 2019</h1>
+      <!-- Inline CSS example -->
+      <p class="lead" style="max-width: 60ch;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. We build digital learning tools and platforms, and the people behind them are introduced below.
+      </p>
+      <nav class="toc" aria-label="On this page">
+        <a href="#members">Who we are</a>
+        <a href="#mission">Mission &amp; vision</a>
+        <a href="#team">The team</a>
+        <a href="#fun-facts">Fun facts</a>
       </nav>
-    </header>
+    </section>
 
-    <main id="main" class="stack about">
+    <!-- 2. Acknowledgement of Country -->
+    <aside class="country-acknowledgement" aria-labelledby="ack-title">
+      <h2 id="ack-title">Acknowledgement of Country</h2>
+      <p>Core Technology acknowledges the Traditional Custodians of the lands and waters where we learn and work, and pays respect to Elders past and present. This project is committed to listening, learning, and building partnerships that support Aboriginal and Torres Strait Islander students and communities.</p>
+      <p>We warmly encourage applications from Aboriginal and Torres Strait Islander peoples and continue to review our products to ensure they are accessible, inclusive and culturally respectful.</p>
+    </aside>
 
-      <!-- 1. Intro + on-this-page links -->
-      <section class="about-hero" aria-labelledby="about-title">
-        <p class="eyebrow">About us</p>
-        <h1 id="about-title">Core Technology, since 2019</h1>
-        <!-- Inline CSS example -->
-        <p class="lead" style="max-width: 60ch;">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. We build digital learning tools and platforms, and the story below is the short version of how that started.
-        </p>
-        <nav class="toc" aria-label="On this page">
-          <a href="#timeline">Timeline</a>
-          <a href="#members">Team members</a>
-          <a href="#social">Social mission</a>
-          <a href="#fun-facts">Fun facts</a>
-        </nav>
-      </section>
+    <!-- 3. Members -->
+    <section id="members" aria-labelledby="members-title">
+      <h2 id="members-title">Who we are and what we built</h2>
+      <div class="grid grid--2 members-grid">
 
-      <!-- 2. Timeline -->
-      <section id="timeline" aria-labelledby="timeline-title">
-        <h2 id="timeline-title">Our timeline</h2>
-        <p>From a shared desk to a studio of designers and engineers. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-        <ol class="timeline">
-          <li>
-            <p class="tl-meta"><time datetime="2019">2019</time> · Founded</p>
-            <h3>Lorem ipsum dolor sit amet</h3>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. Two designers and one engineer, working on a single accessible course player.</p>
-          </li>
-
-          <li>
-            <p class="tl-meta"><time datetime="2021">2021</time> · Mission</p>
-            <h3>Consectetur adipiscing elit</h3>
-            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. We wrote down why the studio exists and started auditing every screen against WCAG 2.2 AA.</p>
-          </li>
-
-          <li>
-            <p class="tl-meta"><time datetime="2023">2023</time> · Vision</p>
-            <h3>Ut enim ad minim veniam</h3>
-            <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. The long-term aim: one platform every learner can use without asking for help.</p>
-          </li>
-
-          <li>
-            <p class="tl-meta"><time datetime="2025">2025</time> · Today</p>
-            <h3>Excepteur sint occaecat</h3>
-            <p>Cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Twelve people, four products, and a hiring round for the two roles on our jobs page.</p>
-          </li>
-        </ol>
-      </section>
-
-      <!-- 3. Mission + Vision -->
-      <div class="grid grid--2">
-        <section aria-labelledby="mission-title">
-          <h2 id="mission-title">Our mission</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-          <p class="note">In practice: every release is tested with screen readers, keyboard-only navigation, and users with low vision before it ships.</p>
-        </section>
-        <section aria-labelledby="vision-title">
-          <h2 id="vision-title">Our vision</h2>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-          <p class="note">Where we are heading: a platform that adapts to the learner rather than asking the learner to adapt to it.</p>
-        </section>
-      </div>
-
-      <!-- 4. The team + bordered figure -->
-      <div class="grid grid--split">
-        <section aria-labelledby="team-title">
-          <h2 id="team-title">The team</h2>
-          <dl class="facts">
-            <div>
-              <dt>Group name:</dt>
-              <dd>Core Technology
-                <ul>
-                  <li><strong>Class day:</strong> Saturday</li>
-                  <li><strong>Class time:</strong> 07:00 – 11:00</li>
-                </ul>
-              </dd>
-            </div>
-            <div>
-              <dt>Course:</dt>
-              <dd>COS10026 Web Technology</dd>
-            </div>
-            <div>
-              <dt>Studio:</dt>
-              <dd>G04 — Digital learning platforms</dd>
-            </div>
-          </dl>
-        </section>
-
-        <figure class="photo">
-          <!-- Placeholder. To use a real photo replace this div with:
-               <img src="images/group-photo.jpg" alt="Describe the photo" width="800" height="600"> -->
-          <div class="media" role="img" aria-label="Group photo placeholder" style="aspect-ratio: 4 / 3;">
-            Group photo placeholder · 4:3
-          </div>
-          <figcaption>Figure 1.Anh cua nhom dau buuoi.</figcaption>
-        </figure>
-      </div>
-
-      <!-- 5. Members -->
-      <section id="members" aria-labelledby="members-title">
-        <h2 id="members-title">Who we are and what we built</h2>
         <article class="member" id="member-1">
           <h3>Lorem Ipsum <span class="student-id">104123456</span></h3>
           <p><strong>Contributions:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           <blockquote>
-            <p class="quote" lang="la">“Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.”</p>
-            <p class="quote-trans">— Latin. Translation: “No one loves pain itself because it is pain.”</p>
+            <p class="quote" lang="la">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.</p>
+            <p class="quote-trans">— Latin. Translation: No one loves pain itself because it is pain.</p>
           </blockquote>
         </article>
 
@@ -199,8 +294,8 @@
           <h3>Dolor Sit <span class="student-id">104123457</span></h3>
           <p><strong>Contributions:</strong> Sed do eiusmod tempor incididunt ut labore.</p>
           <blockquote>
-            <p class="quote" lang="la">“Ut enim ad minim veniam, quis nostrud exercitation.”</p>
-            <p class="quote-trans">— Latin. Translation: “So that we may enjoy the benefits of honest labour.”</p>
+            <p class="quote" lang="la">Ut enim ad minim veniam, quis nostrud exercitation.</p>
+            <p class="quote-trans">— Latin. Translation: So that we may enjoy the benefits of honest labour.</p>
           </blockquote>
         </article>
 
@@ -208,8 +303,8 @@
           <h3>Amet Consectetur <span class="student-id">104123458</span></h3>
           <p><strong>Contributions:</strong> Duis aute irure dolor in reprehenderit.</p>
           <blockquote>
-            <p class="quote" lang="la">“Excepteur sint occaecat cupidatat non proident.”</p>
-            <p class="quote-trans">— Latin. Translation: “Except those who are blinded by desire.”</p>
+            <p class="quote" lang="la">Excepteur sint occaecat cupidatat non proident.</p>
+            <p class="quote-trans">— Latin. Translation: Except those who are blinded by desire.</p>
           </blockquote>
         </article>
 
@@ -217,101 +312,149 @@
           <h3>Adipiscing Elit <span class="student-id">104123459</span></h3>
           <p><strong>Contributions:</strong> Ut enim ad minim veniam, quis nostrud.</p>
           <blockquote>
-            <p class="quote" lang="la">“Sunt in culpa qui officia deserunt mollit anim id est laborum.”</p>
-            <p class="quote-trans">— Latin. Translation: “Those who do their duty without seeking reward.”</p>
+            <p class="quote" lang="la">Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="quote-trans">— Latin. Translation: Those who do their duty without seeking reward.</p>
           </blockquote>
         </article>
+
+      </div>
+    </section>
+
+    <!-- 4. Mission + Vision (merged with social mission) -->
+    <section id="mission" aria-labelledby="mission-title">
+      <h2 id="mission-title">Our mission and vision</h2>
+      <p class="mv-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Learning tools should not assume a fast connection, a quiet room, or a user who can see the screen perfectly.</p>
+
+      <div class="grid grid--2">
+
+        <!-- Left: what we do today -->
+        <article class="mv-card mv-card--mission">
+          <h3>Mission</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+          <p class="note">In practice: every release is tested with screen readers, keyboard-only navigation, and users with low vision before it ships.</p>
+
+          <details class="mission-item" open>
+            <summary><h4>Access first</h4></summary>
+            <p>Every product ships meeting WCAG 2.2 AA, and we test with assistive technology before release.</p>
+          </details>
+
+          <details class="mission-item" open>
+            <summary><h4>Open by default</h4></summary>
+            <p>Our design system and accessibility checklists are published, so other small teams can reuse them.</p>
+          </details>
+        </article>
+
+        <!-- Right: where we are heading -->
+        <article class="mv-card mv-card--vision">
+          <h3>Vision</h3>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+          <p class="note">Where we are heading: a platform that adapts to the learner rather than asking the learner to adapt to it.</p>
+
+          <details class="mission-item" open>
+            <summary><h4>Low bandwidth</h4></summary>
+            <p>Pages are built to work on a 3G connection, because students are not always on campus wifi.</p>
+          </details>
+
+          <details class="mission-item" open>
+            <summary><h4>Local partnerships</h4></summary>
+            <p>We work with community education providers to keep course content affordable and relevant.</p>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 5. The team + bordered figure -->
+    <div class="grid grid--split">
+      <section id="team" aria-labelledby="team-title">
+        <h2 id="team-title">The team</h2>
+        <dl class="facts">
+          <div>
+            <dt>Group name:</dt>
+            <dd>Core Technology
+              <ul>
+                <li><strong>Class day:</strong> Saturday</li>
+                <li><strong>Class time:</strong> 07:00 – 11:00</li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>Course:</dt>
+            <dd>COS10026 Web Technology</dd>
+          </div>
+          <div>
+            <dt>Studio:</dt>
+            <dd>G04 — Digital learning platforms</dd>
+          </div>
+        </dl>
       </section>
 
-      <!-- 6. Social mission (click to open/close) -->
-      <section id="social" aria-labelledby="social-title">
-        <h2 id="social-title">Our social mission</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Learning tools should not assume a fast connection, a quiet room, or a user who can see the screen perfectly.</p>
-        <details class="mission-item" open>
-          <summary><h3>Access first</h3></summary>
-          <p>Every product ships meeting WCAG 2.2 AA, and we test with assistive technology before release.</p>
-        </details>
-
-        <details class="mission-item" open>
-          <summary><h3>Open by default</h3></summary>
-          <p>Our design system and accessibility checklists are published, so other small teams can reuse them.</p>
-        </details>
-
-        <details class="mission-item" open>
-          <summary><h3>Low bandwidth</h3></summary>
-          <p>Pages are built to work on a 3G connection, because students are not always on campus wifi.</p>
-        </details>
-
-        <details class="mission-item" open>
-          <summary><h3>Local partnerships</h3></summary>
-          <p>We work with community education providers to keep course content affordable and relevant.</p>
-        </details>
-      </section>
-
-      <!-- 7. Fun facts -->
-      <section id="fun-facts" aria-labelledby="facts-title">
-        <h2 id="facts-title">Fun facts</h2>
-        <div class="table-wrap" role="region" aria-label="Fun facts table" tabindex="0">
-          <table>
-            <caption>Table 1. Fun facts about each member.</caption>
-            <thead>
-              <tr>
-                <th scope="col">Member</th>
-                <th scope="col">Dream job</th>
-                <th scope="col">Coding snack</th>
-                <th scope="col">Hometown</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"><a href="#member-1">Lorem Ipsum</a></th>
-                <td>Design engineer</td>
-                <td>Lorem nuts</td>
-                <td>Ipsumville</td>
-              </tr>
-              <tr>
-                <th scope="row"><a href="#member-2">Dolor Sit</a></th>
-                <td>Front-end architect</td>
-                <td>Dolor chips</td>
-                <td>Amet Creek</td>
-              </tr>
-              <tr>
-                <th scope="row"><a href="#member-3">Amet Consectetur</a></th>
-                <td>Accessibility lead</td>
-                <td>Consectetur tea</td>
-                <td>Adipiscing Bay</td>
-              </tr>
-              <tr>
-                <th scope="row"><a href="#member-4">Adipiscing Elit</a></th>
-                <td>Product designer</td>
-                <td>Elit biscuits</td>
-                <td>Eiusmod Springs</td>
-              </tr>
-            </tbody>
-          </table>
+      <figure class="photo">
+        <!-- Placeholder. To use a real photo replace this div with:
+             <img src="images/group-photo.jpg" alt="Describe the photo" width="800" height="600"> -->
+        <div class="media" role="img" aria-label="Group photo placeholder" style="aspect-ratio: 4 / 3;">
+          Group photo placeholder · 4:3
         </div>
-      </section>
+        <figcaption>Figure 1.Anh cua nhom dau buuoi.</figcaption>
+      </figure>
+    </div>
 
-      <!-- 8. Acknowledgement -->
-      <section class="acknowledgement" aria-labelledby="ack-title">
-        <h2 id="ack-title">Acknowledgement of Country</h2>
-        <p>Core Technology acknowledges the Traditional Custodians of the lands and waters where we learn and work, and pays respect to Elders past and present. This project is committed to listening, learning, and building partnerships that support Aboriginal and Torres Strait Islander students and communities.</p>
-        <p>We warmly encourage applications from Aboriginal and Torres Strait Islander peoples and continue to review our products to ensure they are accessible, inclusive and culturally respectful.</p>
-      </section>
+    <!-- 6. Fun facts -->
+    <section id="fun-facts" aria-labelledby="facts-title">
+      <h2 id="facts-title">Fun facts</h2>
+      <div class="table-wrap" role="region" aria-label="Fun facts table" tabindex="0">
+        <table>
+          <caption>Table 1. Fun facts about each member.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Member</th>
+              <th scope="col">Dream job</th>
+              <th scope="col">Coding snack</th>
+              <th scope="col">Hometown</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="#member-1">Lorem Ipsum</a></th>
+              <td>Design engineer</td>
+              <td>Lorem nuts</td>
+              <td>Ipsumville</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#member-2">Dolor Sit</a></th>
+              <td>Front-end architect</td>
+              <td>Dolor chips</td>
+              <td>Amet Creek</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#member-3">Amet Consectetur</a></th>
+              <td>Accessibility lead</td>
+              <td>Consectetur tea</td>
+              <td>Adipiscing Bay</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="#member-4">Adipiscing Elit</a></th>
+              <td>Product designer</td>
+              <td>Elit biscuits</td>
+              <td>Eiusmod Springs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-    </main>
+  </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-      <p class="footer-note">© 2026 Core Technology. Acknowledge and respect Traditional Owners.</p>
-      <ul class="footer-links">
-        <li><a href="#">Jira project</a></li>
-        <li><a href="#">GitHub repository</a></li>
-        <li><a href="mailto:info@loremipsum.example">info@loremipsum.example</a></li>
-      </ul>
-    </footer>
+  <!-- Footer -->
+  <footer aria-label="Site">
+    <p class="footer-note">© 2026 Core Technology. Acknowledge and respect Traditional Owners.</p>
+    <ul class="footer-links">
+      <li><a href="#">Jira project</a></li>
+      <li><a href="#">GitHub repository</a></li>
+      <li><a href="mailto:info@loremipsum.example">info@loremipsum.example</a></li>
+    </ul>
+  </footer>
 
-  </div>
 </body>
 
 </html>
