@@ -33,7 +33,7 @@
 - [ ] Cross-test Person 4’s work: Verify login protection, filters, sorting,
        status updates, and deletion with test EOIs.
 
-## Person 3 — Database Settings, Jobs Page, and Search
+## Person 3 — Phan Cong Minh — Database Settings, Jobs Page, and Search
 
 - [ ] Create settings.php with the local DB host, username, database name,
        and a blank database password. Make sure every database connection uses
